@@ -43,7 +43,7 @@ class EstablishmentsController < ApplicationController
   def destroy
     @establishment = Establishment.find(params[:id])
     @establishment.destroy
-    redirect_to establishments_path
+    redirect_to "pages#home"
   end
 
 
@@ -60,3 +60,5 @@ class EstablishmentsController < ApplicationController
   end
 
 end
+
+

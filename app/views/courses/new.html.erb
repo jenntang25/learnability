@@ -2,14 +2,14 @@
 <p>Find me in app/views/courses/new.html.erb</p>
 
 
-  <%= simple_form_for @book do |f| %>
+  <%= simple_form_for @course do |f| %>
             <% f.error_notification %>
             <%= f.input :title %>
             <%= f.input :category, collection: [] %>
             <%= f.input :price %>
             <%= f.input :description %>
             <%= f.button :submit %>
-<%end   %>
+<%end%>
 
 
 <%= "should have schedule to pick a date from" %>

@@ -1,11 +1,10 @@
 class CoursesController < ApplicationController
   def index
-    @establishments = Establishment.all
-    @courses = Course.where(establishment_id: @establishments.id)
+    @courses = Course.all
   end
 
   def new
-    @establishments = Establishment.find(params[:establishment_id])
+    @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new
   end
 
@@ -14,10 +13,12 @@ class CoursesController < ApplicationController
     @establishments = Establishment.find(params[:establishment_id])
     @course = Course.new(course_params)
      if @course.save
-      redirect_to course_path(@course) #probably will need @establishment in the argument
+      redirect_to course_path(@course, @establishment) #probably will need @establishment in the argument
     else
       render :new
   end
+
+end
 
   def show
     @course = Course.find(params[:id])
