@@ -23,7 +23,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @review = Review.all
 
-    #@reviews = @course.appointment.review
+    #@review; a method (.where ?) to select only course reviews is still missing
   end
 
   def destroy

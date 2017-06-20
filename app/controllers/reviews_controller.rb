@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @review.appointment = @appointment
     @review.course = @appointment.course
-    #@review.user = current_user
+    @reviewer =  @review.appointment.user.email
 
     if @review.save
       redirect_to  appointment_reviews_path(@appointment)

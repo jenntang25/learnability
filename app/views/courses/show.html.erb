@@ -1,32 +1,27 @@
 <div class = "text-center">
-<h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
+  <h1>Courses#show</h1>
+  <p>Find me in app/views/courses/show.html.erb</p>
 
 
-<ul class = "list-unstyled">
-  <li><%= @course.title %></li>
-
- <li> <strong> <%= "City: "%> </strong> <%= @course.establishment.city%></li>
-
-<li><%= @course.establishment.user.email %></li>
-
-<li> <%= link_to "see establishment", establishment_path(@course, @establishment ) %></li>
- <li><%= link_to "Book it", new_appointment_path(course_id: @course.id) %></li>
-
-</ul>
-<%= link_to "Back", :back %>
+  <ul class = "list-unstyled">
+    <li><%= @course.title %></li>
+    <li> <strong> <%= "City: "%> </strong> <%= @course.establishment.city%></li>
+    <li><%= @course.establishment.user.email %></li>
+    <li> <%= link_to "see establishment", establishment_path(@course, @establishment ) %></li>
+    <li><%= link_to "Book it", new_appointment_path(course_id: @course.id) %></li>
+  </ul>
 
 
+  <p>reviewer: </p> <%= @reviewer %>
 
+  <% @review.each do |review|%>
+<ul class = "list-inline">
+  <li><%=review.content%></li>
+  <li><%=review.stars%></li>
 
-
-<% @review.each do |review|%>
-<%=review.content%>
-<%=review.stars%>
-
-<%end%>
-
-
+  <%end%>
+<br>
+  <%= link_to "Back", :back %>
 
 
 
