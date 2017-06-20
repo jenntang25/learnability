@@ -16,6 +16,7 @@ gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
+gem 'country_select'
 gem 'uglifier'
 
 group :development, :test do
