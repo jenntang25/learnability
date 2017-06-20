@@ -15,6 +15,7 @@ class ReviewsController < ApplicationController
     @review.appointment = @appointment
     @review.course = @appointment.course
     @reviewer =  @review.appointment.user.email
+    #on review params without a column? for courses show
 
     if @review.save
       redirect_to  appointment_reviews_path(@appointment)

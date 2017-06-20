@@ -12,12 +12,13 @@
   </ul>
 
 
-  <p>reviewer: </p> <%= @reviewer %>
-
   <% @review.each do |review|%>
 <ul class = "list-inline">
   <li><%=review.content%></li>
   <li><%=review.stars%></li>
+  <li><%=review.appointment.user.email%></li>
+
+
 
   <%end%>
 <br>

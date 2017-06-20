@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
   def new
     @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new
+    raise
   end
 
 
@@ -43,7 +44,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:title, :category, :price, :description)
+    params.require(:course).permit(:title, :establishment_id, :category, :price, :description)
   end
 
 end
