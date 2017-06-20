@@ -8,8 +8,11 @@
 
  <li> <strong> <%= "City: "%> </strong> <%= @course.establishment.city%></li>
 
+
 </ul>
 
 </div>
 
 <%= link_to establishment_path(@establishment)%>
+<%= link_to "get appointment", new_appointment_path(@course) %>
+
