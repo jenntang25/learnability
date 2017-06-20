@@ -1,4 +1,5 @@
 class EstablishmentsController < ApplicationController
+  before_action :set_establishment
 
   def new
     @establishment = Establishment.new
@@ -23,11 +24,11 @@ class EstablishmentsController < ApplicationController
 
   def update
     @establishment = Establishment.find(params[:id])
-    @establishment.update(establisment_params)
-
-    # no need for app/views/establishments/update.html.erb
-    redirect_to establishment_path(@establishment)
-
+    if @establishment.update(establisment_params)
+      redirect_to establishment_path(@establishment)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -37,11 +38,13 @@ class EstablishmentsController < ApplicationController
   end
 
   def edit
-        @establishment = Establishment.find(params[:id])
-
   end
 
   private
+
+  def set_establishment
+    @establishment = Establishment.find(params[:id])
+  end
 
   def establishment_params
     # *Strong params*: You need to *whitelist* what can be updated by the user
