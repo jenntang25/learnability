@@ -17,6 +17,7 @@ class CoursesController < ApplicationController
       redirect_to course_path(@course) #probably will need @establishment in the argument
     else
       render :new
+    end
   end
 
   def show
