@@ -11,8 +11,10 @@
 
 </ul>
 
-</div>
 
-<%= link_to establishment_path(@establishment)%>
+
+<%= link_to "See the teacher", establishment_path(@course.establishment)%>
+<br>
 <%= link_to "get appointment", new_appointment_path(@course) %>
 
+</div>
