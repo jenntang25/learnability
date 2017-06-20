@@ -1,11 +1,18 @@
+<div class = "text-center">
 <h1>Courses#show</h1>
 <p>Find me in app/views/courses/show.html.erb</p>
 
 
-<%= @course.establishment%>
-<%= @course.title %>
-<%= @course.category %>
-<%= @course.price %>
-<%= @course.description %>
+<ul class = "list-unstyled">
+  <li><%= @course.title %></li>
 
+ <li> <strong> <%= "City: "%> </strong> <%= @course.establishment.city%></li>
+
+
+</ul>
+
+</div>
+
+<%= link_to establishment_path(@establishment)%>
+<%= link_to "get appointment", new_appointment_path(@course) %>
 
