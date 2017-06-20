@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users
-  resources :establishments,  except: :index
-  resources :courses
+  resources :establishments,  except: :index do
+    resources :courses, only: [:create, :new]
+  end
+  resources :courses, only: [:index, :show, :update, :edit, :destroy]
+
 
   resources :appointments do
     resources :reviews, only: [:index, :new, :create]
