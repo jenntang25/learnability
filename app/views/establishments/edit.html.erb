@@ -1,2 +1,12 @@
 <h1>Establishments#edit</h1>
 <p>Find me in app/views/establishments/edit.html.erb</p>
+
+<%= simple_form_for @establishment do |f| %>
+            <% f.error_notification %>
+            <%= f.input :city %>
+            <%= f.input :country %>
+            <%= f.input :street %>
+            <%= f.input :postal_code %>
+            <%= f.input :description %>
+            <%= f.button :submit %>
+  <% end %>

@@ -1,4 +1,8 @@
 <h1>Establishments#show</h1>
 <p>Find me in app/views/establishments/show.html.erb</p>
 
-
+<%= @establishment.street %>
+<%= link_to "index", establishments_path %>
+<%= link_to "new", new_establishment_path(@user) %>
+<%= link_to "edit", edit_establishment_path(@establishment) %>
+<%= link_to "destroy", @establishment, method: :delete %>
