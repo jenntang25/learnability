@@ -3,6 +3,7 @@
 <% @courses.each do |course|%>
 <ul class = "list-unstyled">
 <li> <%= course.title%> </li>
+<%= link_to "Establishment", establishment_path(course)  %>
 </ul>
 <%end%>
 
