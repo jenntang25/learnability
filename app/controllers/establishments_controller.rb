@@ -12,7 +12,7 @@ class EstablishmentsController < ApplicationController
   end
 
   def show
-    @establishment = Establishment.find(params[:establishment_id])
+    @establishment = Establishment.find(params[:id])
 
   end
 
