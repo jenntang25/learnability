@@ -25,7 +25,7 @@ class EstablishmentsController < ApplicationController
     @establishment = Establishment.find(params[:id])
     @establishment.update(establisment_params)
 
-    # no need for app/views/restaurants/update.html.erb
+    # no need for app/views/establishments/update.html.erb
     redirect_to establishment_path(@establishment)
 
   end
@@ -38,7 +38,6 @@ class EstablishmentsController < ApplicationController
 
   def edit
         @establishment = Establishment.find(params[:id])
-
 
   end
 
