@@ -1,10 +1,14 @@
 <div class = "text-center">
 <h1>Courses</h1>
 <% @courses.each do |course|%>
+
+<%= link_to course_path(course) do%>
 <ul class = "list-unstyled">
 <li> <%= course.title%> </li>
 <%= link_to "Establishment", establishment_path(course)  %>
 </ul>
+<%end%>
+
 <%end%>
 
 
