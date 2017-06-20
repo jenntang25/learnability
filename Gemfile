@@ -9,6 +9,7 @@ gem 'puma'
 gem 'rails', '5.0.3'
 gem 'redis'
 
+gem 'cloudinary', '1.1.7'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
