@@ -6,3 +6,14 @@
 <%= link_to "new", new_establishment_path(@user) %>
 <%= link_to "edit", edit_establishment_path(@establishment) %>
 <%= link_to "destroy", @establishment, method: :delete %>
+
+
+<br>
+<br>
+<%= link_to "Create courses for this Establishment", new_establishment_course_path(@establishment)%>
+
+
+
+<br>
+<br>
+<%= link_to "See list of my courses", courses_path%>
