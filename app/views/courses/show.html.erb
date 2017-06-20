@@ -8,11 +8,31 @@
 
  <li> <strong> <%= "City: "%> </strong> <%= @course.establishment.city%></li>
 
+<li><%= @course.establishment.user.email %></li>
+
+<li> <%= link_to "see establishment", establishment_path(@course, @establishment ) %></li>
+ <li><%= link_to "Book it", new_appointment_path(course_id: @course.id) %></li>
 
 </ul>
+<%= link_to "Back", :back %>
+
+
+
+
+
+<% @review.each do |review|%>
+<%=review.content%>
+<%=review.stars%>
+
+<%end%>
+
+
+
+
 
 </div>
 
-<%= link_to establishment_path(@establishment)%>
-<%= link_to "get appointment", new_appointment_path(@course) %>
+
+<%#= link_to establishment_path(@establishment)%>
+<%#= link_to "get appointment", new_appointment_path(@course) %>
 

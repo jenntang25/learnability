@@ -1,2 +1,13 @@
 <h1>Reviews#index</h1>
 <p>Find me in app/views/reviews/index.html.erb</p>
+
+<div class="text-center">
+
+<% @reviews.each do |review|%>
+<%=review.content%>
+<%=review.stars%>
+<%=review.appointment.user.email%>
+<%=review.appointment.course.title%>
+
+<%end%>
+</div>
