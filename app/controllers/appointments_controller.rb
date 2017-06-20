@@ -7,6 +7,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
+    @appointment.date = appointment_params[:date].to_date
     @appointment.user = current_user
     @appointment.course = @course
   end
