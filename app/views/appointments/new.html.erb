@@ -1,2 +1,17 @@
 <h1>Appointments#new</h1>
 <p>Find me in app/views/appointments/new.html.erb</p>
+
+<%= @appointment.course %>
+<%= @appointment.course %>
+<%= @appointment.user %>
+
+
+
+
+
+  <%= simple_form_for @appointment do |f| %>
+            <% f.error_notification %>
+            <%= f.input :date %>
+            <%= f.input :description %>
+            <%= f.button :submit %>
+<%end%>
