@@ -5,12 +5,13 @@
 <h1>Appointments</h1>
 
 
-<%@appointments.each do |appointment|%>
-
-<ul class = "list-unstyled">
-<li> <%= appointment.course.title%> </li>
-<li><%= link_to "Review", new_appointment_review_path(appointment)  %></li>
-</ul>
+<% @appointments.each_with_index do |appointment, index| %>
+  <%= index + 1 %>
+  <ul class = "list-unstyled">
+    <li> <strong><%= appointment.course.title%></strong></li>
+    <li><%= appointment.description %></li>
+    <li> <%= link_to "Review", new_appointment_review_path(appointment)  %></li>
+  </ul>
 
 <%end%>
 
