@@ -4,4 +4,4 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require bootstrap-sprockets
-//= require_tree .
+//= require_tree ./app
