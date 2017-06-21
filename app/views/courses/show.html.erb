@@ -10,20 +10,13 @@
 </ul>
 
   <div>
-  <% if @course.photo? %>
+  <% if @course.photos? %>
   <% @course.photos.each do |photo| %>
   <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
 <% end %>
 <% end %>
 
 </div>
-
-
-
-
-
-
-
 
 
   <%= link_to "Back", :back %>
