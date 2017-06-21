@@ -24,7 +24,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @review = Review.all
 
-    #@review; a method (.where ?) to select only course reviews is still missing
+    #@review; a method (.where ?) to select only course reviews, is still missing
   end
 
   def destroy
