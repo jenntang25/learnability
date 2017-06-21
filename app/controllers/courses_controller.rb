@@ -6,15 +6,18 @@ class CoursesController < ApplicationController
   def new
     @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new
-    raise
+    @categories = %w(free-time sports programming languages cooking enterteinment art other)
+
   end
 
 
   def create
-    @establishments = Establishment.find(params[:establishment_id])
+    @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new(course_params)
+    @course.establishment = @establishment
      if @course.save
-      redirect_to course_path(@course, @establishment)
+      redirect_to course_path(@course)
+
     else
       render :new
     end
@@ -22,9 +25,8 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @review = Review.all
+    @reviews = Review.where(course_id: @course.id)
 
-    #@review; a method (.where ?) to select only course reviews, is still missing
   end
 
   def destroy
