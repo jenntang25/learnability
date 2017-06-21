@@ -19,11 +19,11 @@
 </div>
 
 
-  <%= link_to "Back", :back %>
+<%= link_to "Back", :back %>
 
 <%= link_to "See the teacher", establishment_path(@course.establishment)%>
 <br>
-<%= link_to "get appointment", new_appointment_path(@course) %>
+<%= link_to "get appointment", new_appointment_path(course_id: @course.id) %>
 
 
 <br>

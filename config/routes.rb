@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  ActiveAdmin.routes(self)
+
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   resources :establishments,  except: :index do
     resources :courses, only: [:create, :new]
   end
+
   resources :courses, only: [:index, :show, :update, :edit, :destroy]
 
 

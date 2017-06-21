@@ -1,9 +1,11 @@
 class AppointmentsController < ApplicationController
+
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.where(user_id: current_user.id)
   end
 
   def new
+    @course = Course.find(params[:course_id])
     @appointment = Appointment.new
 
   end
@@ -11,7 +13,6 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
-
     if @appointment.save
       redirect_to appointment_path(@appointment)
     else
@@ -37,7 +38,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:date, :course_id, :description)
+    params.require(:appointment).permit(:date, :description, :course_id)
   end
 end
 

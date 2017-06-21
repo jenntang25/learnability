@@ -26,6 +26,7 @@
         </div>
       <% end %>
 
+      <%= link_to "My courses", appointments_path%>
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
@@ -37,6 +38,8 @@
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
+
+            <li> <%= link_to "Settings", edit_user_path(current_user)%></li>
             <li>
               <%= link_to "#" do %>
                 <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
