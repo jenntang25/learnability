@@ -13,14 +13,14 @@ class CoursesController < ApplicationController
     @establishments = Establishment.find(params[:establishment_id])
     @course = Course.new(course_params)
      if @course.save
-      redirect_to course_path(@course, @establishment) #probably will need @establishment in the argument
-    else
+      redirect_to course_path(@course, @establishment)
       render :new
     end
   end
 
   def show
     @course = Course.find(params[:id])
+    @reviews = Review.where(course_id: @course.id)
   end
 
   def destroy
