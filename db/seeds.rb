@@ -8,8 +8,9 @@
 
 Review.destroy_all
 Appointment.destroy_all
-Establishment.destroy_all
 Course.destroy_all
+Establishment.destroy_all
+
 User.destroy_all
 
 user1 = User.create!(email: "test@test.com", password: "123456")
@@ -28,6 +29,6 @@ app1 = Appointment.create!(date: "07/07/1985", user: user1, course: course1)
 app2 = Appointment.create!(date: "07/07/1986", user: user2, course: course2)
 app3 = Appointment.create!(date: "07/07/1987", user: user3, course: course3)
 
-rev1 = Review.create!(appointment: app1, course: course1)
-rev2 = Review.create!(appointment: app2, course: course2)
-rev3 = Review.create!(appointment: app3, course: course3)
+rev1 = Review.create!(appointment: app1, course: course1, stars: 3)
+rev2 = Review.create!(appointment: app2, course: course2, stars: 4)
+rev3 = Review.create!(appointment: app3, course: course3, stars: 5)

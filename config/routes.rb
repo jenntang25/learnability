@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :establishments,  except: :index do
     resources :courses, only: [:create, :new]
   end
+
   resources :courses, only: [:index, :show, :update, :edit, :destroy]
 
 
