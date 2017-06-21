@@ -4,5 +4,6 @@ class Course < ApplicationRecord
   has_attachments :photos, maximum: 4
   validates :title, presence: true
   validates :price, presence: true
-  validates :category,  presence: true
+  validates :category,  presence: true, inclusion: { in: %w(free-time sports programming languages cooking enterteinment art other), allow_nil: false }
+
 end

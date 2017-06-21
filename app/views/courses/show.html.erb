@@ -1,15 +1,13 @@
 <div class = "text-center">
-  <h1>Courses#show</h1>
-  <p>Find me in app/views/courses/show.html.erb</p>
+<h1><%= @course.title%></h1>
 
+<ul class = "list-unstyled">
+  <li><strong> <%= "Price: "%> </strong><%= @course.price %> <%= " $"%></li>
+  <li><strong> <%= "Description: "%> </strong><%= @course.title %></li>
+  <li><strong> <%= "Description: "%> </strong><%= @course.description%></li>
+ <li> <strong> <%= "City: "%> </strong> <%= @course.establishment.city%></li>
 
-  <ul class = "list-unstyled">
-    <li><%= @course.title %></li>
-    <li> <strong> <%= "City: "%> </strong> <%= @course.establishment.city%></li>
-    <li><%= @course.establishment.user.email %></li>
-    <li> <%= link_to "see establishment", establishment_path(@course, @establishment ) %></li>
-    <li><%= link_to "Book it", new_appointment_path(course_id: @course.id) %></li>
-  </ul>
+</ul>
 
   <div>
   <% if @course.photo? %>
@@ -25,23 +23,29 @@
 
 
 
-  <% @review.each do |review|%>
+
+
+
+  <%= link_to "Back", :back %>
+
+<%= link_to "See the teacher", establishment_path(@course.establishment)%>
+<br>
+<%= link_to "get appointment", new_appointment_path(@course) %>
+
+
+<br>
+<br>
+<br>
+
+
+<h3> Reviews of this course</h3>
+ <% @reviews.each do |review|%>
 <ul class = "list-inline">
   <li><%=review.content%></li>
   <li><%=review.stars%></li>
   <li><%=review.appointment.user.email%></li>
-
-
-
   <%end%>
-<br>b
-  <%= link_to "Back", :back %>
-
-
-
 </div>
 
-
-<%#= link_to establishment_path(@establishment)%>
-<%#= link_to "get appointment", new_appointment_path(@course) %>
+<p>You can only make a review if you have made an appoinment for this course</p>
 
