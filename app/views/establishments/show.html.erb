@@ -1,10 +1,30 @@
 <h1>Establishments#show</h1>
 <p>Find me in app/views/establishments/show.html.erb</p>
 
-<%= @establishment.street %>
+<div class = "text-center">
+
+
+<ul class = "list-unstyled">
+<li><%= @establishment.city %></li>
+<li><%= @establishment.street %></li>
+<li><%= @establishment.description %></li>
+</ul>
+
 <%= link_to "index", establishments_path %>
 <%= link_to "new", new_establishment_path(@user) %>
 <%= link_to "edit", edit_establishment_path(@establishment) %>
 <%= link_to "destroy", @establishment, method: :delete %>
 
+
+<br>
+<br>
+<%= link_to "Create courses for this Establishment", new_establishment_course_path(@establishment)%>
+
+
+
+<br>
+<%= link_to "See list of my courses", courses_path%>
+<br>
+<%= link_to "Back", :back %>
+</div>
 

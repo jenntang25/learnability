@@ -5,10 +5,11 @@
   <%= simple_form_for @course do |f| %>
             <% f.error_notification %>
             <%= f.input :title %>
-            <%= f.input :category, collection: [] %>
+            <%= f.input :category, collection:  %w[free-time sports programming languages cooking enterteinment art other] %>
             <%= f.input :price %>
             <%= f.input :description %>
             <%= f.button :submit %>
+            <%= f.input :establishment_id, as: :hidden, input_html: {value: params[:establishment_id]} %>
 <%end%>
 
 

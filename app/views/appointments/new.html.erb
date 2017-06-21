@@ -7,11 +7,11 @@
 
 
 
+<%= simple_form_for @appointment do |f| %>
+  <% f.error_notification %>
+  <%= f.input :date, id: "datepicker" %>
+  <%= f.input :description %>
+  <%= f.input :course_id, as: :hidden, input_html: {value: params[:course_id]} %>
 
-
-  <%= simple_form_for @appointment do |f| %>
-            <% f.error_notification %>
-            <%= f.input :date %>
-            <%= f.input :description %>
-            <%= f.button :submit %>
+  <%= f.button :submit %>
 <%end%>

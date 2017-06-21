@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   def index
     @appointment = Appointment.find(params[:appointment_id])
-    @reviews = Review.where(:appointment_id)
+    @reviews = Review.all
   end
 
   def new
@@ -10,12 +10,15 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.find(params[:appointment_id])
     @review = Review.new(review_params)
-    @review.appointment = @Appointment
-    @review.user = current_user
+    @appointment = Appointment.find(params[:appointment_id])
+    @review.appointment = @appointment
+    @review.course = @appointment.course
+    @reviewer =  @review.appointment.user.email
+    #on review params without a column? for courses show
+
     if @review.save
-      redirect_to appointment_path(@appointment)
+      redirect_to  appointment_reviews_path(@appointment)
     else
       render :new
     end
@@ -24,7 +27,10 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content, :user_id, :appointment_id)
+    params.require(:review).permit(:content, :stars, :user_id, :appointment_id)
   end
 
 end
+
+
+
