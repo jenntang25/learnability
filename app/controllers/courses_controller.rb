@@ -6,14 +6,17 @@ class CoursesController < ApplicationController
   def new
     @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new
+    @categories = %w(free-time sports programming languages cooking enterteinment art other)
   end
 
 
   def create
-    @establishments = Establishment.find(params[:establishment_id])
+    @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new(course_params)
+    @course.establishment = @establishment
      if @course.save
-      redirect_to course_path(@course, @establishment)
+      redirect_to course_path(@course)
+    else
       render :new
     end
   end
