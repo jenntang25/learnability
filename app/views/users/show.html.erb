@@ -1,2 +1,7 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="text-center">
+<h3><%= @user.email %></h3>
+<p>I am an awesome person!</p>
+
+<%= link_to "new establishment", new_establishment_path(@user) %>
+
+</div>
