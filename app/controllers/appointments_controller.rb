@@ -1,4 +1,8 @@
 class AppointmentsController < ApplicationController
+  def index
+    @appointments = Appointment.all
+  end
+
   def new
     @appointment = Appointment.new
 
@@ -6,14 +10,12 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
-    @appointment.date = appointment_params[:date]
-    #.to_date   (?)
     @appointment.user = current_user
-    @appointment.course = @course
+
     if @appointment.save
-      redirect_to courses_path
+      redirect_to appointment_path(@appointment)
     else
-          redirect_to courses_path
+      render :new
     end
   end
 
@@ -28,10 +30,14 @@ class AppointmentsController < ApplicationController
   def edit
   end
 
+  def show
+    @appointment = Appointment.find(params[:id])
+  end
+
   private
 
   def appointment_params
-    params.require(:appointment).permit(:course_id, :user_id)
+    params.require(:appointment).permit(:date, :course_id, :description)
   end
 end
 

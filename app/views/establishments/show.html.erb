@@ -1,7 +1,15 @@
 <h1>Establishments#show</h1>
 <p>Find me in app/views/establishments/show.html.erb</p>
 
-<%= @establishment.street %>
+<div class = "text-center">
+
+
+<ul class = "list-unstyled">
+<li><%= @establishment.city %></li>
+<li><%= @establishment.street %></li>
+<li><%= @establishment.description %></li>
+</ul>
+
 <%= link_to "index", establishments_path %>
 <%= link_to "new", new_establishment_path(@user) %>
 <%= link_to "edit", edit_establishment_path(@establishment) %>
@@ -10,4 +18,6 @@
 
 <br>
 <br>
+
 <%= link_to "Create course", new_establishment_course_path(@establishment)%>
+<%= link_to "Back", :back %>

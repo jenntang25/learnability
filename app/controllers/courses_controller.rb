@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
     @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new
     @categories = %w(free-time sports programming languages cooking enterteinment art other)
+
   end
 
 
@@ -16,6 +17,7 @@ class CoursesController < ApplicationController
     @course.establishment = @establishment
      if @course.save
       redirect_to course_path(@course)
+
     else
       render :new
     end
@@ -24,6 +26,7 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
     @reviews = Review.where(course_id: @course.id)
+
   end
 
   def destroy
@@ -43,7 +46,7 @@ class CoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:title, :category, :price, :description)
+    params.require(:course).permit(:title, :establishment_id, :category, :price, :description)
   end
 
 end
