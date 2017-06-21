@@ -2,13 +2,16 @@
 <p>Find me in app/views/courses/new.html.erb</p>
 
 
-  <%= simple_form_for @course do |f| %>
+  <%= simple_form_for [@establishment, @course] do |f| %>
             <% f.error_notification %>
             <%= f.input :title %>
-            <%= f.input :category, collection: [] %>
+            <%= f.input :category, collection: @categories %>
+
             <%= f.input :price %>
             <%= f.input :description %>
+            <%= f.input :photos, as: :attachinary %>
             <%= f.button :submit %>
+            <%= f.input :establishment_id, as: :hidden, input_html: {value: params[:establishment_id]} %>
 <%end%>
 
 

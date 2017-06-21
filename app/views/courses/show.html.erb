@@ -1,20 +1,51 @@
 <div class = "text-center">
-<h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
-
+<h1><%= @course.title%></h1>
 
 <ul class = "list-unstyled">
-  <li><%= @course.title %></li>
-
+  <li><strong> <%= "Price: "%> </strong><%= @course.price %> <%= " $"%></li>
+  <li><strong> <%= "Description: "%> </strong><%= @course.title %></li>
+  <li><strong> <%= "Description: "%> </strong><%= @course.description%></li>
  <li> <strong> <%= "City: "%> </strong> <%= @course.establishment.city%></li>
-
 
 </ul>
 
+  <div>
+  <% if @course.photo? %>
+  <% @course.photos.each do |photo| %>
+  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+<% end %>
+<% end %>
 
+</div>
+
+
+
+
+
+
+
+
+
+  <%= link_to "Back", :back %>
 
 <%= link_to "See the teacher", establishment_path(@course.establishment)%>
 <br>
 <%= link_to "get appointment", new_appointment_path(@course) %>
 
+
+<br>
+<br>
+<br>
+
+
+<h3> Reviews of this course</h3>
+ <% @reviews.each do |review|%>
+<ul class = "list-inline">
+  <li><%=review.content%></li>
+  <li><%=review.stars%></li>
+  <li><%=review.appointment.user.email%></li>
+  <%end%>
 </div>
+
+<p>You can only make a review if you have made an appoinment for this course</p>
+
