@@ -11,6 +11,19 @@
     <li><%= link_to "Book it", new_appointment_path(course_id: @course.id) %></li>
   </ul>
 
+  <div>
+  <% if @course.photo? %>
+  <% @course.photos.each do |photo| %>
+  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+<% end %>
+<% end %>
+
+</div>
+
+
+
+
+
 
   <% @review.each do |review|%>
 <ul class = "list-inline">
@@ -21,7 +34,7 @@
 
 
   <%end%>
-<br>
+<br>b
   <%= link_to "Back", :back %>
 
 

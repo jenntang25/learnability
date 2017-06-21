@@ -8,6 +8,7 @@
             <%= f.input :category, collection:  %w[free-time sports programming languages cooking enterteinment art other] %>
             <%= f.input :price %>
             <%= f.input :description %>
+            <%= f.input :photos, as: :attachinary %>
             <%= f.button :submit %>
             <%= f.input :establishment_id, as: :hidden, input_html: {value: params[:establishment_id]} %>
 <%end%>
