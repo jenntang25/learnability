@@ -9,12 +9,29 @@
 
 </ul>
 
+  <div>
+  <% if @course.photo? %>
+  <% @course.photos.each do |photo| %>
+  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+<% end %>
+<% end %>
+
+</div>
 
 
+
+
+
+
+
+
+
+  <%= link_to "Back", :back %>
 
 <%= link_to "See the teacher", establishment_path(@course.establishment)%>
 <br>
 <%= link_to "get appointment", new_appointment_path(@course) %>
+
 
 <br>
 <br>
