@@ -8,6 +8,7 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.0.3'
 gem 'redis'
+gem 'omniauth-facebook'
 
 gem 'cloudinary', '1.1.7'
 gem 'autoprefixer-rails'
