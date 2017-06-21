@@ -3,15 +3,14 @@
 
 <div class = "text-center">
 <h1>Appointments</h1>
-<% @appointments.each do |appointment|%>
 
-<%= link_to appointment_path(appointment) do%>
+
+<%@appointments.each do |appointment|%>
+
 <ul class = "list-unstyled">
 <li> <%= appointment.course.title%> </li>
-<li> <%= appointment.course.description%> </li>
 <li><%= link_to "Review", new_appointment_review_path(appointment)  %></li>
 </ul>
-<%end%>
 
 <%end%>
 
