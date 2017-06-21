@@ -4,7 +4,7 @@ class Establishment < ApplicationRecord
   validates :country, presence: true
   validates :city, presence: true
   geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+  after_validation :geocode, if: :street_changed?
   #add column title to establishment. erase this after done
 
   def address

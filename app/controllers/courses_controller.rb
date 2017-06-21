@@ -26,11 +26,11 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @reviews = Review.where(course_id: @course.id)
 
-    @course_coordinates = { lat: @course.establishment.latitude, lng: @course.establishment.longitude }
+    # @course_coordinates = { lat: @course.establishment.latitude, lng: @course.establishment.longitude }
 
-    @hash = Gmaps4rails.build_markers(@course.establishment) do |course, marker|
-      marker.lat course.latitude
-      marker.lng course.longitude
+    @hash = Gmaps4rails.build_markers(@course.establishment) do |establishment, marker|
+      marker.lat establishment.latitude
+      marker.lng establishment.longitude
     end
 
   end
