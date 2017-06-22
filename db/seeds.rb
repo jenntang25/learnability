@@ -10,7 +10,6 @@ Review.destroy_all
 Appointment.destroy_all
 Course.destroy_all
 Establishment.destroy_all
-
 User.destroy_all
 
 user1 = User.create!(email: "test@test.com", password: "123456")

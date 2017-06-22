@@ -1,32 +1,34 @@
 <h1>Welcome to Learnability!</h1>
 
 
-  <div class="navbar-wagon-right hidden-xs hidden-sm align-center" >
-    <!-- Search form -->
-    <form action="/" method="get" class="navbar-wagon-search center-nav">
-      <input type="text" name="search" class="navbar-wagon-search-input" placeholder="Look for a course here...">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
+<div class="navbar-wagon-right hidden-xs hidden-sm align-center" >
+  <!-- Search form -->
+  <form action="/" method="get" class="navbar-wagon-search center-nav">
+    <input type="text" name="search" class="navbar-wagon-search-input" placeholder="Look for a course here...">
+    <button type="submit" class="navbar-wagon-search-btn">
+      <i class="fa fa-search"></i>
+    </button>
 
 
-    </form>
-  </div>
+  </form>
+</div>
 
-  <div>
-<%= cl_image_tag("unsplash.it/200/200",
-      width: 400, height: 300, crop: :fill) %>
-  </div>
+<div>
+  <%= cl_image_tag("http://unsplash.it/200/200",
+  width: 400, height: 300, crop: :fill) %>
+</div>
 
 
 
-  <div class = "text-center">
-<h1>Courses</h1>
-<% @courses.each do |course|%>
+<div class = "text-center">
+  <h1>Courses</h1>
+  <ul class = "list-unstyled">
+  <% @courses.each do |course|%>
+    <li>
+      <%=link_to course_path(course) do%>
+        <%= course.title %>
+      <%end%>
+    </li>
 
-<ul class = "list-unstyled">
-<%=link_to course_path(course) do%>
-<li> <%=course.title%> </li>
-<%end%>
 </ul>
 <%end%>
