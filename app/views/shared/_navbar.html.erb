@@ -18,6 +18,11 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
+
+
+<%=current_user.email%>
+<%= link_to "my establisment courses", establishments_path%>
+
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">

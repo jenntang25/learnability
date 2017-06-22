@@ -13,9 +13,25 @@
 
 
 <%= link_to "new", new_establishment_path(@user) %>
+
 <%= link_to "edit", edit_establishment_path(@establishment) %>
 <%= link_to "destroy", @establishment, method: :delete %>
 
+<br>
+<br>
+<div>
+
+
+
+<% @my_courses.each do |course|%>
+<ul class = "list-unstyled">
+  <li><strong> <%= "Price: "%> </strong><%= course.price %> <%= " $"%></li>
+  <li><strong> <%= "Description: "%> </strong><%= course.title %></li>
+  <li><strong> <%= "Description: "%> </strong><%= course.description%></li>
+ <li> <strong> <%= "City: "%> </strong> <%= course.establishment.city%></li>
+</ul>
+<%end%>
+</div>
 
 <br>
 <br>
@@ -32,3 +48,4 @@
 
 
 <%= link_to "Back", :back %>
+

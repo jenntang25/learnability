@@ -1,12 +1,21 @@
 class CoursesController < ApplicationController
+  after_action :verify_authorized
+  # after_action :verify_policy_scoped
+
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
+
   def index
     @courses = Course.all
+
   end
 
   def new
     @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new
+    @course.establishment = @establishment
+
     @categories = %w(free-time sports programming languages cooking enterteinment art other)
+    authorize @course
   end
 
 
@@ -14,6 +23,9 @@ class CoursesController < ApplicationController
     @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new(course_params)
     @course.establishment = @establishment
+
+    authorize @course
+
      if @course.save
       redirect_to course_path(@course)
 
@@ -23,30 +35,31 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
     @reviews = Review.where(course_id: @course.id)
 
     @hash = Gmaps4rails.build_markers(@course.establishment) do |establishment, marker|
       marker.lat establishment.latitude
       marker.lng establishment.longitude
     end
-
   end
 
+
+
   def destroy
-    @course = Course.find(params[:id])
     @course.destroy!
     redirect_to "pages#home"
 
   end
 
   def update
+
     @course = Course.find(params[:id])
     if @course.update(course_params)
       redirect_to course_path
     else
       render :edit
     end
+
 
   end
 
@@ -55,6 +68,11 @@ class CoursesController < ApplicationController
   end
 
   private
+
+  def set_course
+    @course = Course.find(params[:id])
+    authorize @course
+  end
 
   def course_params
     params.require(:course).permit(:title, :establishment_id, :category, :price, :description, photos: [] )

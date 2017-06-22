@@ -1,1 +1,20 @@
-<h1>This is your edit method</h1>
+<h1 class = "text-center">Update your account</h1>
+
+
+<div class="col-md-6 col-md-offset-3">
+
+ <%= simple_form_for current_user do |f| %>
+            <% f.error_notification %>
+            <%= f.input :email %>
+            <%= f.input :username %>
+            <%= f.input :first_name %>
+            <%= f.input :last_name %>
+            <%= f.input :country %>
+            <%= f.input :city %>
+            <%= f.input :street %>
+            <%= f.input :postal_code %>
+            <%= f.button :submit %>
+<%end%>
+
+
+</div>

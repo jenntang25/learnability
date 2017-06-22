@@ -1,21 +1,28 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-    before_action :set_user, only: [:show]
+  skip_before_action :authenticate_user!
 
 
  def edit
-
  end
 
 
   def update
+    current_user.update(params_user)
+    redirect_to user_path(current_user)
   end
 
   def show
+    @user = current_user
   end
 
 
+
+  def params_user
+    params.require(:user).permit!
+  end
+
   def set_user
-      @user = User.find(params[:id])
-    end
+    @user = User.find(params[:id])
+
+  end
 end
