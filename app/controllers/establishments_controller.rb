@@ -42,6 +42,7 @@ class EstablishmentsController < ApplicationController
   end
 
   def destroy
+    raise
     @establishment.destroy
     redirect_to "pages#home"
   end
@@ -54,7 +55,7 @@ class EstablishmentsController < ApplicationController
 
 
 def establishment_params
-  params.require(:establishment).permit(:city, :country, :street, :postal_code, :description, :latitude, :longitude)
+  params.require(:establishment).permit(:city, :country, :street, :postal_code, :description, :latitude, :longitude, :name)
 end
 
 end

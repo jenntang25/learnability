@@ -1,7 +1,7 @@
 class Establishment < ApplicationRecord
 
   belongs_to :user
-  has_many :courses
+  has_many :courses, dependent: :destroy
   validates :country, presence: true
   validates :city, presence: true
   geocoded_by :address

@@ -6,6 +6,7 @@
   <li><strong> <%= "Description: "%> </strong><%= @course.title %></li>
   <li><strong> <%= "Description: "%> </strong><%= @course.description%></li>
  <li> <strong> <%= "City:"%> </strong> <%= @course.establishment.city%></li>
+ <li> <strong> <%= "Establishment:"%> </strong> <%= @course.establishment.name%></li>
 </ul>
 
   <div>
@@ -20,7 +21,7 @@
 
 <%= link_to "Back", :back %>
 
-<%= link_to "See the teacher", establishment_path(@course.establishment)%>
+<%= link_to "See the establishment", establishment_path(@course.establishment)%>
 <br>
 <%= link_to "get appointment", new_appointment_path(course_id: @course.id) %>
 
