@@ -6,5 +6,8 @@
 //= require bootstrap-sprockets
 //= require underscore
 //= require gmaps/google
+//= require moment
+//= require bootstrap-datetimepicker
+//= require datetimepicker
 //= require_tree ./app
 

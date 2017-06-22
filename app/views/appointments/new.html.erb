@@ -5,12 +5,31 @@
 <%= @appointment.course %>
 <%= @appointment.user %>
 
-
+<div class="container">
 
 <%= simple_form_for @appointment do |f| %>
   <% f.error_notification %>
-  <%= f.input :date, id: "datepicker" %>
+
+
+<div style="overflow:hidden;">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-8">
+              <%= f.input :date, :as => :string, input_html: {id: "datetimepicker12"} %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
   <%= f.input :description %>
   <%= f.input :course_id, as: :hidden, input_html: {value: params[:course_id]} %>
   <%= f.button :submit %>
 <%end%>
+
+</div>
+
+
+
