@@ -5,12 +5,13 @@
 
 
 <ul class = "list-unstyled">
+<li><%= @establishment.name %></li>
 <li><%= @establishment.city %></li>
 <li><%= @establishment.street %></li>
 <li><%= @establishment.description %></li>
 </ul>
 
-<%= link_to "index", establishments_path %>
+
 <%= link_to "new", new_establishment_path(@user) %>
 <%= link_to "edit", edit_establishment_path(@establishment) %>
 <%= link_to "destroy", @establishment, method: :delete %>
@@ -18,6 +19,16 @@
 
 <br>
 <br>
-
 <%= link_to "Create course", new_establishment_course_path(@establishment)%>
+<br>
+
+  <% @establishment.courses.each do |course| %>
+  <div>
+    <%= course.title %>
+    <%= link_to "Edit course", edit_course_path(course)%>
+    <%= link_to "Destroy course", course, method: :delete %>
+  </div>
+  <% end %>
+
+
 <%= link_to "Back", :back %>

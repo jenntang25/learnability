@@ -1,2 +1,13 @@
-<h1>Courses#edit</h1>
-<p>Find me in app/views/courses/edit.html.erb</p>
+<h1>Change Courses</h1>
+
+
+  <%= simple_form_for @course do |f| %>
+            <% f.error_notification %>
+            <%= f.input :title %>
+            <%= f.input :category, collection: @categories %>
+            <%= f.input :price %>
+            <%= f.input :description %>
+            <%= f.input :photos, as: :attachinary %>
+            <%= f.button :submit %>
+            <%= f.input :establishment_id, as: :hidden, input_html: {value: params[:establishment_id]} %>
+<%end%>

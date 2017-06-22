@@ -36,15 +36,22 @@ class CoursesController < ApplicationController
   def destroy
     @course = Course.find(params[:id])
     @course.destroy!
+    redirect_to "pages#home"
+
   end
 
   def update
     @course = Course.find(params[:id])
-    @course.update
+    if @course.update(course_params)
+      redirect_to course_path
+    else
+      render :edit
+    end
+
   end
 
   def edit
-
+    @course = Course.find(params[:id])
   end
 
   private

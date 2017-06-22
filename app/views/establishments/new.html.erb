@@ -3,6 +3,7 @@
 
 <%= simple_form_for @establishment do |f| %>
             <% f.error_notification %>
+            <%= f.input :name %>
             <%= f.input :city %>
             <%= f.input :country %>
             <%= f.input :street %>
