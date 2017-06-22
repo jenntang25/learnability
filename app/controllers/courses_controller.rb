@@ -45,10 +45,7 @@ class CoursesController < ApplicationController
     end
   end
 
-  def index_my_courses
-    @courses = Courses.all
-    @my_courses = Course.where(user_id: current_user.id)
-  end
+
 
   def destroy
     @course.destroy!

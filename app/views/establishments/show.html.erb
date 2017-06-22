@@ -18,7 +18,23 @@
 
 <br>
 <br>
+<div>
+
+
+
+<% @my_courses.each do |course|%>
+<ul class = "list-unstyled">
+  <li><strong> <%= "Price: "%> </strong><%= course.price %> <%= " $"%></li>
+  <li><strong> <%= "Description: "%> </strong><%= course.title %></li>
+  <li><strong> <%= "Description: "%> </strong><%= course.description%></li>
+ <li> <strong> <%= "City: "%> </strong> <%= course.establishment.city%></li>
+</ul>
+<%end%>
+</div>
+
+<br>
+<br>
 
 <%= link_to "Create course", new_establishment_course_path(@establishment)%>
-
 <%= link_to "Back", :back %>
+</div>
