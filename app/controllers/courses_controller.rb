@@ -1,4 +1,9 @@
 class CoursesController < ApplicationController
+  after_action :verify_authorized
+  # after_action :verify_policy_scoped
+
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
+
   def index
     @courses = Course.all
   end
@@ -6,7 +11,10 @@ class CoursesController < ApplicationController
   def new
     @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new
+    @course.establishment = @establishment
+
     @categories = %w(free-time sports programming languages cooking enterteinment art other)
+    authorize @course
   end
 
 
@@ -14,6 +22,9 @@ class CoursesController < ApplicationController
     @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new(course_params)
     @course.establishment = @establishment
+
+    authorize @course
+
      if @course.save
       redirect_to course_path(@course)
 
@@ -23,7 +34,6 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
     @reviews = Review.where(course_id: @course.id)
 
     # @course_coordinates = { lat: @course.establishment.latitude, lng: @course.establishment.longitude }
@@ -36,13 +46,11 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    @course = Course.find(params[:id])
     @course.destroy!
   end
 
   def update
-    @course = Course.find(params[:id])
-    @course.update
+    # @course.update
   end
 
   def edit
@@ -50,6 +58,11 @@ class CoursesController < ApplicationController
   end
 
   private
+
+  def set_course
+    @course = Course.find(params[:id])
+    authorize @course
+  end
 
   def course_params
     params.require(:course).permit(:title, :establishment_id, :category, :price, :description, photos: [] )
