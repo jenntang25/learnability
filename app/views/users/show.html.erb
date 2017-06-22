@@ -1,6 +1,34 @@
+<button id="sidebar-button" class = "btn btn-primary">Menu</button>
 
-<div class = "col-sm-3 col-md-offset-2 sidebar">
-<ul class = "nav nav-sidebar">
-<li class = "sidebar_overview"> <%= link_to "Courses", courses_path%></li>
-</ul>
+<div class = "profile-sidebar">
+  <div class = "col-xs-3 sidebar">
+    <ul class = "nav nav-sidebar">
+      <li class = "sidebar_overview list"> <%= link_to "My courses", appointments_path%></li>
+      <li class = "sidebar_overview list"> <%= link_to "Edit profile", edit_user_path(current_user)%></li>
+      <li class = "sidebar_overview list"> <%= link_to "Become a techer", appointments_path%></li>
+    </ul>
+  </div>
 </div>
+
+
+<div class = "text-center">
+<div class = "col-xs-12 sidebar">
+  <ul class = "list-unstyled">
+    <h1><%=current_user.first_name%><%=" "%><%= current_user.last_name%></h1>
+    <li><%= current_user.email%> </li>
+    <li> <%= current_user.city%><%= ", "%> <%= current_user.country%></li>
+    <li></li>
+  </ul>
+    </div>
+</div>
+
+
+<% content_for (:after_js) do %>
+  <% javascript_tag do %>
+    $(document).ready(function () {
+      $('#sidebar-button').on('click', function(){
+          $('.profile-sidebar').slideToggle();
+      });
+    });
+  <% end %>
+<% end %>
