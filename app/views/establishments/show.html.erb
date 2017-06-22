@@ -7,7 +7,7 @@
 
 <% @my_courses.each do |course|%>
 <ul class = "list-unstyled">
-  <li><strong> <%= "Course: "%> </strong><%= course.title %></li>
+  <li><strong> <%= "Course: "%> </strong><%= link_to course.title, course_path(course)%></li>
  <li> <strong> <%= "City: "%> </strong> <%= course.establishment.name%></li>
   <li><strong> <%= "Price: "%> </strong><%= course.price %> <%= " $"%></li>
   <li><strong> <%= "Description: "%> </strong><%= course.description%></li>
@@ -16,6 +16,7 @@
   <% if policy(course).edit? %>
     <%= link_to "Edit course", edit_course_path(course)%>
     <%= link_to "Destroy course", course, method: :delete %>
+  <br>
   <% end %>
 <%end%>
 

@@ -42,7 +42,6 @@ class EstablishmentsController < ApplicationController
   end
 
   def destroy
-    raise
     @establishment.destroy
     redirect_to "pages#home"
   end
