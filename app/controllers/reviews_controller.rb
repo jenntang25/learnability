@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
     @appointment = Appointment.find(params[:appointment_id])
     @review.appointment = @appointment
     @review.course = @appointment.course
-    @reviewer =  @review.appointment.user.email
+    @reviewer =  @review.appointment.user.first_name
     #on review params without a column? for courses show
 
     if @review.save

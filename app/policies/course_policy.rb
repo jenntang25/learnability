@@ -23,6 +23,6 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def user_is_owner?
-    record.establishment.user == user or user.admin
+    record.establishment.user == user or user.adming
   end
 end
