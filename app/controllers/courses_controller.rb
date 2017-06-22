@@ -37,8 +37,6 @@ class CoursesController < ApplicationController
   def show
     @reviews = Review.where(course_id: @course.id)
 
-    # @course_coordinates = { lat: @course.establishment.latitude, lng: @course.establishment.longitude }
-
     @hash = Gmaps4rails.build_markers(@course.establishment) do |establishment, marker|
       marker.lat establishment.latitude
       marker.lng establishment.longitude
@@ -49,14 +47,24 @@ class CoursesController < ApplicationController
 
   def destroy
     @course.destroy!
+    redirect_to "pages#home"
+
   end
 
   def update
-    # @course.update
+
+    @course = Course.find(params[:id])
+    if @course.update(course_params)
+      redirect_to course_path
+    else
+      render :edit
+    end
+
+
   end
 
   def edit
-
+    @course = Course.find(params[:id])
   end
 
   private
