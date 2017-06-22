@@ -1,2 +1,21 @@
 <h2>I'm an establishment index</h2>
+
+<div class = "text-center">
+<h1>My establishments</h1>
+<% @my_establishments.each do |establishment|%>
+
+
+
+<%= link_to establishment_path(establishment) do%>
+<ul class = "list-unstyled">
+<li> <%=establishment.street%> </li>
+</ul>
+<%end%>
+
+<%end%>
+
+
+
+
+
 <%= link_to 'pages#home', root_path  %>

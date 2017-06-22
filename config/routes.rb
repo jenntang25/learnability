@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :establishments,  except: :index do
+  resources :establishments do
     resources :courses, only: [:create, :new]
   end
 

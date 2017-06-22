@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
 
   def index
     @courses = Course.all
+
   end
 
   def new
@@ -42,7 +43,11 @@ class CoursesController < ApplicationController
       marker.lat establishment.latitude
       marker.lng establishment.longitude
     end
+  end
 
+  def index_my_courses
+    @courses = Courses.all
+    @my_courses = Course.where(user_id: current_user.id)
   end
 
   def destroy

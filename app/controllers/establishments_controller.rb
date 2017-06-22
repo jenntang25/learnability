@@ -4,8 +4,8 @@ class EstablishmentsController < ApplicationController
 
   def index
     @establishments = Establishment.all
-    @establishments = policy_scope(Establishment).order(created_at: :asc)
-    #the order should be by proximity
+    @my_establishments = Establishment.where(user_id: current_user.id)
+
   end
 
   def new
