@@ -18,6 +18,7 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
+<%=current_user.email%>
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">

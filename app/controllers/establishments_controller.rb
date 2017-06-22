@@ -11,19 +11,14 @@ class EstablishmentsController < ApplicationController
   def new
     @user = current_user
     @establishment = Establishment.new
-    authorize @establishment
-
   end
 
   def show
-    authorize @establishment
-
   end
 
   def create
     @establishment = Establishment.new(establishment_params)
     @establishment.user = current_user
-    authorize @establishment
 
     if @establishment.save
       redirect_to establishment_path(@establishment)
@@ -52,8 +47,7 @@ class EstablishmentsController < ApplicationController
   private
 
   def set_establishment
-  @establishment = Establishment.find(params[:id])
-  authorize @establishment
+    @establishment = Establishment.find(params[:id])
   end
 
 

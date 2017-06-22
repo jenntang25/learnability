@@ -4,12 +4,10 @@ class UsersController < ApplicationController
 
 
  def edit
-    authorize @establishment
  end
 
 
   def update
-    authorize @establishment
   end
 
   def show
@@ -18,6 +16,5 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-    authorize @user
-    end
+  end
 end

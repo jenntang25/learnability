@@ -1,14 +1,18 @@
 class CoursesController < ApplicationController
-    before_action :set_course, only: [:show, :edit, :update, :destroy]
+  after_action :verify_authorized
+  # after_action :verify_policy_scoped
+
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
     @courses = Course.all
-    authorize @course
   end
 
   def new
     @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new
+    @course.establishment = @establishment
+
     @categories = %w(free-time sports programming languages cooking enterteinment art other)
     authorize @course
   end
@@ -18,7 +22,9 @@ class CoursesController < ApplicationController
     @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new(course_params)
     @course.establishment = @establishment
+
     authorize @course
+
      if @course.save
       redirect_to course_path(@course)
 
@@ -44,7 +50,7 @@ class CoursesController < ApplicationController
   end
 
   def update
-    @course.update
+    # @course.update
   end
 
   def edit
@@ -54,8 +60,8 @@ class CoursesController < ApplicationController
   private
 
   def set_course
-  @course = Course.find(params[:id])
-  authorize @course
+    @course = Course.find(params[:id])
+    authorize @course
   end
 
   def course_params

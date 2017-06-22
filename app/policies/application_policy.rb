@@ -49,11 +49,5 @@ class ApplicationPolicy
     def resolve
       scope
     end
-
-    private
-
-    def user_is_owner?
-      record.user == user
-    end
   end
 end
