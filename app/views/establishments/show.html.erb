@@ -4,24 +4,6 @@
 <div class = "text-center">
 
 
-<ul class = "list-unstyled">
-<li><%= @establishment.name %></li>
-<li><%= @establishment.city %></li>
-<li><%= @establishment.street %></li>
-<li><%= @establishment.description %></li>
-</ul>
-
-
-<%= link_to "new", new_establishment_path(@user) %>
-
-<%= link_to "edit", edit_establishment_path(@establishment) %>
-<%= link_to "destroy", @establishment, method: :delete %>
-
-<br>
-<br>
-<div>
-
-
 
 <% @my_courses.each do |course|%>
 <ul class = "list-unstyled">
@@ -31,34 +13,28 @@
   <li><strong> <%= "Description: "%> </strong><%= course.description%></li>
  <li> <strong> <%= "City: "%> </strong> <%= course.establishment.city%></li>
 </ul>
+  <% if policy(course).edit? %>
+    <%= link_to "Edit course", edit_course_path(course)%>
+    <%= link_to "Destroy course", course, method: :delete %>
+  <% end %>
 <%end%>
-</div>
 
 <br>
 <br>
 <%= link_to "Create course", new_establishment_course_path(@establishment)%>
 <br>
 
-  <% @establishment.courses.each do |course| %>
-  <div>
-    <%= course.title %>
-
-  <% if policy(course).edit? %>
-    <%= link_to "Edit course", edit_course_path(course)%>
-    <%= link_to "Destroy course", course, method: :delete %>
-  <% end %>
-
-  </div>
-
-
-
-
-
-
-
-
-  <% end %>
-
 
 <%= link_to "Back", :back %>
+
+</div>
+
+
+
+
+
+
+
+
+
 
