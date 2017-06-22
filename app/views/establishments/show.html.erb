@@ -12,9 +12,11 @@
 
 <%= link_to "index", establishments_path %>
 <%= link_to "new", new_establishment_path(@user) %>
+
+ <% if policy(@establishment).edit? %>
 <%= link_to "edit", edit_establishment_path(@establishment) %>
 <%= link_to "destroy", @establishment, method: :delete %>
-
+  <% end %>
 
 <br>
 <br>
