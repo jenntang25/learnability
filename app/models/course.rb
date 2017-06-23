@@ -12,7 +12,7 @@ class Course < ApplicationRecord
 
   validates :title, presence: true
   validates :price, presence: true
-  validates :category,  presence: true, inclusion: { in: %w(free-time sports programming languages cooking enterteinment art other), allow_nil: false }
+  validates :category,  presence: true, inclusion: { in: %w(Leisure Sports Photography Programming Languages Cooking Entertainment Art Other), allow_nil: false }
 
   multisearchable against: [:title, :category, :description]
 
