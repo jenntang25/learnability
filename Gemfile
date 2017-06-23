@@ -14,6 +14,7 @@ gem "gmaps4rails"
 gem "pundit"
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+gem 'pg_search'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
