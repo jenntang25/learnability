@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
   has_one :establishment, dependent: :destroy
+  has_attachments :photos, maximum: 4
 
 
   def self.find_for_facebook_oauth(auth)
