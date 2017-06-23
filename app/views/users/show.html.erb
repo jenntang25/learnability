@@ -1,6 +1,6 @@
 <button id="sidebar-button" class = "btn btn-primary">Menu</button>
 
-<div class = "profile-sidebar">
+<div class = "profile-sidebar hidden">
   <div class = "col-xs-3 sidebar">
     <ul class = "nav nav-sidebar">
       <li class = "sidebar_overview list"> <%= link_to "My courses", appointments_path%></li>
@@ -27,7 +27,10 @@
   <% javascript_tag do %>
     $(document).ready(function () {
       $('#sidebar-button').on('click', function(){
-          $('.profile-sidebar').slideToggle("fast");
+      $('.profile-sidebar').slideToggle();
+        $('.profile-sidebar').removeClass("hidden");
+
+
       });
     });
   <% end %>
