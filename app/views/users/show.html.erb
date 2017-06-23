@@ -5,25 +5,38 @@
     <ul class = "nav nav-sidebar">
       <li class = "sidebar_overview list"> <%= link_to "My courses", appointments_path%></li>
       <li class = "sidebar_overview list"> <%= link_to "Edit profile", edit_user_path(current_user)%></li>
-      <li class = "sidebar_overview list"> <%= link_to "Become a techer", appointments_path%></li>
+      <li class = "sidebar_overview list"> <%= link_to "Become a teacher", new_establishment_path%></li>
+      <li class = "sidebar_overview list"> <%= link_to "Edit my Establishment", edit_establishment_path(current_user)%></li>
+
     </ul>
   </div>
 </div>
 
 
+
 <div class = "text-center">
-<div class = "col-xs-12 sidebar">
-  <ul class = "list-unstyled">
-    <h1><%=current_user.first_name%><%=" "%><%= current_user.last_name%></h1>
-    <li><%= current_user.email%> </li>
-    <li> <%= current_user.city%><%= ", "%> <%= current_user.country%></li>
-    <li></li>
-  </ul>
+
+  <div class = "col-xs-12 sidebar">
+    <div class= "profile-photo">
+      <% if @user.photos? %>
+      <% @user.photos.each do |photo| %>
+      <%= cl_image_tag photo.path, width: 300, height: 300, crop: :fill %>
+      <% end %>
+      <% end %>
+
     </div>
+    <ul class = "list-unstyled">
+      <h1><%=current_user.first_name%><%=" "%><%= current_user.last_name%></h1>
+      <li><%= current_user.email%> </li>
+      <li> <%= current_user.city%><%= " "%> <%= current_user.country%></li>
+      <li><%= current_user.description %> </li>
+    </ul>
+  </div>
 </div>
 
 
 <% content_for (:after_js) do %>
+
   <% javascript_tag do %>
     $(document).ready(function () {
       $('#sidebar-button').on('click', function(){

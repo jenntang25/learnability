@@ -24,7 +24,7 @@
     <% if current_user.establishment %>
         <%= link_to current_user.establishment.name, establishment_path(current_user.establishment) %>
         <%else%>
-         <%= link_to "Create Establishment", new_establishment_path %>
+         <%= link_to "Become a Teacher!", new_establishment_path %>
 
     <% end %>
 

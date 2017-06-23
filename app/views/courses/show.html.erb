@@ -1,67 +1,73 @@
-<div class = "text-center">
-<h1><%= @course.title%></h1>
+<div class="container">
+  <div class = "text-center">
+    <h1><%= @course.title%></h1>
 
-<ul class = "list-unstyled">
-  <li><strong> <%= "Price: "%> </strong><%= @course.price %> <%= " $"%></li>
-  <li><strong> <%= "Description: "%> </strong><%= @course.title %></li>
-  <li><strong> <%= "Description: "%> </strong><%= @course.description%></li>
- <li> <strong> <%= "City:"%> </strong> <%= @course.establishment.city%></li>
- <li> <strong> <%= "Establishment:"%> </strong> <%= @course.establishment.name%></li>
-</ul>
+    <ul class = "list-unstyled">
+      <li><strong> <%= "Price: "%> </strong><%= @course.price %> <%= " $"%></li>
+      <li><strong> <%= "Title: "%> </strong><%= @course.title %></li>
+      <li><strong> <%= "Description: "%> </strong><%= @course.description%></li>
+      <li> <strong> <%= "City:"%> </strong> <%= @course.establishment.city%></li>
+      <li> <strong> <%= "Establishment:"%> </strong> <%= @course.establishment.name%></li>
+    </ul>
 
-  <div>
-  <% if @course.photos? %>
-  <% @course.photos.each do |photo| %>
-  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-<% end %>
-<% end %>
+    <div>
+      <% if @course.photos? %>
+      <% @course.photos.each do |photo| %>
+      <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+      <% end %>
+      <% end %>
 
+    </div>
+  </div>
+
+  <%= link_to "Back", :back %>
+
+  <%= link_to "See the establishment", establishment_path(@course.establishment)%>
+  <br>
+  <%= link_to "get appointment", new_appointment_path(course_id: @course.id) %>
+
+
+  <br>
+  <br>
+  <br>
+
+<div class="container">
+  <h3> Reviews of this course</h3>
+  <div class="row">
+    <div class="col-xs-12">
+
+
+  <% @reviews.each do |review|%>
+  <ul class = "list-inline">
+    <li><%=review.content%></li>
+    <li><%=review.stars%></li>
+    <li><%=review.appointment.user.email%></li>
+    <%end%>
+  </div>
+
+  <p>You can only make a review if you have made an appoinment for this course</p>
+</div>
+</div>
 </div>
 
+  <div id="map" style="width: 600px; height: 400px;"></div>
 
-<%= link_to "Back", :back %>
+  <% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+  $(document).ready(function() {
+  var handler = Gmaps.build('Google');
+  handler.buildMap({ internal: { id: 'map' } }, function() {
+  markers = handler.addMarkers(<%= raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
 
-<%= link_to "See the establishment", establishment_path(@course.establishment)%>
-<br>
-<%= link_to "get appointment", new_appointment_path(course_id: @course.id) %>
-
-
-<br>
-<br>
-<br>
-
-
-<h3> Reviews of this course</h3>
- <% @reviews.each do |review|%>
-<ul class = "list-inline">
-  <li><%=review.content%></li>
-  <li><%=review.stars%></li>
-  <li><%=review.appointment.user.email%></li>
-  <%end%>
-</div>
-
-<p>You can only make a review if you have made an appoinment for this course</p>
-
-
-
-<div id="map" style="width: 600px; height: 400px;"></div>
-
-<% content_for(:after_js) do %>
- <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-
-        if (markers.length === 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length === 1) {
-          handler.getMap().setZoom(14);
-        };
-      });
-    });
-  <% end %>
+  if (markers.length === 0) {
+  handler.getMap().setZoom(2);
+} else if (markers.length === 1) {
+handler.getMap().setZoom(14);
+};
+});
+});
+<% end %>
 <% end %>
 

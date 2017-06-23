@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
     @course = Course.new
     @course.establishment = @establishment
 
-    @categories = %w(free-time sports programming languages cooking enterteinment art other)
+    @categories = %w(Leisure Sports Photography Programming Languages Cooking Entertainment Art Other)
     authorize @course
   end
 
