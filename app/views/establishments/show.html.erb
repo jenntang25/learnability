@@ -1,4 +1,8 @@
-<h1>My Establishments</h1>
+
+<div class = "text-center">
+<h1><%= @establishment.name%></h1>
+<p><%= @establishment.description%></p>
+</div>
 
 <div class="container">
   <div class="row">
@@ -7,38 +11,39 @@
 <div class = "text-center">
 
 
-
-
 <div class="col-xs-12">
-<% @my_courses.each do |course|%>
-<ul class = "list-unstyled">
-  <li><strong> <%= "Course: "%> </strong><%= link_to course.title, course_path(course)%></li>
- <li> <strong> <%= "City: "%> </strong> <%= course.establishment.name%></li>
-  <li><strong> <%= "Price: "%> </strong><%= course.price %> <%= " $"%></li>
-  <li><strong> <%= "Description: "%> </strong><%= course.description%></li>
- <li> <strong> <%= "City: "%> </strong> <%= course.establishment.city%></li>
-</ul>
-  <% if policy(course).edit? %>
-    <%= link_to "Edit course", edit_course_path(course)%>
-    <%= link_to "Destroy course", course, method: :delete %>
-  <br>
-  <% end %>
-<%end%>
+    <% @my_courses.each do |course|%>
+      <div class = "card-white">
+      <ul class = "list-unstyled">
+        <li><strong> <%= "Course: "%> </strong><%= link_to course.title, course_path(course)%></li>
+       <li> <strong> <%= "City: "%> </strong> <%= course.establishment.name%></li>
+        <li><strong> <%= "Price: "%> </strong><%= course.price %> <%= " $"%></li>
+        <li><strong> <%= "Description: "%> </strong><%= course.description%></li>
+       <li> <strong> <%= "City: "%> </strong> <%= course.establishment.city%></li>
+      </ul>
+      </div>
+    <% if policy(course).edit? %>
+    <%= link_to "Edit course", edit_course_path(course), class: "btn btn-success"%>
+
+    <%= link_to "Destroy course", course, method: :delete , class: "btn btn-danger"%>
+     <br>
+     <br>
+     <br>
+     <br>
+    <% end %>
+  <%end%>
+
+<%= link_to "Create course", new_establishment_course_path(@establishment), class: "btn btn-primary"%>
+<br>
+    </div>
+  </div>
+</div>
+</div>
 
 <br>
-<br>
-<%= link_to "Create course", new_establishment_course_path(@establishment)%>
-<br>
-</div>
-</div>
-</div>
-</div>
-
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back , class: "btn btn-default"%>
 
 </div>
-
-
 
 
 
