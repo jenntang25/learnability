@@ -8,9 +8,14 @@
 <% @appointments.each_with_index do |appointment, index| %>
   <%= index + 1 %>
   <ul class = "list-unstyled">
+
+    <% if appointment.course %>
     <li> <strong><%= appointment.course.title%></strong></li>
     <li><%= appointment.description %></li>
     <li> <%= link_to "Review", new_appointment_review_path(appointment)  %></li>
+    <% else %>
+    <%= appointment.to_json %>
+    <% end %>
   </ul>
 
 <%end%>
