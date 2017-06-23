@@ -1,27 +1,48 @@
+
+<div class = "text-center" >
+<div class = "banner jumbotron">
+<div class = "container">
 <h1>Welcome to Learnability!</h1>
-
-
-<div class="navbar-wagon-right hidden-xs hidden-sm align-center" >
+<p>Learn and tech with other people</p>
+<div class=" navbar-wagon-right hidden-xs hidden-sm navigation" >
   <!-- Search form -->
   <form action="/" method="get" class="navbar-wagon-search center-nav">
     <input type="text" name="search" class="navbar-wagon-search-input" placeholder="Look for a course here...">
     <button type="submit" class="navbar-wagon-search-btn">
       <i class="fa fa-search"></i>
     </button>
+    </form>
 
+    </div>
+    </div>
 
-  </form>
+</div>
 </div>
 
-<div>
-  <%= cl_image_tag("http://unsplash.it/200/200",
-  width: 400, height: 300, crop: :fill) %>
+
+<div class = "info-wrapper">
+  <div class = "info">
+      <div>
+    <h1>Why learnability?</h1>
+    <br>
+    <br>
+    <ul class ="list-unstyled ">
+      <h4><li>Find courses close to you</li></h4>
+      <h4><li> Learn in academies and from independent experts</li></h4>
+      <h4><li>Find clients to tech your skills</li></h4>
+    </ul>
+    </div>
+
+    <div>
+    <img src="https://ak3.picdn.net/shutterstock/videos/9833465/thumb/1.jpg" id = "group">
+    </div>
+
+  </div>
 </div>
 
-
-
+<div class = "courses jumbotron">
 <div class = "text-center">
-  <h1>Courses</h1>
+  <h1>Explore courses</h1>
   <ul class = "list-unstyled">
   <% @courses.each do |course|%>
     <li>
@@ -32,3 +53,5 @@
 
 </ul>
 <%end%>
+</div>
+</div>
