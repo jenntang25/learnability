@@ -1,4 +1,5 @@
 
+
 <div class = "text-center" >
 <div class = "banner jumbotron">
 <div class = "container">
@@ -6,11 +7,31 @@
 <p>Learn and tech with other people</p>
 <div class=" navbar-wagon-right hidden-xs hidden-sm navigation" >
   <!-- Search form -->
-  <form action="/" method="get" class="navbar-wagon-search center-nav">
+<div>
+  <%= cl_image_tag("http://unsplash.it/200/200",
+  width: 400, height: 300, crop: :fill) %>
+</div>
+
+<div class= "list-inline">
+<div class="btn-group">
+  <button type="button" class="btn btn-default">Action</button>
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+  <!-- <form action="/" method="get" class="navbar-wagon-search center-nav">
     <input type="text" name="search" class="navbar-wagon-search-input" placeholder="Look for a course here...">
     <button type="submit" class="navbar-wagon-search-btn">
       <i class="fa fa-search"></i>
     </button>
+
     </form>
 
     </div>
@@ -19,7 +40,11 @@
 </div>
 </div>
 
+ <%= form_tag('/', method: 'get',  class:'navbar-wagon-search' ) do  %>
+    <%= text_field_tag :search_value,nil, placeholder: 'hello..' , class: "navbar-wagon-search-input" %>
+    <%= submit_tag 'search', class: 'navbar-wagon-search-btn hidden-lg' %>
 
+    <% end  %>
 <div class = "info-wrapper">
   <div class = "info">
       <div>
@@ -44,14 +69,32 @@
 <div class = "text-center">
   <h1>Explore courses</h1>
   <ul class = "list-unstyled">
+
+<%if params[:search_value] != nil  %>
+
   <% @courses.each do |course|%>
     <li>
-      <%=link_to course_path(course) do%>
-        <%= course.title %>
+      <%=link_to course_path(course[:searchable_id]) do%>
+        <%= course.content %>
+      <%end%>
       <%end%>
     </li>
 
 </ul>
+
+
+<%else  %>
+
+<% @courses.each do |course|%>
+    <li>
+      <%=link_to course_path(course) do%>
+        <%= course.title %>
+      <%end%>
+      <%end%>
+    </li>
+
+</ul>
+
 <%end%>
 </div>
 </div>
