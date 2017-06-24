@@ -12,13 +12,16 @@
     <% if appointment.course %>
     <li> <strong><%= appointment.course.title%></strong></li>
     <li><%= appointment.description %></li>
-    <li> <%= link_to "Review this course", new_appointment_review_path(appointment), class: "btn btn-primary" %></li>
+    <li> <%= link_to "Review this course", new_appointment_review_path(appointment), class: "btn btn-success" %></li>
     <% else %>
     <%= appointment.to_json %>
     <% end %>
   </ul>
 
 <%end%>
+
+
+
 
 
 
