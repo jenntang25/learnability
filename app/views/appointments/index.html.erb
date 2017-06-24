@@ -2,17 +2,17 @@
 
 
 <div class = "text-center">
-<h1>Appointments</h1>
+<h1>My courses</h1>
 
 
 <% @appointments.each_with_index do |appointment, index| %>
   <%= index + 1 %>
-  <ul class = "list-unstyled">
+  <ul class = "list-unstyled card-white" >
 
     <% if appointment.course %>
     <li> <strong><%= appointment.course.title%></strong></li>
     <li><%= appointment.description %></li>
-    <li> <%= link_to "Review", new_appointment_review_path(appointment)  %></li>
+    <li> <%= link_to "Review this course", new_appointment_review_path(appointment), class: "btn btn-primary" %></li>
     <% else %>
     <%= appointment.to_json %>
     <% end %>
