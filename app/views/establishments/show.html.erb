@@ -1,7 +1,15 @@
 
-<div class = "text-center">
-<h1><%= @establishment.name%></h1>
-<p><%= @establishment.description%></p>
+<div class = "info-teacher">
+  <div>
+    <h2 class = "division"><%= @establishment.name%></h2>
+    <p class = "division"><%= @establishment.description%></p>
+    <p class = "division"><%= @establishment.city%> <%= ", "%><%= @establishment.country%> <%= " "%><%= @establishment.street%> <%= " "%> <%= @establishment.postal_code%></p>
+
+  </div>
+
+  <div>
+    <img src="http://www.wonderslist.com/wp-content/uploads/2015/04/Philip-Emeagwali.jpg">
+  </div>
 </div>
 
 <div class="container">
@@ -23,17 +31,19 @@
       </ul>
       </div>
     <% if policy(course).edit? %>
-    <%= link_to "Edit course", edit_course_path(course), class: "btn btn-success"%>
+    <%= link_to "Edit course", edit_establishment_path(course), class: "btn btn-success"%>
 
     <%= link_to "Destroy course", course, method: :delete , class: "btn btn-danger"%>
      <br>
      <br>
      <br>
      <br>
-    <% end %>
-  <%end%>
 
-<%= link_to "Create course", new_establishment_course_path(@establishment), class: "btn btn-primary"%>
+    <% end %>
+
+  <%end%>
+  <%= link_to "Create course", new_establishment_course_path(@establishment), class: "btn btn-primary"%>
+
 <br>
     </div>
   </div>

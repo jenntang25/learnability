@@ -93,5 +93,19 @@ li{
   margin: 20px 50px;
 }
 
+.info-teacher{
+  padding: 50px;
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+img{
+  border-radius: 20px;
+}
 
+.division{
+  border-bottom: 0.5px outset lightgray;
+  padding: 30px;
+}
