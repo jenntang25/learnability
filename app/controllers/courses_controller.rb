@@ -4,8 +4,12 @@ class CoursesController < ApplicationController
 
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
+
+
   def index
     @courses = Course.all
+    @categories = Course::CATEGORIES
+
 
   end
 
@@ -13,8 +17,7 @@ class CoursesController < ApplicationController
     @establishment = Establishment.find(params[:establishment_id])
     @course = Course.new
     @course.establishment = @establishment
-
-    @categories = %w(Leisure Sports Photography Programming Languages Cooking Entertainment Art Other)
+    @categories = Course::CATEGORIES
     authorize @course
   end
 
@@ -26,7 +29,7 @@ class CoursesController < ApplicationController
 
     authorize @course
 
-     if @course.save
+    if @course.save
       redirect_to course_path(@course)
 
     else
