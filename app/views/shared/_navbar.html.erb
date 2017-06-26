@@ -1,4 +1,8 @@
-<div class="navbar-wagon ">
+<% if transparent %>
+<div class="navbar-wagon">
+<% else %>
+<div class="navbar-no-transparency">
+<% end %>
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
   <%= image_tag "logo.png" %>

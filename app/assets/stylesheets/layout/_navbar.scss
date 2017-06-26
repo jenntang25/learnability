@@ -1,3 +1,23 @@
+
+.pages-home {
+  .navbar-no-transparency {
+    background: transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    height: 70px;
+    padding: 0px 30px;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    a {
+    color: white;
+  }
+  }
+}
 /* Main class */
 .navbar-wagon {
   background: transparent;
@@ -12,6 +32,20 @@
   left: 0px;
   top: 0px;
   width: 100%;
+}
+
+.navbar-no-transparency {
+  background: white;
+  transition: all 0.3s ease;
+  display: flex;
+  height: 70px;
+  padding: 0px 30px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  a {
+    color: black;
+  }
 }
 
 /* Optional class to fix the navbar on top */
@@ -148,9 +182,9 @@
 
 }
 .navbar-links p{
-text-decoration: none;
+  text-decoration: none;
 }
 .navbar-links:hover{
-background-color: orange;
-color: white;
+  background-color: orange;
+  color: white;
 }
