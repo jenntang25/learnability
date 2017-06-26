@@ -74,3 +74,44 @@ align-content: flex-start;
     width: 500px;
 }
 
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.stars {
+  border: none;
+  float: left;
+}
+
+.star > input { display: none; }
+.star > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.star > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.star > label {
+  color: #ddd;
+ float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.star > input:checked ~ label, /* show gold star when clicked */
+.star:not(:checked) > label:hover, /* hover current star */
+.star:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.star > input:checked + label:hover, /* hover current star when changing rating */
+.star > input:checked ~ label:hover,
+.star > label:hover ~ input:checked ~ label, /* lighten current selection */
+.star > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
