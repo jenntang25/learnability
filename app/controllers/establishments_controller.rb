@@ -12,6 +12,12 @@ class EstablishmentsController < ApplicationController
     @establishment = Establishment.new
   end
 
+  def new_teacher
+    @user = current_user
+    @establishment = Establishment.new
+  end
+
+
   def show
     @courses = Course.all
     @my_courses = @courses.where(establishment_id: @establishment.id)

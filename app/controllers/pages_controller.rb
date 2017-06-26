@@ -3,14 +3,15 @@ class PagesController < ApplicationController
 
   def home
 
+    @establishments = Establishment.all
+    @courses = Course.all
+    @categories = Course::CATEGORIES
+
     if params[:search_value]
-
-    @courses= Course.search(params[:search_value])
-
+      @courses_value= Course.search(params[:search_value])
     elsif params[:search_value] == nil
-    @establishment = Establishment.all
-   @courses = Course.all
-   end
+    end
+
   end
 end
 

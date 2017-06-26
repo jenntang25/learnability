@@ -1,66 +1,87 @@
 
 
 <div class = "text-center" >
-<div class = "banner jumbotron" style="margin: 0;">
-<div class = "container">
-<h1>Welcome to Learnability!</h1>
-<p>Learn through experiences!</p>
+  <div class = "banner jumbotron" style="margin: 0;">
+    <div class = "container">
+    <div class="card-container">
+      <h1>Welcome to Learnability!</h1>
+      <p>Learn and tech with other people</p>
 
 
-<div>
- <%= form_tag('/', method: 'get') do  %>
-    <%= text_field_tag :search_value,nil, placeholder: 'find your next course' , class: "navbar-wagon-search-input" %>
-    <%= submit_tag 'search', class: 'navbar-wagon-search-btn hidden-lg' %>
 
-    <% end  %>
-</div>
-</div>
-    </div>
-<div class = "courses jumbotron">
-<div class = "text-center">
-  <h1>Explore courses</h1>
-  <ul class = "list-unstyled">
+      <div>
+       <%= form_tag('/', method: 'get') do  %>
+       <%= text_field_tag :search_value, nil, placeholder: 'find your next course' , class: "navbar-wagon-search-input" %>
+       <%= submit_tag 'search', class: 'navbar-wagon-search-btn hidden-lg' %>
+       <% end  %>
+     </div>
 
-<%if params[:search_value] != nil  %>
+   </div>
+ </div>
+ </div>
 
-    <li>
-  <% @courses.each do |course|%>
-      <%=link_to course_path(course[:searchable_id]) do%>
-        <%= course.content %>
-      <%end%>
-      <%end%>
-    </li>
-        <br>
-</ul>
 
-<%else  %>
 
-    <li>
-<% @courses.each do |course|%>
-      <%=link_to course_path(course) do%>
-        <%= course.title %>
-      <%end%>
-      <%end%>
-    </li>
+<!--      <div class = "container">
+    <h1>Explore categories</h1>
+<% @categories.each do |cat| %>
+    <%= render "shared/categories", cat: cat %>
+
+
+    <%category_list = @courses.where(category: cat) %>
+    <%category_list.each do |course| %>
+    <%result = @courses.find(course.id)  %>
+    <%=link_to course_path(course.id) do%>
+    <%= render "shared/card", course: result %>
+    <%end %>
+    <%end  %>
+<%end %>
+</div> -->
+
+
+     <div class = "container">
+    <h1>Explore courses</h1>
+
+
+    <%if params[:search_value] != nil  %>
+
+    <% @courses_value.each do |course|%>
+    <% course_id = course[:searchable_id]%>
+    <%result = @courses.find(course_id)  %>
+
+    <%=link_to course_path(course_id) do%>
+    <%= render "shared/card", course: result %>
+    <%end%>
+    <%end%>
     <br>
-<%end%>
-</ul>
-</div>
+
+    <%else  %>
+
+    <% @courses.each do |course|%>
+    <%=link_to course_path(course) do%>
+    <%= render "shared/card", course: course %>
+    <%end%>
+    <%end%>
+    <br>
+
+    <%end%>
+
+
 </div>
 
 
 
 <div class = "info-wrapper">
   <div class = "info">
-      <div>
-    <h1>Why learnability?</h1>
-    <br>
-    <br>
-    <ul class ="list-unstyled ">
-      <h4><li>Find courses close to you</li></h4>
-      <h4><li> Learn in academies and from independent experts</li></h4>
-      <h4><li>Find clients to tech your skills</li></h4>
-    </ul>
+    <div>
+      <h1>Why learnability?</h1>
+      <br>
+      <br>
+      <ul class ="list-unstyled ">
+        <h4><li>Find courses close to you</li></h4>
+        <h4><li> Learn in academies and from independent experts</li></h4>
+        <h4><li>Find clients to tech your skills</li></h4>
+      </ul>
     </div>
 
     <img src="https://ak3.picdn.net/shutterstock/videos/9833465/thumb/1.jpg" id = "group">
