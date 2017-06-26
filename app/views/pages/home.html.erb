@@ -82,41 +82,67 @@
 
 
 
-
 <div class="col-md-12">
-  <h1>Explore categories</h1>
-  <div >
-    <% @categories.each do |cat| %>
-    <div style="display: inline-block">
-      <h3><%= cat %></h3>
-      <% courses = Course.where("category ILIKE ?", "%#{cat}%") %>
-      <% courses.each do |course| %>
-      <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
+  <h1>
+    Explore categories
+  </h1>
+  <% @categories.each_with_index do |cat, index| %>
+  <% if index == 0 %>
+  <a href="#" class="tab active" data-target="#<%= cat %>-content">
+    <% else %>
+    <a href="#" class="tab" data-target="#<%= cat %>-content">
       <% end %>
-      <% end %>
+      <%= cat %>
+    </a>
+    <% end %>
+    <div class="row">
+      <% @categories.each_with_index do |cat, index| %>
+      <% if index == 0 %>
+      <div class="tab-content" id="<%= cat %>-content">
+        <% else %>
+        <div class="tab-content hidden" id="<%= cat %>-content">
+
+          <% end %>
+          <div class="col-xs-12">
+            <h3>
+              <%= cat %>
+            </h3>
+            <% courses = Course.where("category ILIKE ?", "%#{cat}%") %>
+            <% if courses.empty? %>
+            <h3>
+              No courses for this category yet!
+            </h3>
+            <% else %>
+            <% courses.each do |course| %>
+            <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
 
 
 
-<div class = "info-wrapper">
-  <div class = "info">
-    <div>
-      <h1>Why learnability?</h1>
-      <br>
-      <br>
-      <ul class ="list-unstyled ">
-        <h4><li>Find courses close to you</li></h4>
-        <h4><li> Learn in academies and from independent experts</li></h4>
-        <h4><li>Find clients to tech your skills</li></h4>
-      </ul>
+  <div class = "info-wrapper">
+    <div class = "info">
+      <div>
+        <h1>Why learnability?</h1>
+        <br>
+        <br>
+        <ul class ="list-unstyled ">
+          <h4><li>Find courses close to you</li></h4>
+          <h4><li> Learn in academies and from independent experts</li></h4>
+          <h4><li>Find clients to tech your skills</li></h4>
+        </ul>
+      </div>
+
+      <img src="https://ak3.picdn.net/shutterstock/videos/9833465/thumb/1.jpg" id = "group">
+
     </div>
-
-    <img src="https://ak3.picdn.net/shutterstock/videos/9833465/thumb/1.jpg" id = "group">
-
   </div>
-</div>
 
 </div>
