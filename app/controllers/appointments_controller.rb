@@ -14,6 +14,7 @@ class AppointmentsController < ApplicationController
     @course = Course.find(params["appointment"][:course_id])
     @appointment.user = current_user
     @appointment.course = @course
+    @appointment.date = DateTime.strptime(params[:appointment][:date], "%m/%d/%Y %l:%M %p")
     if @appointment.save
       redirect_to appointment_path(@appointment)
     else
