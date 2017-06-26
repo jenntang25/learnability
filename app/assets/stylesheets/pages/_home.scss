@@ -16,12 +16,13 @@
   box-shadow: 2px 4px 5px #888888;
   padding: 200px;
   background-color: #FFAA00;
+  z-index: 1;
 }
 
 
-.banner img{
-  background-size: cover;
-}
+// .banner img{
+//   background-size: cover;
+// }
 
 .banner h1 {
   font-size: 50px;
@@ -115,6 +116,6 @@ img{
   padding: 30px;
 }
 
-.show-courses{
-
+.my-name{
+  color:white;
 }
