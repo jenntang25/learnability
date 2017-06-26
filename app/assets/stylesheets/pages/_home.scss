@@ -64,7 +64,7 @@
 
 .info-wrapper{
 background-color: white;
-color: orange;
+color: black;
 margin-bottom: 100px;
 
 }
@@ -75,6 +75,10 @@ margin-bottom: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.info h1{
+color: orange;
 }
 
 li{
@@ -114,5 +118,33 @@ img{
 .division{
   border-bottom: 0.5px outset lightgray;
   padding: 30px;
+}
+
+.stats-wrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: orange;
+  color: white;
+  padding: 60px;
+}
+
+.app-wrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #F1F1F0;
+  color: orange;
+  padding: 60px;
+}
+
+.app-wrapper img{
+  height: 90px;
+  width: 240px;
+}
+
+#first{
+  height: 270px;
+  width: 270px;
 }
 
