@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 
 
     if params[:search_value].present?
-      @courses_value = Course.search(params[:search_value])
+      @courses_value = Course.search(params[:search_value]).first(10)
 
       establishments = @courses_value.map { |document| document.searchable }
 
