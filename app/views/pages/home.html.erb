@@ -1,12 +1,11 @@
 
 
 <div class = "text-center" >
-  <div class = "banner jumbotron" style="margin: 0;">
+  <div class = "banner" style="background-image: linear-gradient(-700deg, rgba(0,50,50,0.6) 0%, rgba(0,36,61,0.6) 20%), url('<%= cl_image_path("http://teaching.utoronto.ca/wp-content/uploads/2015/05/atelier-enseignement-de-informatique.jpg",
+width: 80, height: 10, crop: :fill) %>')" >
     <div class = "container">
     <div class="card-container">
       <h1>Welcome to Learnability!</h1>
-      <p>Learn and tech with other people</p>
-
 
 
       <div>
@@ -14,6 +13,18 @@
        <%= text_field_tag :search_value, nil, placeholder: 'find your next course' , class: "navbar-wagon-search-input" %>
        <%= submit_tag 'search', class: 'navbar-wagon-search-btn hidden-lg' %>
        <% end  %>
+
+        <div class="dropdown">
+        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown trigger
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+          ...
+        </ul>
+      </div>
+
+
      </div>
 
    </div>
