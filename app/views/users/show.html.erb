@@ -5,11 +5,11 @@
 
   <div class = "profile-sidebar">
     <div class = "col-xs-3 sidebar">
-      <ul class = "nav nav-sidebar">
-        <li class = "sidebar_overview list"> <%= link_to "My courses", appointments_path%></li>
-        <li class = "sidebar_overview list"> <%= link_to "Edit profile", edit_user_path(current_user)%></li>
-        <li class = "sidebar_overview list"> <%= link_to "Become a teacher", new_establishment_path%></li>
-        <li class = "sidebar_overview list"> <%= link_to "Edit my Establishment", edit_establishment_path(current_user)%></li>
+      <ul class = "list-unstyled">
+        <li > <%= link_to "My courses", appointments_path%></li>
+        <li > <%= link_to "Edit profile", edit_user_path(current_user)%></li>
+        <li > <%= link_to "Become a teacher", new_establishment_path%></li>
+        <li > <%= link_to "Edit my Establishment", edit_establishment_path(current_user)%></li>
 
       </ul>
     </div>
