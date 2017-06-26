@@ -1,72 +1,106 @@
-
-
-<div class = "text-center" >
-  <div class = "banner jumbotron" style="margin: 0;">
-    <div class = "container">
+<div class="banner" style="height: 30vh;" >
+  <div class = "container">
     <div class="card-container">
       <h1>Welcome to Learnability!</h1>
       <p>Learn and tech with other people</p>
 
-
-      <div>
-       <%= form_tag('/', method: 'get') do  %>
-       <%= text_field_tag :search_value, nil, placeholder: 'find your next course' , class: "navbar-wagon-search-input" %>
-       <%= submit_tag 'search', class: 'navbar-wagon-search-btn hidden-lg' %>
-       <% end  %>
+      <div  style="position: relative; justify-content: space-between;">
+        <div style="position: absolute;" >
+         <%= form_tag('/', method: 'get') do  %>
+         <%= text_field_tag :search_value, nil, placeholder: 'find your next course' , class: "navbar-wagon-search-input" %>
+         <%= submit_tag 'search', class: 'navbar-wagon-search-btn hidden-lg' %>
+         <% end  %>
+       </div>
      </div>
 
    </div>
  </div>
- </div>
+</div>
 
 
 
-<!--      <div class = "container">
-    <h1>Explore categories</h1>
-<% @categories.each do |cat| %>
-    <%= render "shared/categories", cat: cat %>
 
 
-    <%category_list = @courses.where(category: cat) %>
-    <%category_list.each do |course| %>
-    <%result = @courses.find(course.id)  %>
-    <%=link_to course_path(course.id) do%>
-    <%= render "shared/card", course: result %>
-    <%end %>
-    <%end  %>
-<%end %>
-</div> -->
 
 
-     <div class = "container">
-    <h1>Explore courses</h1>
 
 
-    <%if params[:search_value] != nil  %>
+<div class = "container">
+  <h1>Explore courses</h1>
 
-    <% @courses_value.each do |course|%>
-    <% course_id = course[:searchable_id]%>
-    <%result = @courses.find(course_id)  %>
+<%if params[:search_value] != nil  %>
 
-    <%=link_to course_path(course_id) do%>
-    <%= render "shared/card", course: result %>
-    <%end%>
-    <%end%>
-    <br>
 
-    <%else  %>
+<div id="map" style="width: 50%; height: 300px;"></div>
 
-    <% @courses.each do |course|%>
-    <%=link_to course_path(course) do%>
-    <%= render "shared/card", course: course %>
-    <%end%>
-    <%end%>
-    <br>
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
 
-    <%end%>
+
+
+
+  <% @courses_value.each do |course|%>
+  <% course_id = course[:searchable_id]%>
+  <%result = @courses.find(course_id)  %>
+  <%=link_to course_path(course_id) do%>
+  <%= render "shared/card", course: result %>
+  <%end%>
+  <%end%>
+  <br>
+
+  <%else  %>
+
+  <% @courses.each do |course|%>
+  <%=link_to course_path(course) do%>
+  <%= render "shared/card", course: course %>
+  <%end%>
+  <%end%>
+  <br>
+
+  <%end%>
 
 </div>
 
+<div id="map"></div>
+
+
+
+
+
+
+
+
+
+<div class = "container">
+  <h1>Explore categories</h1>
+  <% @categories.each do |cat| %>
+  <%= render "shared/categories", cat: cat %>
+
+
+  <%category_list = @courses.where(category: cat) %>
+  <%category_list.each do |course| %>
+  <%result = @courses.find(course.id)  %>
+  <%=link_to course_path(course.id) do%>
+  <%= render "shared/card", course: result %>
+  <%end %>
+  <%end  %>
+  <%end %>
+</div>
 
 
 <div class = "info-wrapper">
