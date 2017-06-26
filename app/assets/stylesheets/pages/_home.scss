@@ -116,3 +116,11 @@ img{
   padding: 30px;
 }
 
+.stats-wrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: orange;
+  color: white;
+  padding: 60px;
+}
