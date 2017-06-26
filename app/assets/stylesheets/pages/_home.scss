@@ -7,7 +7,7 @@
 .banner {
   color: black;
   text-align: center;
-  height: 100vh;
+  height: 100%;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
@@ -16,8 +16,13 @@
   box-shadow: 2px 4px 5px #888888;
   padding: 200px;
   background-color: #FFAA00;
+  z-index: 1;
 }
 
+
+// .banner img{
+//   background-size: cover;
+// }
 
 .banner h1 {
   font-size: 50px;
@@ -48,15 +53,15 @@
   transition: all 0.15s ease;
   line-height: 40px;
   font-weight: lighter;
-  color: #666666;
+  color: #66666;
   border: 1px solid #E6E6E6;
   border-radius: 5px;
   padding: 0 10px;
   position: center;
+  background-color: white;
   font-size: 14px;
   outline: none;
 }
-
 
 .info-wrapper{
 background-color: white;
@@ -111,5 +116,4 @@ img{
   border-bottom: 0.5px outset lightgray;
   padding: 30px;
 }
-
 
