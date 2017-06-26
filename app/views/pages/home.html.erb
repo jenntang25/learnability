@@ -1,5 +1,6 @@
 
 
+
 <div class = "text-center" >
   <div class = "banner" style="background-image: linear-gradient(-700deg, rgba(0,50,50,0.6) 0%, rgba(0,36,61,0.6) 20%), url('<%= cl_image_path("http://teaching.utoronto.ca/wp-content/uploads/2015/05/atelier-enseignement-de-informatique.jpg",
 width: 80, height: 10, crop: :fill) %>')" >
@@ -23,61 +24,73 @@ width: 80, height: 10, crop: :fill) %>')" >
           ...
         </ul>
       </div>
-
-
      </div>
-
    </div>
  </div>
- </div>
+</div>
 
 
 
-<!--      <div class = "container">
-    <h1>Explore categories</h1>
-<% @categories.each do |cat| %>
-    <%= render "shared/categories", cat: cat %>
 
 
-    <%category_list = @courses.where(category: cat) %>
-    <%category_list.each do |course| %>
-    <%result = @courses.find(course.id)  %>
-    <%=link_to course_path(course.id) do%>
-    <%= render "shared/card", course: result %>
-    <%end %>
-    <%end  %>
-<%end %>
-</div> -->
 
-
-     <div class = "container">
+<div class = "container">
+  <div class = "row">
     <h1>Explore courses</h1>
 
+    <div>
+      <%if params[:search_value] != nil  %>
 
-    <%if params[:search_value] != nil  %>
+      <div class= col-md-6>
+        <% @courses_value.each do |course|%>
+        <% course_id = course[:searchable_id]%>
+        <%result = @courses.find(course_id)  %>
+        <%=link_to course_path(course_id) do%>
+        <%= render partial: "shared/card",  locals: { gridsize: 6, course: result } %>
+        <%end%>
+        <%end%>
+        <br>
+      </div>
 
-    <% @courses_value.each do |course|%>
-    <% course_id = course[:searchable_id]%>
-    <%result = @courses.find(course_id)  %>
+      <div class="col-md-6">
+        <div id="map"  style="width: 100%; height: 600px;">
+        </div>
+        <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+        $(document).ready(function() {
+        var handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+        handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+      handler.getMap().setZoom(14);
+    }
+  });
+});
+<% end %>
+<% end %>
+</div>
 
-    <%=link_to course_path(course_id) do%>
-    <%= render "shared/card", course: result %>
-    <%end%>
-    <%end%>
-    <br>
-
-    <%else  %>
-
-    <% @courses.each do |course|%>
-    <%=link_to course_path(course) do%>
-    <%= render "shared/card", course: course %>
-    <%end%>
-    <%end%>
-    <br>
-
-    <%end%>
 
 
+<%else  %>
+
+<div class="col-md-12">
+  <% @courses.each do |course|%>
+  <%=link_to course_path(course) do%>
+  <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
+  <%end%>
+  <%end%>
+  <br>
+</div>
+
+<%end%>
+
+
+</div>
 </div>
 
 
@@ -98,23 +111,73 @@ width: 80, height: 10, crop: :fill) %>')" >
       </div>
   </div>
 
-<div class = "info-wrapper">
-  <div class = "info">
-    <div>
-      <h1>Why learnability?</h1>
-      <br>
-      <br>
-      <ul class ="list-unstyled ">
-        <h4><li>Find courses close to you <i class="fa fa-check" aria-hidden="true"></i></li> </h4>
-        <h4><li> Learn in academies and from independent experts <i class="fa fa-check" aria-hidden="true"></i> </li></h4>
-        <h4><li>Find clients to tech your skills <i class="fa fa-check" aria-hidden="true"></i></li></h4>
-      </ul>
+
+<div class="col-md-12">
+  <h1>
+    Explore categories
+  </h1>
+  <% @categories.each_with_index do |cat, index| %>
+  <% if index == 0 %>
+  <a href="#" class="tab active" data-target="#<%= cat %>-content">
+    <% else %>
+    <a href="#" class="tab" data-target="#<%= cat %>-content">
+      <% end %>
+      <%= cat %>
+    </a>
+    <% end %>
+    <div class="row">
+      <% @categories.each_with_index do |cat, index| %>
+      <% if index == 0 %>
+      <div class="tab-content" id="<%= cat %>-content">
+        <% else %>
+        <div class="tab-content hidden" id="<%= cat %>-content">
+
+          <% end %>
+          <div class="col-xs-12">
+            <h3>
+              <%= cat %>
+            </h3>
+            <% courses = Course.where("category ILIKE ?", "%#{cat}%") %>
+            <% if courses.empty? %>
+            <h3>
+              No courses for this category yet!
+            </h3>
+            <% else %>
+            <% courses.each do |course| %>
+            <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
     </div>
-
-    <img src="https://ak3.picdn.net/shutterstock/videos/9833465/thumb/1.jpg" id = "group">
-
   </div>
-</div>
+
+
+
+    <img src="https://ugc.futurelearn.com/uploads/images/03/86/hero_03860e50-2449-4951-a7d8-94173259e3f9.jpg" id = "group">
+
+
+
+  <div class = "info-wrapper">
+    <div class = "info">
+      <div>
+        <h1>Why learnability?</h1>
+        <br>
+        <br>
+        <ul class ="list-unstyled ">
+          <h4><li>Find courses close to you</li></h4>
+          <h4><li> Learn in academies and from independent experts</li></h4>
+          <h4><li>Find clients to tech your skills</li></h4>
+        </ul>
+      </div>
+
+      <img src="https://ak3.picdn.net/shutterstock/videos/9833465/thumb/1.jpg" id = "group">
+
+    </div>
+  </div>
 
 
 
@@ -125,7 +188,7 @@ width: 80, height: 10, crop: :fill) %>')" >
 
 
   <div>
-    <h2>Descarga la app</h2>
+    <h2>Download the app</h2>
     <img src="http://www3.gobiernodecanarias.org/medusa/ecoescuela/educatablet/files/2014/10/Disponible-en-el-app-store.png">
     <img src="http://www.fair-saturday.org/plugins/ckeditor/plugins/imageuploader/uploads/3833307e.png">
   </div>
