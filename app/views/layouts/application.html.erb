@@ -7,6 +7,17 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+
+<title>Google Maps Markers - Static Example</title>
+    <style type="text/css">
+      body { margin: 0; }
+      #map {
+        display: flex;
+        height: 100vh;
+        width: 100%;
+      }
+    </style>
+
   </head>
   <body class="<%= params[:controller] %>-<%= params[:action] %>">
 <% if params[:controlller] == "pages" && params[:action] == "home" %>
