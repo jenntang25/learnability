@@ -10,15 +10,18 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-      <div class = "my-name"> link_to <%=current_user.first_name%> <%= " "%> <%=current_user.last_name%></div>
+      <%= link_to user_path(current_user), class: "navbar-links" do%>
+        <p><%=current_user.first_name%> <%=" "%><%=current_user.last_name%></p>
+      <%end%>
+
        <% if current_user.establishment %>
-      <%= link_to current_user.establishment.name, establishment_path(current_user.establishment), class: "navbar-links"%>
+      <p><%= link_to current_user.establishment.name, establishment_path(current_user.establishment), class: "navbar-links"%></p>
       <%else%>
-      <%= link_to "Become a Teacher!", new_establishment_path, class: "navbar-links" %>
+      <p><%= link_to "Become a Teacher!", new_establishment_path, class: "navbar-links" %></p>
 
       <% end %>
 
-      <%= link_to "My courses", appointments_path, class: "navbar-links"%>
+      <p><%= link_to "My courses", appointments_path, class: "navbar-links"%></p>
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">

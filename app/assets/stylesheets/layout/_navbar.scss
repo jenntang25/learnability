@@ -145,9 +145,12 @@
   padding: 30px;
   length: 40px;
   text-decoration: none;
-}
 
+}
+.navbar-links p{
+text-decoration: none;
+}
 .navbar-links:hover{
-background-color: white;
-color: orange;
+background-color: orange;
+color: white;
 }
