@@ -1,19 +1,25 @@
+<div class="container">
+  <div class="row">
+<h1 class = "text-center">My courses</h1>
+    <% @appointments.each do |appointment| %>
+    <div class="col-xs-4 col-md-offset-4 ">
+      <ul class ="list-unstyled card-white">
+        <li> <strong><%= appointment.course.title%></strong></li>
+        <li> <%= link_to "Review this course", new_appointment_review_path(appointment), class: "btn btn-success" %></li>
+      </ul>
+    </div>
+
+
+<% end %>
+  </div>
+
+</div>
 
 
 
-<div class = "text-center">
-<h1>Appointments</h1>
 
 
-<% @appointments.each_with_index do |appointment, index| %>
-  <%= index + 1 %>
-  <ul class = "list-unstyled">
-    <li> <strong><%= appointment.course.title%></strong></li>
-    <li><%= appointment.description %></li>
-    <li> <%= link_to "Review", new_appointment_review_path(appointment)  %></li>
-  </ul>
 
-<%end%>
 
 
 

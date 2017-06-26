@@ -1,83 +1,68 @@
-<div class="navbar-wagon ">
+<% if transparent %>
+<div class="navbar-wagon">
+<% else %>
+<div class="navbar-no-transparency">
+<% end %>
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
   <%= image_tag "logo.png" %>
   <% end %>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-
 
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
+      <%= link_to user_path(current_user), class: "navbar-links" do%>
+        <p><%=current_user.first_name%> <%=" "%><%=current_user.last_name%></p>
+      <%end%>
+
+       <% if current_user.establishment %>
+      <p><%= link_to current_user.establishment.name, establishment_path(current_user.establishment), class: "navbar-links"%></p>
+      <%else%>
+      <p><%= link_to "Become a Teacher!", new_establishment_path, class: "navbar-links" %></p>
+
+      <% end %>
+
+      <p><%= link_to "My courses", appointments_path, class: "navbar-links"%></p>
+      <!-- Profile picture and dropdown -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li>
+               <%= link_to user_path(current_user) do %>
+               <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+               <% end %>
+              </li>
+
+              <li>
+                <%= link_to "Settings", edit_user_path(current_user)%>
+              </li>
+
+              <li>
+                <%= link_to "#" do %>
+                  <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <% end %>
+              </li>
+          </ul>
+        </div>
 
 
-    <%=current_user.email%>
-    <% if current_user.establishment %>
-        <%= link_to current_user.establishment.name, establishment_path(current_user.establishment) %>
-        <%else%>
-         <%= link_to "Become a Teacher!", new_establishment_path %>
+    <% else %>
 
-    <% end %>
-
-<div class="dropdown">
-  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown trigger
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dLabel">
-    ...
-  </ul>
-</div>
-
-
-    <!-- Notification -->
-    <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-    <div class="badge-container">
-      <i class="fa fa-envelope-o"></i>
-      <div class="badge badge-blue">3</div>
-    </div>
-    <% end %>
-
-    <%= link_to "My courses", appointments_path%>
-    <!-- Profile picture and dropdown -->
-    <div class="navbar-wagon-item">
-      <div class="dropdown">
-        <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-        <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li>
-           <%= link_to user_path(current_user) do %>
-           <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-           <% end %>
-         </li>
-
-         <li> <%= link_to "Settings", edit_user_path(current_user)%></li>
-         <li>
-          <%= link_to "#" do %>
-          <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-          <% end %>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <% else %>
-
-  <!-- Login text link -->
-  <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <!-- Login text link -->
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
   <% end %>
 
-  <!-- Button (call-to-action) -->
-  <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
 </div>
 
 <!-- Dropdown list appearing on mobile only -->

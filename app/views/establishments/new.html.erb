@@ -1,7 +1,9 @@
-<h1>Become a Teacher here!</h1>
-<div class="container">
+<div class="container-login">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-login">
+<h1>Become a Teacher here!</h1>
+
 
       <%= simple_form_for @establishment do |f| %>
       <% f.error_notification %>
@@ -13,6 +15,9 @@
       <%= f.input :description %>
       <%= f.button :submit %>
       <% end %>
-    </div>
+
+
   </div>
+  </div>
+</div>
 </div>

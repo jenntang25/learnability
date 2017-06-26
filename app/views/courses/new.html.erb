@@ -1,24 +1,24 @@
-<div class="container">
-<div class="text-center">
-<h1>Create a new experience!</h1>
-</div>
+<div class="container-login">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-login">
+        <div class="text-center">
+          <h1>Create a new experience!</h1>
 
+          <%= simple_form_for [@establishment, @course] do |f| %>
+          <% f.error_notification %>
+          <%= f.input :title %>
+          <%= f.input :category, collection: @categories %>
 
-  <%= simple_form_for [@establishment, @course] do |f| %>
-            <% f.error_notification %>
-            <%= f.input :title %>
-            <%= f.input :category, collection: @categories %>
-
-            <%= f.input :price %>
-            <%= f.input :description %>
-            <%= f.input :photos, as: :attachinary %>
-            <%= f.button :submit %>
-            <%= f.input :establishment_id, as: :hidden, input_html: {value: params[:establishment_id]} %>
-<%end%>
-</div>
+          <%= f.input :price %>
+          <%= f.input :description %>
+          <%= f.input :photos, as: :attachinary %>
+          <%= f.button :submit %>
+          <%= f.input :establishment_id, as: :hidden, input_html: {value: params[:establishment_id]} %>
+          <%end%>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<%= "should have schedule to pick a date from" %>

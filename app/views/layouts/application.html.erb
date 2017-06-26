@@ -19,8 +19,13 @@
     </style>
 
   </head>
-  <body>
-    <%= render 'shared/navbar' %>
+  <body class="<%= params[:controller] %>-<%= params[:action] %>">
+<% if params[:controlller] == "pages" && params[:action] == "home" %>
+    <%= render partial: 'shared/navbar', locals: { transparent: true } %>
+<% else %>
+    <%= render partial: 'shared/navbar', locals: { transparent: false } %>
+<% end %>
+
     <%= render 'shared/flashes' %>
     <%= yield %>
 
@@ -34,5 +39,8 @@
 
     <%= cloudinary_js_config %>
 
+    <%= render 'shared/footer' %>
+
   </body>
+
 </html>

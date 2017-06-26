@@ -1,18 +1,30 @@
-<div class="banner" style="height: 30vh;" >
-  <div class = "container">
+
+
+
+<div class = "text-center" >
+  <div class = "banner" style="background-image: linear-gradient(-700deg, rgba(0,50,50,0.6) 0%, rgba(0,36,61,0.6) 20%), url('<%= cl_image_path("http://teaching.utoronto.ca/wp-content/uploads/2015/05/atelier-enseignement-de-informatique.jpg",
+width: 80, height: 10, crop: :fill) %>')" >
+    <div class = "container">
     <div class="card-container">
       <h1>Welcome to Learnability!</h1>
-      <p>Learn and tech with other people</p>
 
-      <div  style="position: relative; justify-content: space-between;">
-        <div style="position: absolute;" >
-         <%= form_tag('/', method: 'get') do  %>
-         <%= text_field_tag :search_value, nil, placeholder: 'find your next course' , class: "navbar-wagon-search-input" %>
-         <%= submit_tag 'search', class: 'navbar-wagon-search-btn hidden-lg' %>
-         <% end  %>
-       </div>
+
+      <div>
+       <%= form_tag('/', method: 'get') do  %>
+       <%= text_field_tag :search_value, nil, placeholder: 'find your next course' , class: "navbar-wagon-search-input" %>
+       <%= submit_tag 'search', class: 'navbar-wagon-search-btn hidden-lg' %>
+       <% end  %>
+
+        <div class="dropdown">
+        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown trigger
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+          ...
+        </ul>
+      </div>
      </div>
-
    </div>
  </div>
 </div>
@@ -77,9 +89,27 @@
 
 <%end%>
 
+
 </div>
 </div>
 
+
+  <div class ="stats-wrapper">
+     <div>
+      <h2>549</h2>
+      <h4>Students</h4>
+     </div>
+
+     <div>
+       <h2>239</h2>
+       <h4>Teachers</h4>
+      </div>
+
+      <div>
+        <h2>588</h2>
+        <h4>Courses</h4>
+      </div>
+  </div>
 
 
 <div class="col-md-12">
@@ -121,9 +151,13 @@
         </div>
         <% end %>
       </div>
+
     </div>
   </div>
 
+
+
+    <img src="https://ugc.futurelearn.com/uploads/images/03/86/hero_03860e50-2449-4951-a7d8-94173259e3f9.jpg" id = "group">
 
 
 
@@ -145,4 +179,18 @@
     </div>
   </div>
 
+
+
+<div class = "app-wrapper">
+  <div>
+  <img id= "first" src="https://canada.fugenx.com/wp-content/uploads/2014/05/iPHONE-APPS-DEVELOPMENT.png">
+  </div>
+
+
+  <div>
+    <h2>Download the app</h2>
+    <img src="http://www3.gobiernodecanarias.org/medusa/ecoescuela/educatablet/files/2014/10/Disponible-en-el-app-store.png">
+    <img src="http://www.fair-saturday.org/plugins/ckeditor/plugins/imageuploader/uploads/3833307e.png">
+  </div>
 </div>
+
