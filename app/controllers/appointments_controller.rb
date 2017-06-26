@@ -7,12 +7,13 @@ class AppointmentsController < ApplicationController
   def new
     @course = Course.find(params[:course_id])
     @appointment = Appointment.new
-
   end
 
   def create
     @appointment = Appointment.new(appointment_params)
+    @course = Course.find(params["appointment"][:course_id])
     @appointment.user = current_user
+    @appointment.course = @course
     if @appointment.save
       redirect_to appointment_path(@appointment)
     else
@@ -38,7 +39,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:date, :description, :course_id)
+    params.require(:appointment).permit(:date, :description)
   end
 end
 

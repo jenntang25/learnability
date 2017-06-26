@@ -82,3 +82,35 @@ li{
   border-radius: 15px;
 }
 
+
+
+
+.card-white {
+  background: white;
+  padding: 15px;
+  box-shadow: 2px 4px 5px #888888;
+  border-radius: 4px;
+  margin: 10px 30px;
+  color: black;
+}
+
+.info-teacher{
+  padding: 50px;
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+img{
+  border-radius: 5px;
+}
+
+.division{
+  border-bottom: 0.5px outset lightgray;
+  padding: 30px;
+}
+
+.show-courses{
+
+}

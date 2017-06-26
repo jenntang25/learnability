@@ -1,9 +1,15 @@
-<h1>appointment show</h1>
 
-<%= @appointment.user.email %>
-<%= @appointment.date %>
-<%= @appointment.description %>
+<div class ="text-center">
+<h1>Your request for <%= @appointment.course.title%> <%="has been sent!!"%></h1>
+<p> Wait for the teacher to confirm your appointment</p>
 
 
-<%= link_to "home", root_path %>
-<%= link_to "My courses", appointments_path%>
+<h2>Details of your appointment request</h2>
+<ul class =" list-unstyled">
+<li><%= @appointment.user.email %><li>
+<li><%= @appointment.date %></li>
+</ul>
+
+<%= link_to "Home", root_path , class: "btn btn-defualt" %>
+<%= link_to "My courses", appointments_path , class: "btn btn-primary"%>
+</div>
