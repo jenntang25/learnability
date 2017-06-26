@@ -1,13 +1,20 @@
-<h1>Establishments#edit</h1>
-<p>Find me in app/views/establishments/edit.html.erb</p>
+<div class="container-login">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-login">
+      <h1>Edit my establishment</h1>
 
-<%= simple_form_for @establishment do |f| %>
-            <% f.error_notification %>
-            <%= f.input :name %>
-            <%= f.input :city %>
-            <%= f.input :country %>
-            <%= f.input :street %>
-            <%= f.input :postal_code %>
-            <%= f.input :description %>
-            <%= f.button :submit %>
-  <% end %>
+        <%= simple_form_for @establishment do |f| %>
+        <% f.error_notification %>
+        <%= f.input :name %>
+        <%= f.input :city %>
+        <%= f.input :country %>
+        <%= f.input :street %>
+        <%= f.input :postal_code %>
+        <%= f.input :description %>
+        <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

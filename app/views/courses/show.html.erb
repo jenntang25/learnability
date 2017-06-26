@@ -1,39 +1,43 @@
 <div class = "show-courses">
-<div class="container">
-  <div class = "text-center">
-    <h1><%= @course.title%></h1>
+  <div class="container">
+    <div class="row">
+    <div class = "text-center">
+      <h1><%= @course.title%></h1>
 
-  <div class ="info">
-    <ul class = "list-unstyled ">
-      <div>
-      <li class = "division"><strong> <%= "Price "%></strong><br> <br><%= @course.price %> <%= " $"%></li>
-      <li class = "division"><strong> <%= "Title "%> </strong> <br> <br> <%= @course.title %></li>
-      <li class = "division"><strong> <%= "Description "%> </strong> <br> <br> <%= @course.description%></li>
-      <li class = "division"> <strong> <%= "City"%> </strong> <br> <br> <%= @course.establishment.city%></li>
+      <div class ="info">
+        <div class="col-xs-12">
+        <ul class = "list-unstyled ">
+            <li class = "division"><strong> <%= "Title "%> </strong> <br> <br> <%= @course.title %></li>
+            <li class = "division"><strong> <%= "Description "%> </strong> <br> <br> <%= @course.description%></li>
+            <li class = "division"> <strong> <%= "City"%> </strong> <br> <br> <%= @course.establishment.city%></li>
+        </ul>
       </div>
-    </ul>
+       <div class="col-xs-12">
 
-      <div>
-      <% if @course.photos? %>
-      <% @course.photos.each do |photo| %>
-      <%= cl_image_tag photo.path, width: 500, height: 400, crop: :fill %>
-      <% end %>
-      <% end %>
+          <% if @course.photos? %>
+          <% @course.photos.each do |photo| %>
+          <%= cl_image_tag photo.path, width: 300, height: 500, crop: :fit %>
+          <% end %>
+          <% end %>
+            <br>
+            <strong> <%= "Price "%></strong><br> <br> <%= "$"%> <%= @course.price %>
+            <br>
 
+            <%= link_to "Get appointment", new_appointment_path(course_id: @course.id), class: "btn btn-primary" %>
+
+        </div>
+      </div>
       </div>
     </div>
   </div>
-  </div>
 
-<%= link_to "Back", :back , class: "btn btn-default"%>
 
   <div class = "text-center">
 
-  <%= link_to "See the establishment", establishment_path(@course.establishment), class: "btn btn-primary"%>
-  <br>
-  <br>
-  <%= link_to "Get appointment", new_appointment_path(course_id: @course.id), class: "btn btn-primary" %>
-</div>
+    <%= link_to "See the establishment", establishment_path(@course.establishment), class: "btn btn-primary"%>
+    <br>
+
+  </div>
 
   <br>
   <br>
@@ -57,8 +61,9 @@
       </div>
     </div>
   </div>
+  <div class="text-center">
 
-  <div id="map" style="width: 600px; height: 400px;"></div>
+  <div id="map" style="width: 100%; height: 400px;"></div>
 
   <% content_for(:after_js) do %>
   <%= javascript_tag do %>
@@ -79,4 +84,5 @@ handler.getMap().setZoom(14);
 <% end %>
 <% end %>
 
+</div>
 </div>

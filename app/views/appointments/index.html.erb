@@ -1,12 +1,6 @@
-
-
-
-
-<h1 class = "text-center">My courses</h1>
-
-<div class="container ">
-
+<div class="container">
   <div class="row">
+<h1 class = "text-center">My courses</h1>
     <% @appointments.each do |appointment| %>
     <div class="col-xs-4 col-md-offset-4 ">
       <ul class ="list-unstyled card-white">
@@ -14,13 +8,12 @@
         <li> <%= link_to "Review this course", new_appointment_review_path(appointment), class: "btn btn-success" %></li>
       </ul>
     </div>
-  </div>
-</div>
+
 
 <% end %>
+  </div>
 
-
-
+</div>
 
 
 
