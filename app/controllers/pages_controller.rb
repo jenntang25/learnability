@@ -9,20 +9,20 @@ class PagesController < ApplicationController
 
 
     @mapping = {
-      "education" => "fa flask fa-5x",
-       "Sports" => "fa fa-futbol-o fa-5x",
-      "business" => "fa fa-line-chart fa-5x",
-       "Cooking" => "fa fa-cutlery fa-5x",
-       "Health" => "fa fa-heartbeat fa-5x",
-       "Technology" => "fa fa-code fa-5x",
-       "Music" => "fa fa-play fa-5x",
-       "Photography" => "ffa a-camera-retro fa-5x",
-       "Entertainment" => "fa fa-glass fa-5x",
-       "Languages" => "fa hide fa-5x",
-       "Leisure" => "fa fa-glass fa-5x",
-       "Programming" => "fa fa-code fa-5x",
-       "Art" => "fa fa-paint-brush fa-5x",
-       "Other" => "fa hide fa-5x",
+      "education" => "fa flask fa-2x",
+       "Sports" => "fa fa-futbol-o fa-2x",
+      "business" => "fa fa-line-chart fa-2x",
+       "Cooking" => "fa fa-cutlery fa-2x",
+       "Health" => "fa fa-heartbeat fa-2x",
+       "Technology" => "fa fa-code fa-2x",
+       "Music" => "fa fa-play fa-2x",
+       "Photography" => "ffa a-camera-retro fa-2x",
+       "Entertainment" => "fa fa-glass fa-2x",
+       "Languages" => "fa hide fa-2x",
+       "Leisure" => "fa fa-glass fa-2x",
+       "Programming" => "fa fa-code fa-2x",
+       "Art" => "fa fa-paint-brush fa-2x",
+       "Other" => "fa hide fa-2x",
        }
 
 

@@ -124,7 +124,7 @@
     <% else %>
     <a href="#" class="tab" data-target="#<%= cat %>-content">
       <% end %>
-      <%= cat %>
+      <i class="<%= @mapping[cat] %>" aria-hidden="true"> </i>
     </a>
     <% end %>
     <div class="row">
