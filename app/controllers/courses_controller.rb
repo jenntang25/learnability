@@ -43,6 +43,7 @@ class CoursesController < ApplicationController
       marker.lat establishment.latitude
       marker.lng establishment.longitude
     end
+    @mapping = Course::CATEGORIES_MAPPING
   end
 
 
