@@ -11,6 +11,19 @@
 //= require datetimepicker
 //= require_tree ./app
 
+
+// $(function(){
+// $('#Leisure-content').addClass('fa-glass');
+//     $('#Sports-content').addClass('fa-life-ring ');
+//     $('#Photography-content').addClass('fa-camera-retro');
+//     $('#Programming-content').addClass('fa-puzzle-piece');
+//     $('#Languages-content').addClass('hide');
+//     $('#Cooking-content').addClass('fa-cutlery ');
+//     $('#Entertainment-content').addClass('fa-glass ');
+//     $('#Art-content').addClass('hide');
+//     $('#Other-content').addClass('hide');
+//   });
+
 $(function(){
 
   $(".tab").on("click", function(e){
