@@ -80,10 +80,6 @@ margin-bottom: 100px;
 color: orange;
 }
 
-li{
-  padding:25px;
-}
-
 #group{
   width: 400px;
   height:300px;
@@ -171,8 +167,12 @@ img{
   justify-content: space-around;
   border-radius: 3px;
   transition: all 0.15s ease;
-  padding-left: 50px;
-  padding: 20px;
+  padding-left: 20px;
+  padding: 10px;
+}
+
+.product ul li {
+  padding: 10px,
 }
 
 .product-body {
