@@ -1,9 +1,12 @@
 
 <div class="text-center">
 
+
+<h1> <strong><%=@reviews.last.course.title%> </strong></h1>
+
   <% @reviews.each do |review|%>
       <br>
-      <h1>Reviews for <%=review.appointment.course.title%></h1>
+
       <br>
       <br>
       <strong><%=review.appointment.user.first_name%> <%= " "%><%=review.appointment.user.last_name%></strong>
