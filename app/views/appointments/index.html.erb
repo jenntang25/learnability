@@ -6,14 +6,17 @@
 
      <% if appointment.course.photos? %>
           <% appointment.course.photos.each do |photo| %>
-          <%= cl_image_tag photo.path, width: 300, height: 500, crop: :fit %>
+          <%= cl_image_tag photo.path, width: 400, height: 600, crop: :fit %>
           <% end %>
           <% end %>
 
-    <div class="col-xs-4 col-md-offset-4 ">
+    <div class="col-xs-3 col-md-offset-4 ">
       <ul class ="list-unstyled ">
         <li><strong><%= appointment.course.title%></strong></li>
         <li> <%= appointment.course.description%></li>
+        <li> <%= appointment.date%></li>
+        <li> <%= appointment.course.establishment.city%><%= ", "%><%=appointment.course.establishment.country%></li>
+
         <li> <%= link_to "Review this course", new_appointment_review_path(appointment), class: "btn btn-success" %></li>
       </ul>
     </div>

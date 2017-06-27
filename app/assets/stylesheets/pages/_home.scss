@@ -169,11 +169,10 @@ img{
 .product {
   display: flex;
   justify-content: space-around;
-  padding: 20px;
   border-radius: 3px;
   transition: all 0.15s ease;
-  padding-left: 200px;
-  margin-top: 40px;
+  padding-left: 50px;
+  padding: 20px;
 }
 
 .product-body {
@@ -195,7 +194,6 @@ img{
 .product-image {
   border-radius: 10px;
   margin-right: 20px;
-  width: 175px;
 }
 
 .product:hover {
