@@ -49,6 +49,7 @@ class CoursesController < ApplicationController
 
 
   def destroy
+    @course = Course.all
     @course.destroy!
     redirect_to "pages#home"
 
