@@ -1,114 +1,131 @@
-<div class = "show-courses">
   <div class="container">
     <div class="row">
-    <div class = "text-center">
-      <h1><%= @course.title%></h1>
+      <div class = "show-courses">
 
-      <div class ="info">
-        <div class="col-xs-12">
-        <ul class = "list-unstyled ">
-            <li class = "division"><strong> <%= "Title "%> </strong> <br> <br> <%= @course.title %></li>
-            <li class = "division"><strong> <%= "Description "%> </strong> <br> <br> <%= @course.description%></li>
-            <li class = "division"> <strong> <%= "City"%> </strong> <br> <br> <%= @course.establishment.city%></li>
-        </ul>
-      </div>
-       <div class="col-xs-12">
+            <h1><strong><%= @course.title%></strong></h1>
+            <p> <%= @course.category %></p>
+        <div class="col-md-6">
 
+          <div class = "course-information">
+            <li class = "division list-unstyled"></li>
+
+            <div class="list-inline">
+              <div class= "col-md-6">
+                <h1><%= link_to @course.establishment.name, establishment_path(@course.establishment)%></h1>
+              </div>
+              <div class= "col-md-6">
+                <ul class="list-unstyled">
+                 <li>  <%= @course.establishment.address %></li>
+                 <li> <%= @course.establishment.description %></li>
+               </ul>
+             </div>
+           </div>
+
+
+           <div class="list-inline">
+            <div class= "col-md-6">
+              <h1>What is this course about??</h1>
+            </div>
+            <div class= "col-md-6">
+              <ul class="list-unstyled">
+               <li> <%= @course.description %></li>
+             </ul>
+           </div>
+         </div>
+
+       </div>
+
+<!--           <div class = "user-information">
+            <%= @course.establishment.user.fullname %>
+            <%= @facebook_picture_url.nil? ? nil : @facebook_picture_url %>
+          </div> -->
+
+        </div>
+
+        <div class="col-md-6">
           <% if @course.photos? %>
           <% @course.photos.each do |photo| %>
           <%= cl_image_tag photo.path, width: 300, height: 500, crop: :fit %>
           <% end %>
           <% end %>
-            <br>
-            <strong> <%= "Price "%></strong><br> <br> <%= "$"%> <%= @course.price %>
-            <br>
-
-            <%= link_to "Get appointment", new_appointment_path(course_id: @course.id), class: "btn btn-primary" %>
-
+          <div class="list-inline">
+            <strong><%= " Price: $"%> <%= @course.price %></strong>
+            <%= link_to "See the schedule", new_appointment_path(course_id: @course.id), class: "btn btn-primary" %>
+          </div>
         </div>
-      </div>
+
+
+
       </div>
     </div>
   </div>
 
 
-  <div class = "text-center">
-
-    <%= link_to "See the establishment", establishment_path(@course.establishment), class: "btn btn-primary"%>
-    <br>
-
-  </div>
-
-  <br>
-  <br>
-  <br>
 
   <div class="container">
-    <h3> Reviews of this course</h3>
-    <div class="row">
-      <div class="col-xs-12">
+    <div>
+      <h3> Reviews of this course</h3>
+      <div class="row">
+        <div class="col-xs-12">
+
+          <% if @reviews.empty? %>
+          <p class=" fa fa-frown-o"><%="No review for this course yet" %></p>
+          <% else %>
+          <% @reviews.each do |review|%>
+          <ul class = "list-inline">
+            <li><%=review.content%></li>
+
+            <li class="review-star" data-score="<%=review.stars %>"></li>
+
+            <li><%=review.appointment.user.email%></li>
+            <%end%>
+            <%end  %>
 
 
-        <% @reviews.each do |review|%>
-        <ul class = "list-inline">
-          <li><%=review.content%></li>
+          </div>
 
-          <li class="review-star" data-score="<%=review.stars %>"></li>
 
-          <li><%=review.appointment.user.email%></li>
-          <%end%>
-        </div>
 
-        <p>You can only make a review if you have made an appoinment for this course</p>
-      </div>
-    </div>
+          <div class="text-center">
+
+            <div id="map" style="width: 100%; height: 400px;"></div>
+            <% content_for(:after_js) do %>
+            <%= javascript_tag do %>
+            $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+
+            if (markers.length === 0) {
+            handler.getMap().setZoom(2);
+          } else if (markers.length === 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+    <% end %>
   </div>
-  <div class="text-center">
 
-  <div id="map" style="width: 100%; height: 400px;"></div>
-
-
-  <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-  $(document).ready(function() {
-  var handler = Gmaps.build('Google');
-  handler.buildMap({ internal: { id: 'map' } }, function() {
-  markers = handler.addMarkers(<%= raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-
-  if (markers.length === 0) {
-  handler.getMap().setZoom(2);
-} else if (markers.length === 1) {
-handler.getMap().setZoom(14);
-}
-});
-});
-<% end %>
-
-
-<script>
-
-
-$(document).ready(function () {
- $('.review-star').raty({
-  path: '/assets/',
+  <script>
+    $(document).ready(function () {
+     $('.review-star').raty({
+      path: '/assets/',
   // scoreName: 'review[stars]'
   readOnly: true,
   score: function() {
     return $(this).attr('data-score');
   },
- });
 });
-
-</script>
-
-
+   });
+ </script>
 
 
-<% end %>
 
-</div>
-</div>
+
+ <% end %>
+
+
 
 

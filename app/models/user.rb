@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_one :establishment, dependent: :destroy
   has_attachments :photos, maximum: 4
 
+def fullname
+  self.first_name + " " + self.last_name
+end
+
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)

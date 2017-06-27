@@ -9,6 +9,7 @@ class Establishment < ApplicationRecord
   # validates :street, presence: true
   validates :country, presence: true
   validates :city, presence: true
+  validates :name, presence: true
 
   geocoded_by :address
   after_validation :geocode, if: :street_changed?

@@ -6,9 +6,9 @@ class PagesController < ApplicationController
     @establishments = Establishment.all
     @courses = Course.all
     @categories = Course::CATEGORIES
+    @mapping = Course::CATEGORIES_MAPPING
 
 
-    @mapping = {
       #{}"education" => "fa flask fa-2x",
       # "Sports" => "fa fa-futbol-o fa-2x",
       #"business" => "fa fa-line-chart fa-2x",
@@ -26,21 +26,7 @@ class PagesController < ApplicationController
 
 
 
-   "education" => "fa fa-futbol-o fa-2x",
-       "Sports" => "fa fa-futbol-o fa-2x",
-      "business" => "fa fa-futbol-o  fa-2x",
-       "Cooking" => "fa fa-futbol-o  fa-2x",
-       "Health" => "fa fa-futbol-o  fa-2x",
-       "Technology" => "fa fa-futbol-o  fa-2x",
-       "Music" => "fa fa-futbol-o  fa-2x",
-       "Photography" => "fa fa-futbol-o  fa-2x",
-       "Entertainment" => "fa fa-futbol-o fa-2x",
-       "Languages" => "fa fa-futbol-o  fa-2x",
-       "Leisure" => "fa fa-futbol-o  fa-2x",
-       "Programming" => "fa fa-futbol-o  fa-2x",
-       "Art" => "fa fa-paint-brush fa-2x",
 
-       }
 
 
 
