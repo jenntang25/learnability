@@ -7,7 +7,7 @@
 }
 
 .jumbotron {
-  heigh: 70vh;
+  height: 70vh;
 }
 
 .card {
@@ -18,11 +18,12 @@
   color: dark gray;
   margin: 10px;
   font-size: 2%;
-  border-radius: 5px;
+  border-radius: 1px;
   color: black;
   &:hover .card-description {
     opacity: 0.8;
   }
+
   .card-description {
     background-color: white;
     position: absolute;

@@ -2,7 +2,8 @@ class Course < ApplicationRecord
 
   include PgSearch
 
-CATEGORIES = %w(Leisure Sports Photography Programming Languages Cooking Entertainment Art Other)
+CATEGORIES = %w(Leisure Sports Photography Programming Languages Cooking Entertainment Art)
+
 
   belongs_to :establishment
   has_many :reviews, through: :appointments, dependent: :destroy
