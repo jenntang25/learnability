@@ -80,10 +80,6 @@ margin-bottom: 100px;
 color: orange;
 }
 
-li{
-  padding:25px;
-}
-
 #group{
   width: 400px;
   height:300px;
@@ -100,6 +96,10 @@ li{
   border-radius: 4px;
   margin: 10px 30px;
   color: black;
+}
+
+.card-white li{
+ padding: 20px;
 }
 
 .info-teacher{
@@ -165,3 +165,41 @@ img{
 
 
 
+// appontment show
+.product {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  padding-left: 20px;
+  padding: 10px;
+}
+
+.product ul li {
+  padding: 10px,
+}
+
+.product-body {
+
+}
+
+.product-body h3 {
+  font-weight: bold;
+  font-size: 23px;
+  margin-top: 0;
+}
+.product-body p {
+  font-weight: lighter;
+  color: #999999;
+  margin-bottom: 0;
+}
+
+/* Product image */
+.product-image {
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.product:hover {
+  background: #f7f7fa;
+}

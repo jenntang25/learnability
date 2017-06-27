@@ -1,15 +1,21 @@
-<h1>Reviews</h1>
 
 <div class="text-center">
 
-<% @reviews.each do |review|%>
 
-  <%=review.content%>
-  <li class="review-star" data-score="<%=review.stars %>"></li>
-  <%=review.appointment.user.email%>
-  <%=review.appointment.course.title%>
+<h1> <strong><%=@reviews.last.course.title%> </strong></h1>
 
-<%end%>
+  <% @reviews.each do |review|%>
+      <br>
+
+      <br>
+      <br>
+      <strong><%=review.appointment.user.first_name%> <%= " "%><%=review.appointment.user.last_name%></strong>
+      <li class="review-star list-unstyled" data-score="<%=review.stars %>"></li>
+      <%=review.content%>
+      <br>
+      <br>
+
+  <%end%>
 </div>
 
   <% content_for(:after_js) do %>
