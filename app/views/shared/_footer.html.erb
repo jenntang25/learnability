@@ -2,24 +2,22 @@
   <div class="container">
     <div class="row align-items-start">
       <div class="col-xs-12 col-md-3">
-        <ul class="list-inline">
-          <li><a href=""><i class="fa fa-instagram"></i></a></li>
-          <li><a href=""><i class="fa fa-facebook"></i></a></li>
-          <li><a href=""><i class="fa fa-twitter"></i></a></li>
-        </ul>
+        <%= link_to root_path, class: "logo-size" do %>
+        <%= image_tag "White_logo.png" %>
+        <% end %>
       </div>
       <div class="col-md-6">
        <div class="row">
         <div class="col-md-4">
           <ul>
             <li class = "list-inline"> <strong> About Us </strong> </li>
-            <li class = "list-inline"> Contact Us</li>
+            <li class = "list-inline"> Careers</li>
           </ul>
         </div>
         <div class="col-md-4">
           <ul>
             <li class = "list-inline"> <strong>Privacy </strong></li>
-            <li class = "list-inline"> FAQ's</li>
+            <li class = "list-inline"> Contact Us</li>
           </ul>
         </div>
         <div class="col-md-4">
@@ -30,9 +28,12 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-md-3 text-bottom">
-      <%=   favicon_link_tag "white_logo_transparent_background.png" , type: "images/png" %>
-      <p> © Learnability, Inc.</p>
+    <div class="col-xs-12 col-md-3">
+      <ul class="list-inline">
+        <li><a href=""><i class="fa fa-instagram"></i></a></li>
+        <li><a href=""><i class="fa fa-facebook"></i></a></li>
+        <li><a href=""><i class="fa fa-twitter"></i></a></li>
+      </ul>
     </div>
   </div>
 
