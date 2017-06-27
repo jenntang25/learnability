@@ -9,6 +9,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require datetimepicker
+//= require jquery.raty
 //= require_tree ./app
 
 

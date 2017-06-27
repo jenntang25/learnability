@@ -1,13 +1,34 @@
-<h1>Reviews#index</h1>
-<p>Find me in app/views/reviews/index.html.erb</p>
+<h1>Reviews</h1>
 
 <div class="text-center">
 
 <% @reviews.each do |review|%>
-<%=review.content%>
-<%=review.stars%>
-<%=review.appointment.user.email%>
-<%=review.appointment.course.title%>
+
+  <%=review.content%>
+  <li class="review-star" data-score="<%=review.stars %>"></li>
+  <%=review.appointment.user.email%>
+  <%=review.appointment.course.title%>
 
 <%end%>
 </div>
+
+  <% content_for(:after_js) do %>
+
+
+<script>
+
+
+$(document).ready(function () {
+ $('.review-star').raty({
+  path: '/assets/',
+  // scoreName: 'review[stars]'
+  readOnly: true,
+  score: function() {
+    return $(this).attr('data-score');
+  },
+ });
+});
+
+</script>
+
+<% end %>
