@@ -1,18 +1,27 @@
 
-<div class="container">
+<div class="container jumbotron">
 
-<div class="col-md-3">
+<div class="col-xs-3">
 
   <div class = "profile-sidebar">
-    <div class = "col-xs-3 sidebar">
       <ul class = "list-unstyled">
-        <li > <%= link_to "My courses", appointments_path%></li>
-        <li > <%= link_to "Edit profile", edit_user_path(current_user)%></li>
-        <li > <%= link_to "Become a teacher", new_establishment_path%></li>
-        <li > <%= link_to "Edit my Establishment", edit_establishment_path(current_user)%></li>
+        <%= link_to appointments_path do%>
+        <li> My Courses</li>
+        <%end%>
+
+        <%= link_to  edit_user_path(current_user) do%>
+        <li > Edit Profile</li>
+        <%end%>
+
+        <%= link_to  new_establishment_path do %>
+        <li > Become a teacher</li>
+        <%end%>
+
+        <%= link_to edit_establishment_path(current_user) do %>
+        <li>Edit my Establishment</li>
+        <%end%>
 
       </ul>
-    </div>
   </div>
 </div>
 
@@ -24,7 +33,7 @@
       <div class= "profile-photo">
         <% if @user.photos? %>
         <% @user.photos.each do |photo| %>
-        <%= cl_image_tag photo.path, width: 300, height: 300, crop: :fill %>
+        <%= cl_image_tag photo.path, width: 300, height: 300, crop: :fill, class: "img-circle"%>
         <% end %>
         <% end %>
 
@@ -40,17 +49,4 @@
 </div>
 
 
-<% content_for (:after_js) do %>
-
-  <% javascript_tag do %>
-    $(document).ready(function () {
-      $('#sidebar-button').on('click', function(){
-      $('.profile-sidebar').slideToggle();
-        $('.profile-sidebar').removeClass("hidden");
-
-
-      });
-    });
-  <% end %>
-<% end %>
 </div>
