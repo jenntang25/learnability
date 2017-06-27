@@ -52,7 +52,9 @@
         <% @reviews.each do |review|%>
         <ul class = "list-inline">
           <li><%=review.content%></li>
-          <li><%=review.stars%></li>
+
+          <li class="review-star" data-score="<%=review.stars %>"></li>
+
           <li><%=review.appointment.user.email%></li>
           <%end%>
         </div>
@@ -83,7 +85,30 @@ handler.getMap().setZoom(14);
 });
 });
 <% end %>
+
+
+<script>
+
+
+$(document).ready(function () {
+ $('.review-star').raty({
+  path: '/assets/',
+  // scoreName: 'review[stars]'
+  readOnly: true,
+  score: function() {
+    return $(this).attr('data-score');
+  },
+ });
+});
+
+</script>
+
+
+
+
 <% end %>
 
 </div>
 </div>
+
+

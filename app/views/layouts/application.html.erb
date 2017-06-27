@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Learnability</title>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Learnability</title>
+  <%= csrf_meta_tags %>
+  <%= action_cable_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
 
-<title>Google Maps Markers - Static Example</title>
-    <style type="text/css">
-      body { margin: 0; }
-      #map {
-        display: flex;
-        height: 100vh;
-        width: 100%;
-      }
-    </style>
+  <title>Google Maps Markers - Static Example</title>
+  <style type="text/css">
+    body { margin: 0; }
+    #map {
+      display: flex;
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
 
-  </head>
-  <body class="<%= params[:controller] %>-<%= params[:action] %>">
-<% if params[:controlller] == "pages" && params[:action] == "home" %>
-    <%= render partial: 'shared/navbar', locals: { transparent: true } %>
-<% else %>
-    <%= render partial: 'shared/navbar', locals: { transparent: false } %>
-<% end %>
+</head>
 
-    <%= render 'shared/flashes' %>
-    <%= yield %>
+<body class="<%= params[:controller] %>-<%= params[:action] %>">
 
-    <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
-    <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
-    <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
+  <% if params[:controlller] == "pages" && params[:action] == "home" %>
+  <%= render partial: 'shared/navbar', locals: { transparent: true } %>
+  <% else %>
+  <%= render partial: 'shared/navbar', locals: { transparent: false } %>
+  <% end %>
 
-    <%= javascript_include_tag 'application' %>
+  <%= render 'shared/flashes' %>
 
-    <%= yield(:after_js) %>
 
-    <%= cloudinary_js_config %>
+  <%= yield %>
 
-    <%= render 'shared/footer' %>
+  <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
+  <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
+  <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
 
-  </body>
+  <%= javascript_include_tag 'application' %>
+
+  <%= yield(:after_js) %>
+
+  <%= cloudinary_js_config %>
+
+  <%= render 'shared/footer' %>
+
+</body>
 
 </html>
