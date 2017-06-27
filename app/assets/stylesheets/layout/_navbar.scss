@@ -35,14 +35,16 @@
 }
 
 .navbar-no-transparency {
-  background: white;
+  background: #FAFBFC;
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
-  padding: 0px 30px;
+  padding: 20px 30px 20px 0px;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  // box-shadow: 1px 2px 1px #ECECEC;
+
   a {
     color: black;
   }
