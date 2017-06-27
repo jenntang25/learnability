@@ -149,11 +149,19 @@ img{
 
 
 .profile-sidebar a{
-  color: black;
-
+  color: white;
 }
+
+.profile-sidebar li{
+  background-color: orange;
+  border-radius: 10px;
+  margin: 40px;
+}
+
 
 .profile-sidebar a:hover{
-  color: red;
   text-decoration: none;
 }
+
+
+
