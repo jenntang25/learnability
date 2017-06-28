@@ -2,8 +2,10 @@
   background: #FFFFFF;
   max-width: 600px;
   border-radius: 3px;
-  box-shadow: 0px 7px 0px #ECECEC;
+  box-shadow: 2px 7px 4px 2px #ECECEC;
   margin: -30px auto 0 auto;
+  border: solid #ECECEC;
+  border-radius: 2px;
   form {
     display: flex;
     justify-content: center;
