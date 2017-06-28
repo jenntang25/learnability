@@ -21,6 +21,7 @@ class EstablishmentsController < ApplicationController
   def show
     @courses = Course.all
     @my_courses = @courses.where(establishment_id: @establishment.id)
+    @appointment = Appointment.where(course_id: current_user.establishment.courses)
 
   end
 
