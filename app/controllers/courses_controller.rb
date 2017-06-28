@@ -39,11 +39,11 @@ class CoursesController < ApplicationController
 
   def show
     @reviews = Review.where(course_id: @course.id)
-
     @hash = Gmaps4rails.build_markers(@course.establishment) do |establishment, marker|
       marker.lat establishment.latitude
       marker.lng establishment.longitude
     end
+    @mapping = Course::CATEGORIES_MAPPING
   end
 
 

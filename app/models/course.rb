@@ -4,6 +4,22 @@ class Course < ApplicationRecord
 
 CATEGORIES = %w(Leisure Sports Photography Programming Languages Cooking Entertainment Art)
 
+CATEGORIES_MAPPING  = {
+   "education" => "fa fa-futbol-o",
+       "Sports" => "fa fa-futbol-o",
+      "business" => "fa fa-futbol-o ",
+       "Cooking" => "fa fa-futbol-o ",
+       "Health" => "fa fa-futbol-o ",
+       "Technology" => "fa fa-futbol-o ",
+       "Music" => "fa fa-futbol-o ",
+       "Photography" => "fa fa-futbol-o ",
+       "Entertainment" => "fa fa-futbol-o",
+       "Languages" => "fa fa-futbol-o ",
+       "Leisure" => "fa fa-futbol-o ",
+       "Programming" => "fa fa-futbol-o ",
+       "Art" => "fa fa-paint-brush",
+       }
+
 
   belongs_to :establishment
   has_many :reviews, through: :appointments, dependent: :destroy
