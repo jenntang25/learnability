@@ -1,23 +1,31 @@
+  <br>
+  <div class="text-center">
+     <%= link_to "#", class: "logo-size" do %>
+        <%= image_tag "blue_logo.png" %>
+        <% end %>
+  </div>
+
+
 <div class="container-login">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <div class="form-login">
-<h1>Become a Teacher here!</h1>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <div class="form-login">
+          <h1>Become a Teacher here!</h1>
 
 
-      <%= simple_form_for @establishment do |f| %>
-      <% f.error_notification %>
-      <%= f.input :name %>
-      <%= f.input :city %>
-      <%= f.input :country %>
-      <%= f.input :street %>
-      <%= f.input :postal_code %>
-      <%= f.input :description %>
-      <%= f.button :submit %>
-      <% end %>
+        <%= simple_form_for @establishment do |f| %>
+        <% f.error_notification %>
+        <%= f.input :name %>
+        <%= f.input :city %>
+        <%= f.input :country %>
+        <%= f.input :street %>
+        <%= f.input :postal_code %>
+        <%= f.input :description %>
+        <%= f.button :submit %>
+        <% end %>
 
 
+      </div>
+    </div>
   </div>
-  </div>
-</div>
 </div>

@@ -6,9 +6,11 @@
         <h2 class="title"><%= course.title  %></h2>
         <h4 class="establishment"><%= course.category %></h4>
       </div>
+
     </div>
+
     <div class="review list-inline">
-      <p class="dist">dist: 1.2km</p>
+      <p class="dist"> </p>
       <p class="price">$<%= course.price %> day</p>
     </div>
 
@@ -27,3 +29,10 @@
   </div>
 </div>
 
+<% content_for (:after_js) do %>
+  <% javascript_tag do %>
+
+
+
+  <% end %>
+<% end %>
