@@ -6,6 +6,20 @@
   flex-direction: column;
 }
 
+.card-white {
+  background: white;
+  padding: 15px;
+  box-shadow: 2px 4px 5px #888888;
+  border-radius: 4px;
+  margin: 10px 30px;
+  color: black;
+}
+
+.card-white li{
+ padding: 20px;
+}
+
+
 .jumbotron {
   height: 70vh;
 }
@@ -113,21 +127,4 @@ h1 { font-size: 1.5em; margin: 10px; }
 }
 
 
-.search-box {
-    background: #FFFFFF;
-    padding: 20px 200px 20px 300px;
-    max-width: 600px;
-    margin: -50px auto 20px;
-    position: absolute;
-    border-radius: 3px;
-    box-shadow: 1px 4px 1px #ECECEC;
-    left: 0;
-    right: 0;
-    bottom: 80px;
-    text-align: center;
-}
-
-.navbar-wagon-search-input {
-  margin-right: 500px;
-}
 
