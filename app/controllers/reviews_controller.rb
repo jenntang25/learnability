@@ -29,6 +29,8 @@ class ReviewsController < ApplicationController
     @reviews = Reviews.all
     @reviews.destroy!
   end
+
+
   private
 
   def review_params
