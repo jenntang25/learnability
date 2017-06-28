@@ -1,5 +1,17 @@
+.form-login {
+    padding: 30px 20px;
+    background: #f9f9f9;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px #ECECEC;
+    margin: auto;
+    width: 500px;
+}
 
+.container-login {
+  padding: 50px 30px;
+  margin-bottom: 110px;
 
+}
 
 .tab {
     flex: 1 0 auto;
@@ -27,6 +39,24 @@ align-items: center;
 }
 
 
+
+
+.jumbotron {
+  height: 70vh;
+}
+
+
+  .reviews {  display: inline;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    font-size: 10px;
+  }
+  .description {
+    font-size: 10px;
+  }
+
+
 .tab-box {
   height: 60vh;
   background-color: #F1F1F0;
@@ -41,4 +71,5 @@ align-items: center;
   background: white;
   color: black;
 }
+
 

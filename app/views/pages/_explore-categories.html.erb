@@ -18,32 +18,37 @@
           <% end %>
         </div>
 
+
         <div class="row">
           <% @categories.each_with_index do |cat, index| %>
           <% if index == 0 %>
 
           <div class="tab-content" id="<%= cat %>-content">
 
-            <% else %>
 
+
+
+
+        <div class="row">
+            <% @categories.each_with_index do |cat, index| %>
             <div class="tab-content hidden" id="<%= cat %>-content">
-              <% end %>
-              <div class="col-xs-12">
-                <h3>
-                 <%= cat %>
-               </h3>
-               <% courses = Course.where("category ILIKE ?", "%#{cat}%") %>
-               <% if courses.empty? %>
-               <h3>
-                No courses for this category yet!
-              </h3>
-              <% else %>
-              <% courses.each do |course| %>
-              <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
-              <% end %>
-              <% end %>
+                <div class="col-xs-12">
+                  <h3>
+                   <%= cat %>
+                 </h3>
+
+                <% courses = Course.where("category ILIKE ?", "%#{cat}%") %>
+                <% if courses.empty? %>
+                   <h3>
+                    No courses for this category yet!
+                  </h3>
+                <% else %>
+                  <% courses.each do |course| %>
+                  <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
-          </div>
           <% end %>
         </div>
 

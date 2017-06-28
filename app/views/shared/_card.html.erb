@@ -1,33 +1,23 @@
- <div class="col-xs-12 col-md-<%= gridsize %> col-lg-<%= gridsize %>">
-  <div class="card">
-    <img class="image" src="https://unsplash.it/50x50" alt="">
-    <div class="info-card">
-      <div class="info-top">
-        <h2 class="title"><%= course.title  %></h2>
-        <h4 class="establishment"><%= course.category %></h4>
-      </div>
 
+ <div class="card col-md-3" style="height: 400px;">
+
+
+     <% picture = course.photos? ? course.photos.first.public_id : 'awhazjkztkzqtdf3jzv2' %>
+
+
+    <img class="card-img-top" style="width: 100%" src="<%= cl_image_path(picture, height: 600, width: 700, crop: :fill) %>" alt="Card image cap">
+    <div class="container-card">
+        <ul class="list-inline">
+      <li style = "color: green;">$<strong><%= course.price %></strong> per day</li>
+    </ul>
+    <hr>
+    <div class="card-block">
+      <h4 class="card-title"><strong><%= course.title  %></strong></h4>
+      <p class="card-text"><%= course.category %></p>
+      <div class="card-description"><%= truncate(course.description, length: 100) %></div>
     </div>
-
-    <div class="review list-inline">
-      <p class="dist"> </p>
-      <p class="price">$<%= course.price %> day</p>
     </div>
-
-    <div class="card-description">
-      <div style="margin:20px; font-size: 10px">
-        <h3 style="font-size: 15px">
-      <%=course.title%>
-      </h3>
-      <br>
-      <p style="font-size: 10px">
-        <%= course.description %>
-      </p>
-      </div>
-    </div>
-
   </div>
-</div>
 
 <% content_for (:after_js) do %>
   <% javascript_tag do %>
