@@ -21,6 +21,9 @@ CATEGORIES_MAPPING  = {
        }
 
 
+
+
+
   belongs_to :establishment
   has_many :reviews, through: :appointments, dependent: :destroy
   has_many :appointments

@@ -3,101 +3,128 @@
 
 
      <div class="col-md-8">
+
        <table >
          <col width="33%">
-  <col width="67%">
-        <tr>
-        <td colspan="2">
-           <h1 style="font-size: 30px;"><%= @course.title%></h1>
-           <p><%= @course.category %></i></p>
-          <li class = "division list-unstyled" style="padding: 15px;"></li>
+         <col width="67%">
+         <tr>
+          <td colspan="2">
+           <h1 class="text-center" style="font-size: 30px; color: gray"><%= @course.title%></h1>
+           <br>
+           <ul class="list-unstyled">
 
-         </td>
-       </tr>
-       <tr>
-         <td>
-           <h1><%= link_to establishment_path(@course.establishment) do %>
-            About <%= @course.establishment.name %>
-            <%end  %></h1>
-          </td>
-          <td><h5>  <%= @course.establishment.address %></h5>
-           <h5> <%= @course.establishment.description %></h5>
-         </td>
-       </tr>
-       <tr>
-         <td><h1>What is this course about??</h1></td>
-         <td><h5> <%= @course.description %></h5></td>
-       </tr>
-     </table>
-     <li class = "division list-unstyled" style="padding: 15px;"></li>
 
-   </div>
 
-   <div class="col-md-4">
+            <li><i class="<%= @mapping[@course.category] %>"> <%= @course.category %></i></li>
+           <li><i class="fa fa-map-marker" aria-hidden="true"> <%= @course.establishment.address %></i></li>
 
-    <div style="width: 100%; position: fixed; padding: 30px;">
-      <% if @course.photos? %>
-      <% @course.photos.each do |photo| %>
-      <%= cl_image_tag photo.path, width: 300, height: 300, crop: :crop %>
-      <% end %>
-      <% end %>
-    <div class="list-inline">
+
+
+         </ul>
+         <li class = "division list-unstyled" style="padding: 15px;"></li>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <h1><%= link_to establishment_path(@course.establishment) do %>
+          About <%= @course.establishment.name %>
+          <%end  %></h1>
+        </td>
+        <td>
+         <p class="line-height" > <%= @course.establishment.description %></p>
+       </td>
+     </tr>
+     <tr>
+       <td class="line-height"><h1>What is this course about??</h1></td>
+       <td><p class="line-height"> <%= @course.description %></p></td>
+     </tr>
+   </table>
+
+   <li class = "division list-unstyled" style="padding: 15px;"></li>
+
+    <div class="list-inline" style="margin:30px; float: right">
       <strong><%= " Price: $"%> <%= @course.price %></strong>
-      <%= link_to "See the schedule", new_appointment_path(course_id: @course.id), class: "btn btn-primary" %>
+      <%= link_to "Book with us!", new_appointment_path(course_id: @course.id), class: "btn btn-primary" %>
     </div>
-    </div>
+
+ </div>
+
+ <div class="col-md-4">
+
+  <div style="width: 100%; position: fixed; padding: 30px;">
+    <% if @course.photos? %>
+    <% @course.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, width: 300, height: 300, crop: :crop %>
+    <% end %>
+    <% end %>
+
   </div>
 </div>
 
-  <div>
-    <h3> Reviews</h3>
-    <div class="row">
-      <div class="col-md-6">
-
-        <% if @reviews.empty? %>
-        <p class=" fa fa-frown-o"><%="No review for this course yet" %></p>
-        <% else %>
-        <% @reviews.each do |review|%>
-          <table>
-            <col width="33%">
-             <col width="67%">
-            <tr>
-              <td><strong><%=review.appointment.user.fullname%></strong><p class="review-star" data-score="<%=review.stars %>"></p><h6><%=review.created_at.strftime("%m-%d-%Y")%></h6></td>
-              <td><%=review.content%></td>
-            </tr>
-          </table>
+</div>
 
 
 
-          </ul>
-          <%end%>
-          <%end  %>
+<div style="margin-top:80px;">
+  <h3 style="margin:10px;"> Reviews</h3>
+  <div class="row">
+    <div style="margin:10px;"" class="col-md-8">
 
+      <% if @reviews.empty? %>
+      <p class=" fa fa-frown-o"><%="No review for this course yet" %></p>
+      <% else %>
 
-
-
+      <% @reviews.first(4).each do |review|%>
+      <div class="review-card">
+        <div class="left">
+          <strong>
+           <%=review.appointment.user.fullname%>
+         </strong>
 
         <div class="col-md-8">
 
-          <div id="map" style="width: 100%; height: 400px; margin-top: 50px; margin-bottom: 50px; "></div>
-          <% content_for(:after_js) do %>
-          <%= javascript_tag do %>
-          $(document).ready(function() {
-          var handler = Gmaps.build('Google');
-          handler.buildMap({ internal: { id: 'map' },  provider:{ scrollwheel: false } }, function() {
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
+         <p class="review-star" data-score="<%=review.stars %>"></p>
 
-          if (markers.length === 0) {
-          handler.getMap().setZoom(14);
-        } else if (markers.length === 1) {
-        handler.getMap().setZoom(16);
-      }
-    });
-  });
-  <% end %>
-  </div>
+         <h6>
+           <%=review.created_at.strftime("%m-%d-%Y")%>
+         </h6>
+       </div>
+       <div class="right line-height">
+         <%=review.content%>
+       </div>
+     </div>
+
+     <% end%>
+
+     <% end  %>
+
+
+
+
+
+
+     <div >
+
+      <div id="map" style="width: 100%; height: 400px; margin-top: 50px; margin-bottom: 50px; "></div>
+      <% content_for(:after_js) do %>
+      <%= javascript_tag do %>
+      $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' },  provider:{ scrollwheel: false } }, function() {
+      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+
+      if (markers.length === 0) {
+      handler.getMap().setZoom(14);
+    } else if (markers.length === 1) {
+    handler.getMap().setZoom(16);
+  }
+});
+});
+<% end %>
+</div>
+</div>
 
 <script>
   $(document).ready(function () {
@@ -113,6 +140,7 @@
  });
 </script>
 <% end %>
+</div>
 </div>
 </div>
 

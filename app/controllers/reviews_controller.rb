@@ -18,7 +18,8 @@ class ReviewsController < ApplicationController
     #on review params without a column? for courses show
 
     if @review.save
-      redirect_to  appointment_reviews_path(@appointment)
+      # redirect_to  appointment_reviews_path(@appointment)
+        redirect_to course_path(@review.appointment.course)
     else
       render :new
     end
@@ -29,6 +30,8 @@ class ReviewsController < ApplicationController
     @reviews = Reviews.all
     @reviews.destroy!
   end
+
+
   private
 
   def review_params

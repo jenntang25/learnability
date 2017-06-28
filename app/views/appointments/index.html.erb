@@ -1,9 +1,15 @@
+
+
 <div class="container ">
   <div class="row">
     <h1 class = "text-center">My courses</h1>
     <% @appointments.each do |appointment| %>
+
+
     <div class="col-xs-8 col-xs-offset-2 ">
       <div class = "product">
+
+
 
        <% if appointment.course.photos? %>
        <% appointment.course.photos.each do |photo| %>
@@ -13,7 +19,9 @@
 
 
         <ul class ="list-unstyled ">
+        <%=link_to course_path(appointment.course_id) do%>
           <li><strong><%= appointment.course.title%></strong></li>
+          <% end %>
           <li> <%= appointment.course.description%></li>
           <li> <%= appointment.date%></li>
           <li> <%= appointment.course.establishment.city%><%= ", "%><%=appointment.course.establishment.country%></li>
@@ -25,4 +33,6 @@
     <% end %>
   </div>
 </div>
+
+
 
