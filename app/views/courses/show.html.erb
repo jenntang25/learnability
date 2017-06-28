@@ -1,101 +1,86 @@
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
-
-        <div class = "show-courses">
-          <div class="text-center">
-            <h1><strong><%= @course.title%></strong></h1>
-
-<i class=" <%= @mapping[@course.category ]%> fa-2x" aria-hidden="true"> <%= @course.category %></i>
-
-          </div>
-
-          <div class = "course-information">
-            <div class="list-inline">
-              <div class= "col-md-6">
-                <h1><%= link_to establishment_path(@course.establishment) do %>
-                  About <%= @course.establishment.name %>
-                  <%end  %></h1>
-                </div>
-                <div class= "col-md-6">
-
-                 <h5>  <%= @course.establishment.address %></h5>
-                 <h5> <%= @course.establishment.description %></h5>
-
-               </div>
-             </div>
-           </div>
-
-           <li class = "division list-unstyled" style="padding: 5px;"></li>
 
 
+     <div class="col-md-8">
+       <table >
+         <col width="33%">
+  <col width="67%">
+        <tr>
+        <td colspan="2">
+           <h1 style="font-size: 30px;"><%= @course.title%></h1>
+           <p><%= @course.category %></i></p>
+          <li class = "division list-unstyled" style="padding: 15px;"></li>
 
+         </td>
+       </tr>
+       <tr>
+         <td>
+           <h1><%= link_to establishment_path(@course.establishment) do %>
+            About <%= @course.establishment.name %>
+            <%end  %></h1>
+          </td>
+          <td><h5>  <%= @course.establishment.address %></h5>
+           <h5> <%= @course.establishment.description %></h5>
+         </td>
+       </tr>
+       <tr>
+         <td><h1>What is this course about??</h1></td>
+         <td><h5> <%= @course.description %></h5></td>
+       </tr>
+     </table>
+     <li class = "division list-unstyled" style="padding: 15px;"></li>
 
+   </div>
 
+   <div class="col-md-4">
 
-           <div class="list-inline">
-            <div class= "col-md-6">
-              <h1>What is this course about??</h1>
-            </div>
-            <div class= "col-md-6">
-             <h5> <%= @course.description %></h5>
-
-           </div>
-         </div>
-       </div>
-
-     </div>
-
-
-     <div class="col-md-6">
-
-<div style="width: 100%">
+    <div style="width: 100%; position: fixed; padding: 30px;">
       <% if @course.photos? %>
       <% @course.photos.each do |photo| %>
-      <%= cl_image_tag photo.path, width: 300, height: 500, crop: :fit %>
+      <%= cl_image_tag photo.path, width: 300, height: 300, crop: :crop %>
       <% end %>
       <% end %>
-      </div>
-      <div class="list-inline">
-        <strong><%= " Price: $"%> <%= @course.price %></strong>
-        <%= link_to "See the schedule", new_appointment_path(course_id: @course.id), class: "btn btn-primary" %>
-      </div>
+    <div class="list-inline">
+      <strong><%= " Price: $"%> <%= @course.price %></strong>
+      <%= link_to "See the schedule", new_appointment_path(course_id: @course.id), class: "btn btn-primary" %>
+    </div>
     </div>
   </div>
 </div>
 
-
-
-
-
-
-<div class="container">
   <div>
-    <h3> Reviews of this course</h3>
+    <h3> Reviews</h3>
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-md-6">
 
         <% if @reviews.empty? %>
         <p class=" fa fa-frown-o"><%="No review for this course yet" %></p>
         <% else %>
         <% @reviews.each do |review|%>
-        <ul class = "list-inline">
-          <li><%=review.content%></li>
+          <table>
+            <col width="33%">
+             <col width="67%">
+            <tr>
+              <td><strong><%=review.appointment.user.fullname%></strong><p class="review-star" data-score="<%=review.stars %>"></p><h6><%=review.created_at.strftime("%m-%d-%Y")%></h6></td>
+              <td><%=review.content%></td>
+            </tr>
+          </table>
 
-          <li class="review-star" data-score="<%=review.stars %>"></li>
 
-          <li><%=review.appointment.user.email%></li>
+
+          </ul>
           <%end%>
           <%end  %>
 
 
         </div>
+        </div>
 
 
+        <div class="col-md-8">
 
-        <div class="text-center">
-
-          <div id="map" style="width: 100%; height: 400px;"></div>
+          <div id="map" style="width: 100%; height: 400px; margin-top: 50px; margin-bottom: 50px; "></div>
           <% content_for(:after_js) do %>
           <%= javascript_tag do %>
           $(document).ready(function() {
@@ -106,14 +91,14 @@
           handler.fitMapToBounds();
 
           if (markers.length === 0) {
-          handler.getMap().setZoom(2);
+          handler.getMap().setZoom(14);
         } else if (markers.length === 1) {
-        handler.getMap().setZoom(14);
+        handler.getMap().setZoom(16);
       }
     });
   });
   <% end %>
-</div>
+  </div>
 
 <script>
   $(document).ready(function () {
@@ -127,11 +112,14 @@
 });
  });
 </script>
-
-
-
-
 <% end %>
+</div>
+</div>
+
+
+
+
+
 
 
 
