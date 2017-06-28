@@ -22,13 +22,7 @@ class PagesController < ApplicationController
        #{}"Leisure" => "fa fa-glass fa-2x",
       # "Programming" => "fa fa-code fa-2x",
        #"Art" => "fa fa-paint-brush fa-2x",
-      # "Other" => " hide ",
-
-
-
-
-
-
+      # "Other" => " hide "
 
 
       if params[:search_value].present?

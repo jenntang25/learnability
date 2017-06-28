@@ -21,14 +21,19 @@
           <% end %>
         </div>
 
+
         <div class="row">
           <% @categories.each_with_index do |cat, index| %>
           <% if index == 0 %>
 
           <div class="tab-content" id="<%= cat %>-content">
 
-            <% else %>
 
+
+
+
+        <div class="row">
+            <% @categories.each_with_index do |cat, index| %>
             <div class="tab-content hidden" id="<%= cat %>-content">
               <% end %>
               <div class="col-xs-12">
@@ -43,8 +48,8 @@
               <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
               <% end %>
               <% end %>
+
             </div>
-          </div>
           <% end %>
         </div>
 
