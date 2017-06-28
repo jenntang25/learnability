@@ -26,3 +26,19 @@ justify-content: space-around;
 align-items: center;
 }
 
+
+.tab-box {
+  height: 60vh;
+  background-color: #F1F1F0;
+}
+.tab:first-child {
+  border-radius: 10px 0px 0px 10px;
+}
+.tab:last-child {
+  border-radius: 0px 10px 10px 0px;
+}
+.tab.active {
+  background: white;
+  color: black;
+}
+

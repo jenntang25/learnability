@@ -8,7 +8,7 @@
           <%= simple_form_for [@establishment, @course] do |f| %>
           <% f.error_notification %>
           <%= f.input :title %>
-          <%= f.input :category, collection: @categories %>
+          <%= f.input :category, collection: @categories, class:"col-md-6" %>
 
           <%= f.input :price %>
           <%= f.input :description %>
