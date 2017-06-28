@@ -24,18 +24,35 @@
     border-color: solid gray;
     background-color: white;
     color: #3366CC;
+  &:hover .tab-description {
+    color: white;
+  }
+    a {color: black;}
 
     }
 
+
     .tab:hover {
-    background-color: #3366CC;
+    background-color: #42a1f4;
     color: white;
 }
 
+    .tab:hover i {
+      display:none;
+    }
+
+    .tab:hover span {
+      display:inline !important;
+    }
+
 .category-bar {
+ margin: 75px 25px 75px 25px;
   display: flex;
 justify-content: space-around;
 align-items: center;
+box-shadow: 1px 3px 2px 1px lightgray;
+border-radius: 10px;
+transition:all 500ms ease;
 }
 
 
@@ -68,8 +85,9 @@ align-items: center;
   border-radius: 0px 10px 10px 0px;
 }
 .tab.active {
-  background: white;
-  color: black;
+
+      background-color: #3366CC;
+    color: white;
 }
 
 
