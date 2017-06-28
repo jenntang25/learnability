@@ -16,7 +16,7 @@ class AppointmentsController < ApplicationController
     @appointment.course = @course
     @appointment.date = DateTime.strptime(params[:appointment][:date], "%m/%d/%Y %l:%M %p")
     if @appointment.save
-      redirect_to appointment_path(@appointment)
+      redirect_to appointments_path
     else
       render :new
     end
