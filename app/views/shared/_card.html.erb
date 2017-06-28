@@ -6,7 +6,9 @@
         <h2 class="title"><%= course.title  %></h2>
         <h4 class="establishment"><%= course.category %></h4>
       </div>
+
     </div>
+
     <div class="review list-inline">
       <p class="dist"> </p>
       <p class="price">$<%= course.price %> day</p>
@@ -29,8 +31,8 @@
 
 <% content_for (:after_js) do %>
   <% javascript_tag do %>
-    var distance = Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude],[user.establishment.latitude, user.establishment.longitude])
 
-    var user_long= $("#user-long");
+
+
   <% end %>
 <% end %>
