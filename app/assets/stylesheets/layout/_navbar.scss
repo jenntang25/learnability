@@ -14,7 +14,7 @@
     top: 0px;
     width: 100%;
     a {
-    color: white;
+    color: transparent;
   }
   }
 }
@@ -35,14 +35,17 @@
 }
 
 .navbar-no-transparency {
-  background: white;
+  background: #F4F6F7;
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
-  padding: 0px 30px;
+  padding: 40px 30px 40px 0px;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 20px;
+  // box-shadow: 1px 2px 1px #ECECEC;
+
   a {
     color: black;
   }
@@ -59,6 +62,8 @@
 
 /* Navbar logo */
 .navbar-wagon-brand img {
+  padding-top: 10px;
+  padding-left: 10px;
   width: 50px;
 }
 
