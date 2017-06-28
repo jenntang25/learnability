@@ -1,12 +1,14 @@
 <% if transparent %>
 <div class="navbar-wagon">
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+        <%= image_tag "white_logo.png" %>
+<% end %>
 <% else %>
 <div class="navbar-no-transparency">
-<% end %>
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-        <%= image_tag "White_logo.png" %>
+ <%= link_to root_path, class: "navbar-wagon-brand" do %>
+        <%= image_tag "blue_logo.png" %>
   <% end %>
+  <%end  %>
 
   <!-- Right Navigation -->
 

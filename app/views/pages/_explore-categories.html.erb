@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1>
+      <h1 class="title">
         Explore categories
       </h1>
 
@@ -13,7 +13,10 @@
           <% else %>
           <a href="#" class="tab" data-target="#<%= cat %>-content">
             <% end %>
-            <i class=" categogory-bar-icons <%= @mapping[cat] %>" aria-hidden="true"><%= cat %></i>
+            <i class=" categogory-bar-icons <%= @mapping[cat] %>" aria-hidden="true"></i>
+            <span style="display:none;">
+            <%= cat %>
+            </span>
           </a>
           <% end %>
         </div>
@@ -29,14 +32,12 @@
             <div class="tab-content hidden" id="<%= cat %>-content">
               <% end %>
               <div class="col-xs-12">
-                <h3>
-                 <%= cat %>
-               </h3>
+
                <% courses = Course.where("category ILIKE ?", "%#{cat}%") %>
                <% if courses.empty? %>
-               <h3>
-                No courses for this category yet!
-              </h3>
+               <p class ="text-center">
+                No courses for this category yet :(
+              </p>
               <% else %>
               <% courses.each do |course| %>
               <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
