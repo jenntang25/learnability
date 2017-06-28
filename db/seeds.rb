@@ -20,7 +20,7 @@ est1 = Establishment.create!(name: "Cerveceria", country: "Spain", city: "Barcel
 est2 = Establishment.create!(name: "Cocobongo", country: "Mexico", city: "Cancún", user: user2)
 est3 = Establishment.create!(name: "San Diegito",country: "USA", city: "Santa Monica", user: user3)
 
-course1 = Course.create!(title: "English CPE", price: 50, category: "Languages", establishment: est1)
+course1 = Course.create!(title: "English CPE", price: 50, category: "Technology", establishment: est1)
 course2 = Course.create!(title: "French cuisine", price: 40, category: "Cooking", establishment: est2)
 course3 = Course.create!(title: "Picasso's influence", price: 12, category: "Art", establishment: est3)
 
@@ -31,3 +31,5 @@ app3 = Appointment.create!(date: "07/07/1987", user: user3, course: course3)
 rev1 = Review.create!(appointment: app1, course: course1, stars: 3)
 rev2 = Review.create!(appointment: app2, course: course2, stars: 4)
 rev3 = Review.create!(appointment: app3, course: course3, stars: 5)
+
+
