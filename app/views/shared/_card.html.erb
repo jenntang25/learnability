@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="review list-inline">
-      <p class="dist">dist: 1.2km</p>
+      <p class="dist"> </p>
       <p class="price">$<%= course.price %> day</p>
     </div>
 
@@ -27,3 +27,10 @@
   </div>
 </div>
 
+<% content_for (:after_js) do %>
+  <% javascript_tag do %>
+    var distance = Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude],[user.establishment.latitude, user.establishment.longitude])
+
+    var user_long= $("#user-long");
+  <% end %>
+<% end %>
