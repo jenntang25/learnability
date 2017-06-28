@@ -1,3 +1,4 @@
+<div class ="categories-wrapper">
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -12,7 +13,7 @@
           <% else %>
           <a href="#" class="tab" data-target="#<%= cat %>-content">
             <% end %>
-            <i class=" categogory-bar-icons <%= @mapping[cat] %>" aria-hidden="true"> </i>
+            <i class=" categogory-bar-icons <%= @mapping[cat] %>" aria-hidden="true"><%= cat %></i>
           </a>
           <% end %>
         </div>
@@ -20,6 +21,7 @@
         <div class="row">
           <% @categories.each_with_index do |cat, index| %>
           <% if index == 0 %>
+
           <div class="tab-content" id="<%= cat %>-content">
 
             <% else %>
@@ -45,8 +47,9 @@
           <% end %>
         </div>
 
+
       </div>
 </div>
 </div>
-
+</div>
 
