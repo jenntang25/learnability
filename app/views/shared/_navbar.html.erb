@@ -16,9 +16,7 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-      <%= link_to user_path(current_user), class: "navbar-links" do%>
-        <p><%=current_user.first_name%> <%=" "%><%=current_user.last_name%></p>
-      <%end%>
+      <%link_to user_path(current_user), class: "navbar-links" %>
 
        <% if current_user.establishment %>
       <p><%= link_to current_user.establishment.name, establishment_path(current_user.establishment), class: "navbar-links"%></p>
@@ -36,13 +34,13 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
               <li>
                <%= link_to user_path(current_user) do %>
-               <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+               <i class="fa fa-user"> </i> <%= t(".profile", default: "Profile") %>
                <% end %>
               </li>
 
               <li>
                <%= link_to edit_user_path(current_user) do %>
-                <i class="fa fa-cogs" aria-hidden="true"></i><%= t(".settings", default: "Settings") %> <%end%>
+                <i class="fa fa-cogs" aria-hidden="true"> </i><%= t(".settings", default: "Settings") %> <%end%>
               </li>
 
               <li>
@@ -52,7 +50,7 @@
               </li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
-                  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                   <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
                 <% end %>
               </li>
           </ul>
