@@ -1,8 +1,10 @@
+<div class="card col-md-3 col-lg-<%= gridsize %> col-lg-<%= gridsize %>">
 
- <div class="card col-md-3 col-lg-<%= gridsize %> col-lg-<%= gridsize %>" style="height: 500px;">
+ <% picture = course.photos? ? course.photos.first.public_id : 'awhazjkztkzqtdf3jzv2' %>
+ <img class="card-img-top" style="width: 100%" src="<%= cl_image_path(picture, height: 600, width: 700, crop: :fill) %>" alt="Card image cap">
+ <div class="card-description text-center"><%= truncate(course.description, length: 100) %></div>
 
 
-     <% picture = course.photos? ? course.photos.first.public_id : 'awhazjkztkzqtdf3jzv2' %>
 
 
 <%if current_user && current_user.establishment != nil  %><% @lat_course = course.establishment.latitude %><% @long_course = course.establishment.longitude %><% @lat_user = current_user.establishment.latitude %><% @long_user = current_user.establishment.longitude %><% @final_d = Geocoder::Calculations.distance_between([@lat_user,@long_user],[@lat_course,@long_course] ) %><% @final_d_km = @final_d * 1.609  %><%end  %>
@@ -14,24 +16,27 @@
 
 
 
-    <img class="card-img-top" style="width: 100%" src="<%= cl_image_path(picture, height: 600, width: 700, crop: :fill) %>" alt="Card image cap">
-    <div class="container-card">
-        <ul class="list-inline">
-      <li style = "color: green;">$<strong><%= course.price %></strong> per day</li>
-    </ul>
-    <hr>
+  
+
+
+   <div class="container-card">
+
     <div class="card-block">
-      <h4 class="card-title"><strong><%= course.title  %></strong></h4>
+      <ul class="list-inline">
+        <li style = "color: green;">$<strong><%= course.price %></strong> per day</li>
+        <li> <%= course.tag %> </li>
+
+      <hr class="card-line">
+      <p class="card-title"><strong><%= course.title  %></strong></p>
       <p class="card-text"><%= course.category %></p>
-      <div class="card-description text-center"><%= truncate(course.description, length: 100) %></div>
-    </div>
     </div>
   </div>
+</div>
 
 <% content_for (:after_js) do %>
-  <% javascript_tag do %>
+<% javascript_tag do %>
 
 
 
-  <% end %>
+<% end %>
 <% end %>
