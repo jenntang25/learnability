@@ -4,8 +4,9 @@
     transition: 0.3s;
     color: black;
     margin-top: 20px;
-    margin-bottom: 100px;
-    justify-content: space-between;
+    margin-bottom: 60px;
+    margin-left: 50px;
+    position: relative;
 
     &:hover .card-description {
     opacity: 0.8;
@@ -69,7 +70,7 @@ p {
 
 
 .jumbotron {
-  height: 70vh;
+  height: 60vh;
 }
 
 
@@ -79,6 +80,21 @@ p {
     width: 100%;
   }
 
+.card-block h4 {
+  position: absolute;
+  padding-bottom: 10px;
+
+}
+
+.card-block p {
+
+  padding-bottom: 5px;
+}
+
+.card-line {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
 // .card-container {
 //   display: flex;
 //   flex-direction: row;
