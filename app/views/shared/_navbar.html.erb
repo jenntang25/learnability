@@ -2,13 +2,19 @@
 <div class="navbar-wagon">
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
         <%= image_tag "White_logo.png" %>
+        <%= image_tag "white_learnability.png", class: "navbar-logo" %>
+
 <% end %>
 <% else %>
 <div class="navbar-no-transparency">
  <%= link_to root_path, class: "navbar-wagon-brand" do %>
         <%= image_tag "blue_logo.png" %>
+        <%= image_tag "Learnability .png", class: "navbar-logo" %>
+
   <% end %>
-  <%end  %>
+  <%end %>
+
+
 
   <!-- Right Navigation -->
 
@@ -19,7 +25,8 @@
       <%link_to user_path(current_user), class: "navbar-links" %>
 
        <% if current_user.establishment %>
-      <p><%= link_to current_user.establishment.name, establishment_path(current_user.establishment), class: "navbar-links"%></p>
+
+      <p> <i id = "bell" class="fa fa-bell hidden" aria-hidden="true"> </i> <%= link_to current_user.establishment.name, establishment_path(current_user.establishment),  id: "teacher" ,class: "navbar-links" %> </p>
       <%else%>
       <p><%= link_to "Become a Teacher!", new_establishment_path, class: "navbar-links" %></p>
 

@@ -4,24 +4,19 @@
     <h2 class = "division"><%= @establishment.name%></h2>
     <p class = "division"><%= @establishment.description%></p>
     <p class = "division"><%= @establishment.city%> <%= ", "%><%= @establishment.country%> <%= " "%><%= @establishment.street%> <%= " "%> <%= @establishment.postal_code%></p>
-
   </div>
 
-  <div>
-    <img src="http://www.wonderslist.com/wp-content/uploads/2015/04/Philip-Emeagwali.jpg">
-  </div>
 </div>
+
+
+
       <h1 class = "text-center">Courses</h1>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
 
-<div class = "text-center">
-
-
-<div class="col-xs-12">
+<div class="col-xs-8 col-xs-offset-2">
     <% @my_courses.each do |course|%>
-      <div class = "card-white">
+      <div class = "n-product">
       <ul class = "list-unstyled">
         <li><strong> <%= "Course: "%> </strong><%= link_to course.title, course_path(course)%></li>
        <li> <strong> <%= "City: "%> </strong> <%= course.establishment.name%></li>
@@ -29,32 +24,83 @@
         <li><strong> <%= "Description: "%> </strong><%= course.description%></li>
        <li> <strong> <%= "City: "%> </strong> <%= course.establishment.city%></li>
       </ul>
-      </div>
+    <div class = "buttons-f">
     <% if policy(course).edit? %>
-    <%= link_to "Edit course", edit_establishment_path(course), class: "btn btn-success"%>
+    <p><%= link_to "Edit course", edit_establishment_path(course), class: "btn btn-success"%></p>
 
-    <%= link_to "Destroy course", course, method: :delete , class: "btn btn-danger"%>
-     <br>
-     <br>
-     <br>
-     <br>
+    <p><%= link_to "Destroy course", course, method: :delete , class: "btn btn-danger"%></p>
+    </div>
 
+    </div>
+     <br>
     <% end %>
 
   <%end%>
+
   <%= link_to "Create course", new_establishment_course_path(@establishment), class: "btn btn-primary"%>
 
-<br>
-    </div>
+   </div>
   </div>
-</div>
-</div>
-
-<br>
-<%= link_to "Back", :back , class: "btn btn-default"%>
 
 </div>
 
+</div>
+
+
+
+  <i class="fa fa-exclamation hidden" aria-hidden="true"></i> <button id = "notifications" class = "btn-envelope">
+  <i class="fa fa-envelope-o " aria-hidden="true"></i>
+    Notifications
+
+    <i class="fa fa-arrow-down" aria-hidden="true"></i>
+  </button>
+
+    <div class = "text-center hidden my-notifications">
+
+
+
+      <%if @appointment != nil%>
+
+        <h3> Requests</h3>
+
+        <%@appointment.each do |appointment| %>
+
+       <% if appointment.status.nil? %>
+
+
+        <strong><%="From: "%></strong>
+        <%=appointment.user.first_name%> <%= " "%><%=appointment.user.last_name%>
+        <br>
+        <strong><%="At: "%></strong> <%=appointment.date%>
+        <br>
+        <strong><%= "For: "%></strong> <%=appointment.course.title%>
+        <br>
+        <strong><%= "Messege: "%></strong> <%=appointment.description%>
+        <br>
+
+
+        <%= simple_form_for appointment, url: confirm_appointment_path(appointment), method: :post do |f| %>
+        <%= f.submit "Confirm", class: "btn btn-success" %>
+        <% end %>
+
+
+        <%= simple_form_for appointment, url: decline_appointment_path(appointment), method: :post do |f| %>
+        <%= f.submit "Decline", class: "btn btn-danger" %>
+        <% end %>
+
+
+        <div class = "division"></div>
+        <br>
+        <br>
+<% end %>
+
+<%end%>
+        <%else%>
+
+          <p>You have not requests for courses</p>
+
+        <% end %>
+    </div>
 
 
 
