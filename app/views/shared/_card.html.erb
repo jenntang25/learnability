@@ -1,5 +1,5 @@
 
- <div class="card col-md-3 col-lg-<%= gridsize %> col-lg-<%= gridsize %>" style="height: 500px;">
+ <div class="card col-md-3 col-lg-<%= gridsize %> col-lg-<%= gridsize %>" style="height: 450px;">
 
 
      <% picture = course.photos? ? course.photos.first.public_id : 'awhazjkztkzqtdf3jzv2' %>
@@ -9,6 +9,7 @@
     <div class="container-card">
         <ul class="list-inline">
       <li style = "color: green;">$<strong><%= course.price %></strong> per day</li>
+      <li> <%= course.tag %> </li>
     </ul>
     <hr>
     <div class="card-block">
