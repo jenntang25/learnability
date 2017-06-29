@@ -85,14 +85,10 @@
 </div>
 
 
+<button id = "notifications" class = "btn-envelope" >
 
-<i class="fa fa-exclamation hidden" aria-hidden="true"></i> <button id = "notifications" class = "btn-envelope">
-<i class="fa fa-envelope-o " aria-hidden="true"></i>
-Notifications
-
-<i class="fa fa-arrow-down" aria-hidden="true"></i>
+<P >Notifications </P>
 </button>
-
 <div class = "text-center hidden my-notifications">
 
 
@@ -120,7 +116,7 @@ Notifications
   <%= simple_form_for appointment, url: confirm_appointment_path(appointment), method: :post do |f| %>
   <%= f.submit "Confirm", class: "btn btn-success" %>
   <% end %>
-
+  <br>
 
   <%= simple_form_for appointment, url: decline_appointment_path(appointment), method: :post do |f| %>
   <%= f.submit "Decline", class: "btn btn-danger" %>
