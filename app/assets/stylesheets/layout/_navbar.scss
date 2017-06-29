@@ -51,7 +51,7 @@
 }
 
 .navbar-no-transparency {
-  background: #F4F6F7;
+  background: #white;
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
@@ -77,9 +77,14 @@
 
 /* Navbar logo */
 .navbar-wagon-brand img {
-  padding-top: 10px;
+  padding-top: 20px;
   padding-left: 10px;
-  width: 50px;
+  width: 80px;
+}
+
+.navbar-logo img {
+  width: 500px;
+
 }
 
 /* Navbar right section (with form, links, button) */
@@ -194,11 +199,12 @@
 
 
 .navbar-links{
+  margin-top: 10px;
   background-color: transparent;
   color: white;
-  flex-grow: 1;
+  // flex-grow: 1;
   padding: 30px;
-  length: 40px;
+  length: 10px;
   text-decoration: none;
 
 }
@@ -210,3 +216,5 @@
   color: white;
   text-decoration: none;
 }
+
+

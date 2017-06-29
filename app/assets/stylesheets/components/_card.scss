@@ -4,6 +4,9 @@
     transition: 0.3s;
     color: black;
     margin-top: 20px;
+    margin-bottom: 100px;
+    justify-content: space-between;
+
     &:hover .card-description {
     opacity: 0.8;
 
@@ -74,9 +77,6 @@
 //   align-content: flex-start;
 //   flex-direction: column;
 // }
-
-
-
 
 
 // .card {
@@ -176,12 +176,12 @@
   body{ margin: 20px; }
   h1 { font-size: 1.5em; margin: 10px; }
 
-  .card-container img {
+  // .card-container img {
 
-    padding-top: 200px;
-    width: 800px;
+  //   padding-top: 200px;
+  //   width: 800px;
 
-  }
+  // }
 
 
 
