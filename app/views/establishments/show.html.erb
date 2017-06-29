@@ -18,13 +18,16 @@
 
 
 
-<h1 class = "text-center">Courses</h1>
-<div class="container">
-  <div class="row">
+<strong><h1 class = "text-center">Courses</h1></strong>
 
-    <div class="col-xs-8 col-xs-offset-2">
+ <div class="container">
+<div class="row">
+<div class="col-xs-8 col-xs-offset-2">
+
       <% @my_courses.each do |course|%>
+
       <div class = "n-product">
+
 
       <% if course.photos? %>
     <% course.photos.each do |photo| %>
@@ -88,16 +91,21 @@
 <button id = "notifications" class = "btn-envelope" >
 
 <span>
+
 <% if @appointment.where(status: nil).any? %>
 <P >Notifications
 <span class="orb">
 <%= @appointment.where(status: nil).count %>
+
 </span>
+
 </P>
+
 <% else %>
-<P >Notifications </P>
+ <P> Notifications </P>
 <% end %>
 </span>
+
 </button>
 
 <div class = "text-center hidden my-notifications">
