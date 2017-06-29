@@ -37,7 +37,11 @@
                     </p>
                   <% else %>
                     <% courses.each do |course| %>
-                    <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
+
+            <%=link_to course_path(course.id) do%>
+        <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
+        <%end%>
+
                     <% end %>
                   <% end %>
 

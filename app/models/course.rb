@@ -18,17 +18,27 @@ class Course < ApplicationRecord
  }
 
 
-# def self.distance
-#   Geocoder::Calculations.distance_between([current_user.latitude,current_user.longitude],[self.latitude,self.longitude])
-# end
+  def distance
+   Geocoder::Calculations.distance_between([current_user.establishment.latitude,current_user.establishment.longitude],[self.latitude,self.longitude])
+ end
 
- belongs_to :establishment
- has_many :reviews, through: :appointments, dependent: :destroy
- has_many :appointments
- has_attachments :photos, maximum: 1
- validates :title, presence: true
- validates :price, presence: true
- validates :tag, presence: true, length: { maximum: 50 }
+ def self.distance
+   Geocoder::Calculations.distance_between([current_user.establishment.latitude,current_user.establishment.longitude],[self.latitude,self.longitude])
+ end
+
+ def distance(establishment)
+  Geocoder::Calculations.distance_between([19.3992562,99.2526899],[establishment.latitude, establishment.longitude])
+ end
+
+
+
+belongs_to :establishment
+has_many :reviews, through: :appointments, dependent: :destroy
+has_many :appointments
+has_attachments :photos, maximum: 1
+validates :title, presence: true
+validates :price, presence: true
+validates :tag, presence: true, length: { maximum: 50 }
  #validates :photos, presence: true
  validates :category,  presence: true, inclusion: { in: Course::CATEGORIES, allow_nil: false }
 

@@ -42,7 +42,6 @@ class CoursesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@course.establishment) do |establishment, marker|
       marker.lat establishment.latitude
       marker.lng establishment.longitude
-     # @a= @course.establishment.distance
     end
     @mapping = Course::CATEGORIES_MAPPING
   end

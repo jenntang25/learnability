@@ -9,6 +9,8 @@ class PagesController < ApplicationController
     @mapping = Course::CATEGORIES_MAPPING
 
 
+
+
       #{}"education" => "fa flask fa-2x",
       # "Sports" => "fa fa-futbol-o fa-2x",
       #"business" => "fa fa-line-chart fa-2x",

@@ -5,6 +5,15 @@
      <% picture = course.photos? ? course.photos.first.public_id : 'awhazjkztkzqtdf3jzv2' %>
 
 
+<%if current_user && current_user.establishment != nil  %><% @lat_course = course.establishment.latitude %><% @long_course = course.establishment.longitude %><% @lat_user = current_user.establishment.latitude %><% @long_user = current_user.establishment.longitude %><% @final_d = Geocoder::Calculations.distance_between([@lat_user,@long_user],[@lat_course,@long_course] ) %><% @final_d_km = @final_d * 1.609  %><%end  %>
+
+
+<p>The distance from your establishment is <%= @final_d_km.round(1) %> km  </p>
+
+
+
+
+
     <img class="card-img-top" style="width: 100%" src="<%= cl_image_path(picture, height: 600, width: 700, crop: :fill) %>" alt="Card image cap">
     <div class="container-card">
         <ul class="list-inline">

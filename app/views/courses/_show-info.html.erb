@@ -1,3 +1,10 @@
+<%if current_user && current_user.establishment != nil  %><% @lat_course = @course.establishment.latitude %><% @long_course = @course.establishment.longitude %><% @lat_user = current_user.establishment.latitude %><% @long_user = current_user.establishment.longitude %><% @final_d = Geocoder::Calculations.distance_between([@lat_user,@long_user],[@lat_course,@long_course] ) %><% @final_d_km = @final_d * 1.609  %><%end  %>
+
+
+<div class = "banner" style="background-image: linear-gradient(-700deg, rgba(0,50,50,0.6) 0%, rgba(0,36,61,0.6) 20%), url('<%= cl_image_path("http://teaching.utoronto.ca/wp-content/uploads/2015/05/atelier-enseignement-de-informatique.jpg",
+width: 1000, height: 500, crop: :fit) %>')" >
+
+</div>
      <div class="col-md-8">
 
        <table >
@@ -7,6 +14,13 @@
           <td colspan="2">
            <h1 class="text-center" style="font-size: 30px; color: gray"><%= @course.title%></h1>
            <h2 class="text-center" style="font-size: 20px; color: gray"><%= @course.tag %></h2>
+
+
+
+
+<p>The distance from your establishment is <%= @final_d_km.round(1) %> km  </p>
+
+
            <br>
            <ul class="list-unstyled">
             <li><i class="<%= @mapping[@course.category] %>"> <%= @course.category %></i></li>
