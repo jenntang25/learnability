@@ -1,22 +1,65 @@
-<div class="card col-md-3 col-lg-<%= gridsize %> col-lg-<%= gridsize %>">
 
- <% picture = course.photos? ? course.photos.first.public_id : 'awhazjkztkzqtdf3jzv2' %>
- <img class="card-img-top" style="width: 100%" src="<%= cl_image_path(picture, height: 600, width: 700, crop: :fill) %>" alt="Card image cap">
- <div class="card-description text-center"><%= truncate(course.description, length: 100) %></div>
+<%if current_user && current_user.establishment != nil  %><% @lat_course = course.establishment.latitude %><% @long_course = course.establishment.longitude %><% @lat_user = current_user.establishment.latitude %><% @long_user = current_user.establishment.longitude %><% @final_d = Geocoder::Calculations.distance_between([@lat_user,@long_user],[@lat_course,@long_course] ) %><% @final_d_km = @final_d * 1.609  %><%end  %>
 
+  <% @mapping = { %>
+   <% "Sports" => "fa fa-futbol-o", %>
+   <% "Education" => "fa fa-flask", %>
+   <% "Technology" => "fa fa-code ", %>
+   <% "Business" => "fa fa-line-chart ", %>
+   <% "Music" => "fa fa-play ", %>
+   <% "Cooking" => "fa fa-cutlery ", %>
+   <% "Health" => "fa fa-heartbeat ", %>
+   <% "Art" => "fa fa-paint-brush", %>
+   <% "Photography" => "fa fa-camera-retro ", %>
+   <% "Entertainment" => "fa fa-glass", %>
+ <% } %>
+
+
+
+<div class="col-md-3 col-lg-<%= gridsize %> col-lg-<%= gridsize %>">
+ <div class="card">
+   <% picture = course.photos? ? course.photos.first.public_id : 'awhazjkztkzqtdf3jzv2' %>
+   <img class="card-img-top" style="width: 100%" src="<%= cl_image_path(picture, height: 600, width: 700, crop: :fill) %>" >
    <div class="container-card">
-    <div class="card-block">
-      <ul class="list-inline">
-        <li style = "color: green;">$<strong><%= course.price %></strong> per day</li>
-        <li> <%= course.tag %> </li>
+     <h4 class="card-title "><strong><%= course.title.titleize  %></strong></h4>
 
-      <hr class="card-line">
-      <p class="card-title"><strong><%= course.title  %></strong></p>
+     <% unless course.tag.nil? %>
+     <p class="tag-label "><i class="<%= @mapping[course.category]%>"></i>
+      <%= course.category %></p>
+    </p>
+    <% end %>
+    <p >
+      <%= course.tag %>
+    </p>
+    <ul class="list-inline">
+      <li class="cost">
+        $
+        <strong>
+          <%= course.price %>
+        </strong>
+        day
+      </li>
+      <li class="distance">
+        <%= @final_d_km.round(1) %>
+        km away
+      </li>
+    </ul>
+
+    <div class="card-description text-center">
+      <h4 class="card-title @mapping[course.category]">
+        <strong>
+        <%= course.title  %>
+        </strong>
+      </h4>
       <p class="card-text"><%= course.category %></p>
+      <hr>
+      <p class="course-description">
+      <%= truncate(course.description, length: 100) %>
+      </p>
+      </div>
     </div>
   </div>
 </div>
-
 <% content_for (:after_js) do %>
 <% javascript_tag do %>
 

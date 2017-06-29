@@ -37,7 +37,7 @@
                     </p>
                   <% else %>
                     <% courses.each do |course| %>
-                    <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
+                    <%= render partial: "shared/card", locals: { gridsize: 3, course: course, mapping: @mapping } %>
                     <% end %>
                   <% end %>
 
