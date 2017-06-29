@@ -9,7 +9,7 @@
   <div>
      <% if @establishment.photos? %>
     <% @establishment.photos.each do |photo| %>
-    <%= cl_image_tag photo.path, height: 50, width: 50, crop: :fill %>
+    <%= cl_image_tag photo.path, height: 350, width: 350, crop: :fill%>
     <% end %>
     <% end %>
   </div>
