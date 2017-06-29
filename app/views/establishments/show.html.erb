@@ -52,9 +52,17 @@
          <li>
            <div class = "buttons-f">
             <% if policy(course).edit? %>
-            <%= link_to "Edit course", edit_establishment_path(course), class: "btn btn-success"%>
+
+              <%= link_to edit_establishment_path(course), class: "btn btn-default" do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i> Edit
             <% end %>
-            <%= link_to "Destroy course", course, method: :delete , class: "btn btn-danger destroy-course"%>
+
+            <% end %>
+            <%= link_to course, method: :delete , class: "btn btn-default destroy-course" do %>
+              <i class="fa fa-trash-o" aria-hidden="true"></i> Destroy
+            <%end%>
+
+
           </div>
          </li>
        </ul>
