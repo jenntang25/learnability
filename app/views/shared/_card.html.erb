@@ -1,5 +1,5 @@
 
- <div class="card col-md-3" style="height: 400px;">
+ <div class="card col-md-3 col-lg-<%= gridsize %> col-lg-<%= gridsize %>" style="height: 500px;">
 
 
      <% picture = course.photos? ? course.photos.first.public_id : 'awhazjkztkzqtdf3jzv2' %>
@@ -14,7 +14,7 @@
     <div class="card-block">
       <h4 class="card-title"><strong><%= course.title  %></strong></h4>
       <p class="card-text"><%= course.category %></p>
-      <div class="card-description"><%= truncate(course.description, length: 100) %></div>
+      <div class="card-description text-center"><%= truncate(course.description, length: 100) %></div>
     </div>
     </div>
   </div>
