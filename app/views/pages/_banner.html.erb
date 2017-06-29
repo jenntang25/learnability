@@ -5,7 +5,7 @@ width: 1000, height: 500, crop: :fit) %>')" >
 
 <div class = "search-box">
   <%= form_tag('/', method: 'get') do  %>
-  <%= text_field_tag :search_value, params[:search_value].to_s, {placeholder: 'find your next course', class: "navbar-wagon-search-input"} %>
-  <%= submit_tag 'Search', class: 'btn btn-warning' %>
+  <%= text_field_tag :search_value, params[:search_value].to_s, {placeholder: 'Find your next course', class: "navbar-wagon-search-input"} %>
+  <%= submit_tag 'Search', class: 'btn navbar-links' %>
   <% end  %>
 </div>
