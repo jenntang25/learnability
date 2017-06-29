@@ -50,7 +50,9 @@ class EstablishmentsController < ApplicationController
 
   def destroy
     @establishment.destroy
-    redirect_to "pages#home"
+    @appointment = Appointment.where(course_id: current_user.establishment.courses)
+    @appointment.destroy!
+    redirect_to establishment_path(@establishment)
   end
 
   private

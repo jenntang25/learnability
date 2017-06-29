@@ -48,29 +48,18 @@
 
 
 
-<button id = "notifications" class = "btn btn-success"> Notification</button>
+  <i class="fa fa-exclamation hidden" aria-hidden="true"></i> <button id = "notifications" class = "btn btn-success">
+    <i class="fa fa-envelope-o " aria-hidden="true"></i>
+  </button>
+
     <div class = "text-center hidden my-notifications">
 
       <%if @appointment != nil%>
-      <% content_for(:after_js) do %>
-      <%= javascript_tag do %>
-      $(document).ready(function(){
-
-        $("#bell").removeClass("hidden");
-
-        $(".#teacher").click(function()
-        $("#bell").addClass("hidden");
-
-        });
-
-       });
-
-
-      <%end%>
-      <%end%>
 
         <h3> You have <%=@appointment.count%> course requets</h3>
         <%@appointment.each do |appointment| %>
+<% if appointment.status.nil? %>
+
         <strong><%="From: "%></strong>
         <%=appointment.user.first_name%> <%= " "%><%=appointment.user.last_name%>
         <br>
@@ -81,12 +70,23 @@
         <strong><%= "Messege: "%></strong> <%=appointment.description%>
         <br>
 
-        <%= link_to "Confirm", class: "btn btn-success"%>
-        <%= link_to "Decline", class: "btn btn-danger"%>
+
+        <%= simple_form_for appointment, url: confirm_appointment_path(appointment), method: :post do |f| %>
+        <%= f.submit "Confirm", class: "btn btn-success" %>
+        <% end %>
+
+
+        <%= simple_form_for appointment, url: decline_appointment_path(appointment), method: :post do |f| %>
+        <%= f.submit "Decline", class: "btn btn-danger" %>
+        <% end %>
+
+
         <div class = "division"></div>
         <br>
         <br>
-    <%end%>
+<% end %>
+
+    <% end %>
         <%else%>
           <p>You have not requests for courses</p>
         <%end%>
