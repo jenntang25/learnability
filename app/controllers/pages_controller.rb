@@ -9,21 +9,6 @@ class PagesController < ApplicationController
     @mapping = Course::CATEGORIES_MAPPING
 
 
-      #{}"education" => "fa flask fa-2x",
-      # "Sports" => "fa fa-futbol-o fa-2x",
-      #"business" => "fa fa-line-chart fa-2x",
-       #{}"Cooking" => "fa fa-cutlery fa-2x",
-       #"Health" => "fa fa-heartbeat fa-2x",
-       #{}"Technology" => "fa fa-code fa-2x",
-       #"Music" => "fa fa-play fa-2x",
-       #"Photography" => "ffa a-camera-retro fa-2x",
-      # "Entertainment" => "fa fa-glass fa-2x",
-       #{}"Languages" => "fa hide fa-2x",
-       #{}"Leisure" => "fa fa-glass fa-2x",
-      # "Programming" => "fa fa-code fa-2x",
-       #"Art" => "fa fa-paint-brush fa-2x",
-      # "Other" => " hide "
-
 
       if params[:search_value].present?
         @courses_value = Course.search(params[:search_value]).first(10)

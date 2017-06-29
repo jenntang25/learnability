@@ -4,10 +4,10 @@
 <% render partial: "banner" %>
 
 <%= render partial: "courses", locals: { courses: @courses } %>
+<%= render partial: "explore-categories", locals: {mapping: @mapping, categories: @categories} %>
 
 <%= render partial: "info-banner" %>
 
-<%= render partial: "explore-categories", locals: {mapping: @mapping, categories: @categories} %>
 
 <%= render partial: "value" %>
 
