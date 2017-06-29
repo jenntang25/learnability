@@ -5,7 +5,7 @@
          <col width="67%">
          <tr>
           <td colspan="2">
-           <h1 class="text-center" style="font-size: 30px; color: gray"><%= @course.title%></h1>
+           <h1 class="text-center" style="font-size: 40px; color: gray"><%= @course.title%></h1>
            <h2 class="text-center" style="font-size: 20px; color: gray"><%= @course.tag %></h2>
            <br>
            <ul class="list-unstyled">
@@ -45,7 +45,7 @@
   <div style="width: 100%; position: fixed; padding: 30px;">
     <% if @course.photos? %>
     <% @course.photos.each do |photo| %>
-    <%= cl_image_tag photo.path, width: 300, height: 300, crop: :crop %>
+    <%= cl_image_tag photo.path, width: 300, height: 300, crop: :fill %>
     <% end %>
     <% end %>
 
