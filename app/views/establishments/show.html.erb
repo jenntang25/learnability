@@ -87,8 +87,19 @@
 
 <button id = "notifications" class = "btn-envelope" >
 
+<span>
+<% if @appointment.where(status: nil).any? %>
+<P >Notifications
+<span class="orb">
+<%= @appointment.where(status: nil).count %>
+</span>
+</P>
+<% else %>
 <P >Notifications </P>
+<% end %>
+</span>
 </button>
+
 <div class = "text-center hidden my-notifications">
 
 
