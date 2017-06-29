@@ -1,36 +1,11 @@
-
 <div class="container jumbotron">
+<div class="row">
+  <div class="col-md-9">
 
-<div class="col-xs-3">
+      <div class = "text-center">
 
-  <div class = "profile-sidebar">
-      <ul class = "list-unstyled">
-        <%= link_to appointments_path do%>
-        <li> My Courses</li>
-        <%end%>
-
-        <%= link_to  edit_user_path(current_user) do%>
-        <li > Edit Profile</li>
-        <%end%>
-
-        <%= link_to  new_establishment_path do %>
-        <li > Become a teacher</li>
-        <%end%>
-
-        <%= link_to edit_establishment_path(current_user) do %>
-        <li>Edit my Establishment</li>
-        <%end%>
-
-      </ul>
-  </div>
-</div>
-
-<div class="col-md-9">
-
-  <div class = "text-center">
-
-    <div class = "col-xs-12 sidebar">
-      <div class= "profile-photo">
+        <div class = "col-xs-12 sidebar">
+            <div class= "profile-photo">
         <% if @user.photos? %>
         <% @user.photos.each do |photo| %>
         <%= cl_image_tag photo.path, width: 300, height: 300, crop: :fill, class: "img-circle"%>
@@ -48,5 +23,45 @@
   </div>
 </div>
 
+  <div class="area"></div><nav class="main-menu">
+  <ul>
+    <li>
+      <a <%= link_to appointments_path do %>
+        <i class="fa fa-home fa-2x"></i>
+        <span class="nav-text">
+          My Appointments
+        </span>
+        <%end%>
+
+
+      </a>
+
+    </li>
+    <li class="has-subnav">
+      <a <%= link_to  edit_user_path(current_user) do%>
+        <i class="fa fa-list fa-2x"></i>
+        <span class="nav-text">
+          Edit Profile
+        </span>
+        <%end%>
+
+      </a>
+
+    </li>
+    <li class="has-subnav">
+      <a <%= link_to edit_establishment_path(current_user) do %>
+           <i class="fa fa-folder-open fa-2x"></i>
+        <span class="nav-text">
+          Edit my Establishment
+        </span>
+        <%end%>
+
+      </a>
+    </li>
+
+
+</ul>
+</nav>
+</div>
 
 </div>
