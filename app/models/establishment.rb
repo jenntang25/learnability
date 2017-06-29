@@ -5,7 +5,7 @@ class Establishment < ApplicationRecord
   belongs_to :user
 
   has_many :courses, dependent: :destroy
-
+  has_attachments :photos, maximum: 4
   # validates :street, presence: true
   validates :country, presence: true
   validates :city, presence: true
