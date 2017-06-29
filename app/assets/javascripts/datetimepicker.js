@@ -12,3 +12,8 @@ $('#datetimepicker12').datetimepicker({
 
 
 
+$(document).ready(function() {
+  $('#notifications').click(function(){
+  $(".my-notifications").toggleClass("hidden");
+  });
+});

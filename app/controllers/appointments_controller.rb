@@ -31,6 +31,20 @@ class AppointmentsController < ApplicationController
   def update
   end
 
+  def confirm
+    @appointment = Appointment.find(params[:id])
+    @appointment.status = "Confirmed"
+    @appointment.save
+    redirect_to establishment_path(@appointment.course.establishment)
+  end
+
+  def decline
+    @appointment = Appointment.find(params[:id])
+    @appointment.status = "Declined"
+    @appointment.save
+    redirect_to establishment_path(@appointment.course.establishment)
+  end
+
   def edit
   end
 
