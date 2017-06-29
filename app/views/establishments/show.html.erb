@@ -48,17 +48,25 @@
 
 
 
-  <i class="fa fa-exclamation hidden" aria-hidden="true"></i> <button id = "notifications" class = "btn btn-success">
-    <i class="fa fa-envelope-o " aria-hidden="true"></i>
+  <i class="fa fa-exclamation hidden" aria-hidden="true"></i> <button id = "notifications" class = "btn-envelope">
+  <i class="fa fa-envelope-o " aria-hidden="true"></i>
+    Notifications
+
+    <i class="fa fa-arrow-down" aria-hidden="true"></i>
   </button>
 
     <div class = "text-center hidden my-notifications">
 
+
+
       <%if @appointment != nil%>
 
-        <h3> You have <%=@appointment.count%> course requets</h3>
+        <h3> Requests</h3>
+
         <%@appointment.each do |appointment| %>
-<% if appointment.status.nil? %>
+
+       <% if appointment.status.nil? %>
+
 
         <strong><%="From: "%></strong>
         <%=appointment.user.first_name%> <%= " "%><%=appointment.user.last_name%>
@@ -86,10 +94,12 @@
         <br>
 <% end %>
 
-    <% end %>
+<%end%>
         <%else%>
+
           <p>You have not requests for courses</p>
-        <%end%>
+
+        <% end %>
     </div>
 
 
