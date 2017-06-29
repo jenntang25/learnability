@@ -40,8 +40,10 @@
         day
       </li>
       <li class="distance">
+      <% if @final_d_km %>
         <%= @final_d_km.round(1) %>
         km away
+      <% end %>
       </li>
     </ul>
 
