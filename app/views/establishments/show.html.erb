@@ -25,6 +25,12 @@
     <div class="col-xs-8 col-xs-offset-2">
       <% @my_courses.each do |course|%>
       <div class = "n-product">
+
+      <% if course.photos? %>
+    <% course.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, height: 200, width: 200, crop: :fill%>
+    <% end %>
+    <% end %>
         <ul class = "list-unstyled">
 
           <li class = "division"><strong> <%= "Course"%>
@@ -46,9 +52,17 @@
          <li>
            <div class = "buttons-f">
             <% if policy(course).edit? %>
-            <%= link_to "Edit course", edit_establishment_path(course), class: "btn btn-success"%>
+
+              <%= link_to edit_establishment_path(course), class: "btn btn-default" do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i> Edit
             <% end %>
-            <%= link_to "Destroy course", course, method: :delete , class: "btn btn-danger destroy-course"%>
+
+            <% end %>
+            <%= link_to course, method: :delete , class: "btn btn-default destroy-course" do %>
+              <i class="fa fa-trash-o" aria-hidden="true"></i> Destroy
+            <%end%>
+
+
           </div>
          </li>
        </ul>
