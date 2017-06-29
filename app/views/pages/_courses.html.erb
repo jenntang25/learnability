@@ -1,3 +1,6 @@
+<script>
+  window.SEARCH_QUERY = '<%= params[:search_value] %>';
+</script>
 
 <div class = "container">
   <div class = "row">
@@ -5,7 +8,7 @@
     <h1 class="title">Explore courses</h1>
      <li class = "division list-unstyled" style="margin: 20px;"></li>
 
-    <div>
+    <div class="search-results">
       <%if params[:search_value] != nil  %>
 
       <div class= col-md-6>
@@ -23,6 +26,7 @@
         <div id="map"  style="width: 100%; height: 600px;">
         </div>
         <% content_for(:after_js) do %>
+
         <%= javascript_tag do %>
         $(document).ready(function() {
         var handler = Gmaps.build('Google');
@@ -37,7 +41,18 @@
     }
   });
 });
+
+$(document).ready(function() {
+  if (window.SEARCH_QUERY !== "") {
+    var results = $('.search-results');
+    $('html,body').animate({
+      scrollTop: results.offset().top
+    }, 600);
+  }
+});
+
 <% end %>
+
 <% end %>
 </div>
 
