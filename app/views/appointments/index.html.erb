@@ -13,7 +13,7 @@
 
        <% if appointment.course.photos? %>
        <% appointment.course.photos.each do |photo| %>
-       <%= cl_image_tag photo.path, width: 200, height: 215 %>
+       <%= cl_image_tag photo.path, width: 200, height: 215, crop: :fill %>
        <% end %>
        <% end %>
 
