@@ -59,6 +59,7 @@
   background: #000;
   .logo {
     position: absolute;
+    top: 220px;
     z-index: 99999999;
   }
 }
@@ -70,7 +71,7 @@
 .video-container .filter {
   z-index: 100;
   position: absolute;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   width: 100%;
   top: 0;
   bottom: 0;
