@@ -8,6 +8,7 @@
 
         <div class="category-bar">
           <% @categories.each_with_index do |cat, index| %>
+
           <% if index == 0 %>
           <a href="#" class="tab active" data-target="#<%= cat %>-content">
             <% else %>
@@ -18,47 +19,34 @@
                 <%= cat %>
               </span>
             </a>
+
             <% end %>
-          </div>
+
+        </div>
 
 
           <div class="row">
-            <% @categories.each_with_index do |cat, index| %>
-            <% if index == 0 %>
-
-            <div class="tab-content" id="<%= cat %>-content">
-
-
-
-
-
-              <div class="row">
                 <% @categories.each_with_index do |cat, index| %>
                 <div class="tab-content hidden" id="<%= cat %>-content">
-                  <% end %>
                   <div class="col-xs-12">
-
                    <% courses = Course.where("category ILIKE ?", "%#{cat}%") %>
+
                    <% if courses.empty? %>
-                   <p class ="text-center">
-                    No courses for this category yet :(
-                  </p>
+                     <p class ="text-center">
+                      No courses for this category yet :(
+                    </p>
                   <% else %>
-                  <% courses.each do |course| %>
-                  <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
-                  <% end %>
-                  <% end %>
+                    <% courses.each do |course| %>
+                    <%= render partial: "shared/card", locals: { gridsize: 3, course: course } %>
+                    <% end %>
                   <% end %>
 
+
+                  </div>
                 </div>
                 <% end %>
-              </div>
-
-
             </div>
           </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
