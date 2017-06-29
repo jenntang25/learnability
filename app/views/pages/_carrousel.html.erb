@@ -1,33 +1,23 @@
-<div id="carousel-example-generic" class="carousel slide banner" data-ride="carousel">
-  <!-- Indicators -->
+<div class="homepage-hero-module">
+  <div class="video-container">
+    <div class="filter" style="background-image: linear-gradient(-700deg, rgba(0,50,50,0.6) 0%, rgba(0,36,61,0.6) 20%);""></div>
+    <video autoplay loop class="fillWidth">
+    <source src="<%= video_path "left.mp4" %>" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        <source src="P<%= video_path "left.webm" %>" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>
+        <div class="poster hidden">
+          <img src="<%= image_path "left.jpg" %>" alt="">
+        </div>
 
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item"><%= image_tag "guitar.jpg" %>
-
+        <%= image_tag "learn_locally.png", class: "logo" %>
+      </div>
     </div>
-    <div class="item c-image"><%= image_tag "chess.jpg" %></div>
-    <div class="item c-image active"><%= image_tag "parachute.jpg" %></div>
-  <div class="item c-image"><%= image_tag "swimming.jpg" %> </div>
-</div>
 
-<!-- Controls -->
-<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-  <span class="sr-only">Previous</span>
-</a>
-<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-  <span class="sr-only">Next</span>
-</a>
-</div>
-
-<div class = "search-box cfront">
-  <%= form_tag('/', method: 'get') do  %>
-  <%= text_field_tag :search_value, nil, placeholder: 'find your next course' , class: "navbar-wagon-search-input" %>
-  <%= submit_tag 'Search', class: ' cfront btn btn-warning' %>
-  <% end  %>
-</div>
+    <div class = "search-box ">
+      <%= form_tag('/', method: 'get') do  %>
+      <%= text_field_tag :search_value, nil, placeholder: 'find your next course' , class: "navbar-wagon-search-input" %>
+      <%= submit_tag 'Search', class: ' cfront btn btn-warning' %>
+      <% end  %>
+    </div>
 
 
