@@ -1,4 +1,5 @@
-     <div class="col-md-8" >
+
+     <div class="col-md-8 back-color" >
 <div class="titulo">
 
 
@@ -50,7 +51,7 @@
 
 <div class="col-md-4">
 
-  <div style="width: 100%; position: fixed; margin-top: 85px">
+  <div style="width: 100%; position: relative; margin-top: 85px">
     <% if @course.photos? %>
     <% @course.photos.each do |photo| %>
     <%= cl_image_tag photo.path, width: 350, height: 350, crop: :fill %>
@@ -58,4 +59,5 @@
     <% end %>
 
   </div>
+</div>
 </div>
