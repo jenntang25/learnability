@@ -18,16 +18,18 @@
       <%= f.button :submit, class: "btn btn-primary" %>
       <%end%>
 
+            <%= f.button :submit, class: "btn btn-warning" %>
+    <%end%>
+
     </div>
   </div>
 </div>
 <br>
 
-
-
+</div>
 <% content_for(:after_js) do %>
 
-</div>
+
 <script>
 
   $(document).ready(function () {
@@ -35,8 +37,9 @@
    $.fn.raty.defaults.starOn = "<%= image_path 'star-on.png' %>";
    $('#rating-form').raty({
     scoreName: 'review[stars]'
+    });
   });
- });
+
 </script>
 
 
