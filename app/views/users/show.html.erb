@@ -15,8 +15,11 @@
       </div>
       <ul class = "list-unstyled">
         <h1><%=current_user.first_name%><%=" "%><%= current_user.last_name%></h1>
+        <hr>
         <li><%= current_user.email%> </li>
+        <hr>
         <li> <%= current_user.city%><%= " "%> <%= current_user.country%></li>
+        <hr>
         <li><%= current_user.description %> </li>
       </ul>
     </div>

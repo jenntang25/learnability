@@ -1,38 +1,52 @@
+<br>
+
 <div class = "text-center">
-<br>
-<br>
-<h2>Tell us about <%=@appointment.course.title%> with <%=@appointment.course.establishment.name%>!</h2>
+  <h2>Tell us about <%=@appointment.course.title%> with <%=@appointment.course.establishment.name%>!</h2>
+
 </div>
 
 <div class = "container">
-  <div class = "row">
-    <div class = "col-xs-4 col-md-offset-4">
-      <%= simple_form_for [@appointment, @review ] do |f| %>
-            <% f.error_notification %>
-            <%= f.input :content %>
 
-            <div id="rating-form"></div>
+  <div class = "row-box">
+   <div class="form-box">
+
+    <div class = "col-md-offset-4">
+      <%= simple_form_for [@appointment, @review ] do |f| %>
+      <% f.error_notification %>
+      <%= f.input :content %>
+
+      <div id="rating-form"></div>
+
+      <%= f.button :submit, class: "btn btn-primary" %>
+      <%end%>
 
             <%= f.button :submit, class: "btn btn-warning" %>
     <%end%>
+
     </div>
   </div>
 </div>
+<br>
 
-  <% content_for(:after_js) do %>
+</div>
+<% content_for(:after_js) do %>
+
 
 <script>
 
-$(document).ready(function () {
- $('#rating-form').raty({
-  path: '/assets/',
-  scoreName: 'review[stars]'
- });
-});
+  $(document).ready(function () {
+   $.fn.raty.defaults.starOff = "<%= image_path 'star-off.png' %>";
+   $.fn.raty.defaults.starOn = "<%= image_path 'star-on.png' %>";
+   $('#rating-form').raty({
+    scoreName: 'review[stars]'
+    });
+  });
 
 </script>
 
 
 <% end %>
+
+
 
 

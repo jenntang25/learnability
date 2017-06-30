@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
 <div class="imagecourse" style="
@@ -53,6 +52,8 @@
     <% content_for(:after_js) do %>
     <%= javascript_tag do %>
     $(document).ready(function() {
+     $.fn.raty.defaults.starOff = "<%= image_path 'star-off.png' %>";
+     $.fn.raty.defaults.starOn = "<%= image_path 'star-on.png' %>";
     var handler = Gmaps.build('Google');
     handler.buildMap({ internal: { id: 'map' },  provider:{ scrollwheel: false } }, function() {
     markers = handler.addMarkers(<%= raw @hash.to_json %>);
@@ -72,8 +73,7 @@
 <script>
   $(document).ready(function () {
    $('.review-star').raty({
-    path: '/assets/',
-
+      /*path: '/assets/',*/
       // scoreName: 'review[stars]'
       readOnly: true,
       score: function() {
