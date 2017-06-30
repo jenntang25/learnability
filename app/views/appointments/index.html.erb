@@ -26,13 +26,11 @@
           <li> <%= appointment.date%></li>
           <li> <%= appointment.course.establishment.city%><%= ", "%><%=appointment.course.establishment.country%></li>
 
-          <li> <%= link_to "Review this course", new_appointment_review_path(appointment), class: "btn btn-success" %></li>
+          <li> <%= link_to "Review this course", new_appointment_review_path(appointment), class: "btn btn-warning" %></li>
         </ul>
       </div>
     </div>
     <% end %>
   </div>
 </div>
-
-
 
