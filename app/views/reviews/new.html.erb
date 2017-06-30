@@ -31,8 +31,9 @@
 <script>
 
   $(document).ready(function () {
+   $.fn.raty.defaults.starOff = "<%= image_path 'star-off.png' %>";
+   $.fn.raty.defaults.starOn = "<%= image_path 'star-on.png' %>";
    $('#rating-form').raty({
-    path: '/assets/',
     scoreName: 'review[stars]'
   });
  });
