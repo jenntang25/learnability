@@ -2,76 +2,78 @@
 <div class = "info-teacher">
   <div>
     <h2 class = "division"><%= @establishment.name%></h2>
-    <p class = "division"><%= @establishment.description%></p>
-    <p class = "division"><%= @establishment.city%> <%= ", "%><%= @establishment.country%> <%= " "%><%= @establishment.street%> <%= " "%> <%= @establishment.postal_code%></p>
-  </div>
+    <p><%=@establishment.user.description%><%= @establishment.description%>
+<br>
+    <strong>Username: </strong><%= @establishment.user.fullname %><br><strong>Address: </strong><%= @establishment.address%></div>
+    </div>
 
-  <div>
+
+
+    <div style="margin-right:30px">
      <% if @establishment.photos? %>
-    <% @establishment.photos.each do |photo| %>
-    <%= cl_image_tag photo.path, height: 350, width: 350, crop: :fill%>
-    <% end %>
-    <% end %>
-  </div>
+     <% @establishment.photos.each do |photo| %>
+     <%= cl_image_tag photo.path, height: 350, width: 350, crop: :fill%>
+     <% end %>
+     <% end %>
+   </div>
 
-</div>
+ </div>
 
-
-
-<strong><h1 class = "text-center">Courses</h1></strong>
 
  <div class="container">
-<div class="row">
-<div class="col-xs-8 col-xs-offset-2">
+  <div class="row">
+  <div class="col-xs-11 offset-md-1">
 
       <% @my_courses.each do |course|%>
 
       <div class = "n-product">
 
 
-      <% if course.photos? %>
-    <% course.photos.each do |photo| %>
-    <%= cl_image_tag photo.path, height: 200, width: 200, crop: :fill%>
-    <% end %>
-    <% end %>
-        <ul class = "list-unstyled">
+        <% if course.photos? %>
+        <% course.photos.each do |photo| %>
+        <%= cl_image_tag photo.path, height: 200, width: 200, crop: :fill%>
+        <% end %>
+        <% end %>
 
-          <li class = "division"><strong> <%= "Course"%>
-            <br> </strong><%= link_to course.title, course_path(course)%>
-          </li>
+        <p style="margin:20px">
+          <%= link_to course.title, course_path(course)%>
 
-          <li class ="division"><strong> <%= "Price"%>
-            <br></strong><%= course.price %> <%= " $"%>
-          </li>
-
-          <li class="division"><strong> <%= "Description"%> </strong>
-            <br> <%= course.description%>
-          </li>
-
-          <li class = "division"> <strong> <%= "City"%> </strong>
-           <br><%= course.establishment.city%>
-         </li>
-         <br>
-         <li>
-           <div class = "buttons-f">
-            <% if policy(course).edit? %>
-
-              <%= link_to edit_establishment_path(course), class: "btn btn-default" do %>
-              <i class="fa fa-pencil" aria-hidden="true"></i> Edit
-            <% end %>
-
-            <% end %>
-            <%= link_to course, method: :delete , class: "btn btn-default destroy-course" do %>
-              <i class="fa fa-trash-o" aria-hidden="true"></i> Destroy
-            <%end%>
+          <br>
+          <br>
+          <strong> <%= "Description: "%>
+          </strong>
+          <%= course.description%>
+          <br>
+          <br>
+          <strong>
+            <%= "Price: "%>
+          </strong><%= course.price %> <%= " $"%>
+        </p>
+        <hr>
 
 
-          </div>
-         </li>
-       </ul>
+
+        <br>
+
+        <div class = "buttons-f">
+          <% if policy(course).edit? %>
+
+          <%= link_to edit_establishment_path(course), class: "btn btn-default" do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+          <% end %>
+
+          <% end %>
+          <%= link_to course, method: :delete , class: "btn btn-default destroy-course" do %>
+          <i class="fa fa-trash-o" aria-hidden="true"></i> Destroy
+          <%end%>
 
 
-     </div>
+        </div>
+
+      </ul>
+
+
+    </div>
 
     <br>
 
@@ -90,21 +92,21 @@
 
 <button id = "notifications" class = "btn-envelope" >
 
-<span>
+  <span>
 
-<% if @appointment.where(status: nil).any? %>
-<P >Notifications
-<span class="orb">
-<%= @appointment.where(status: nil).count %>
+    <% if @appointment.where(status: nil).any? %>
+    <P >Notifications
+      <span class="orb">
+        <%= @appointment.where(status: nil).count %>
 
-</span>
+      </span>
 
-</P>
+    </P>
 
-<% else %>
- <P> Notifications </P>
-<% end %>
-</span>
+    <% else %>
+    <P> Notifications </P>
+    <% end %>
+  </span>
 
 </button>
 
@@ -121,17 +123,17 @@
   <% if appointment.status.nil? %>
 
 
-  <strong><%="From: "%></strong>
+  <p><strong><%="From: "%></strong>
   <%=appointment.user.first_name%> <%= " "%><%=appointment.user.last_name%>
-  <br>
+<br>
   <strong><%="At: "%></strong> <%=appointment.date%>
-  <br>
+<br>
   <strong><%= "For: "%></strong> <%=appointment.course.title%>
-  <br>
-  <strong><%= "Messege: "%></strong> <%=appointment.description%>
+<br>
+  <strong><%= "Messege: "%></strong> <%=appointment.description%></p>
   <br>
 
-
+<span class="inline-block">
   <%= simple_form_for appointment, url: confirm_appointment_path(appointment), method: :post do |f| %>
   <%= f.submit "Confirm", class: "btn btn-success" %>
   <% end %>
@@ -140,7 +142,7 @@
   <%= simple_form_for appointment, url: decline_appointment_path(appointment), method: :post do |f| %>
   <%= f.submit "Decline", class: "btn btn-danger" %>
   <% end %>
-
+</span>
 
   <div class = "division"></div>
   <br>
@@ -150,7 +152,7 @@
   <%end%>
   <%else%>
 
-  <p>You have not requests for courses</p>
+  <p>No requests for courses :(</p>
 
   <% end %>
 </div>

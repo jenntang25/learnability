@@ -3,7 +3,8 @@
  * (margin/padding adjustments)
  * ------------------------------------- */
 
-.title {color: gray;
+.title {
+  color: gray;
 font-size: 30px;
 }
 
@@ -42,12 +43,12 @@ font-size: 30px;
 }
 
 .info-teacher{
-  padding: 50px;
-  margin: 20px;
+  margin: 10px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: #f7f7fa;
+
 }
 
 
