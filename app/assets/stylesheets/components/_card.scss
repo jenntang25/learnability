@@ -144,7 +144,8 @@ p {
 }
 .left {
   flex: 0 0 25%;
-  height:150px;
+  height:100%;
+  padding: 5px;
 }
 .right {
   flex: 0 0 75%;

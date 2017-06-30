@@ -6,8 +6,14 @@
            <h2 class="text-center " style="font-size: 20px; color: gray "><%= @course.tag %></h2>
 </div>
 <ul class="fa-ul">
-            <p><strong>Category: </strong> <%= @course.category %><br>
-            <strong>Address: </strong> <%= @course.establishment.address.titleize %></p>
+            <p>
+            <strong>Category: </strong>
+             <%= @course.category %><br>
+            <strong>Address: </strong>
+             <%= @course.establishment.address.titleize %> <br>
+            <strong>Personal teacher: </strong>
+             <%= @course.establishment.user.fullname.titleize %>
+             </p>
 </ul>
 
 
@@ -31,13 +37,15 @@
      </tr>
    </table>
 
-   <li class = "division list-unstyled" style="padding: 15px;"></li>
+   <li class = "division list-unstyled" style="padding: 15px; width: 100%"></li>
 
    <div class="list-inline" style="margin:30px; float: right">
     <strong><%= " Price: $"%> <%= @course.price %></strong>
-    <%= link_to "Book with us!", new_appointment_path(course_id: @course.id), class: "btn btn-primary" %>
-  </div>
 
+<%= link_to new_appointment_path(course_id: @course.id), class: "btn btn-primary" do %>
+          Book with <%= @course.establishment.user.first_name.titleize %>
+          <%end  %>
+  </div>
 </div>
 
 <div class="col-md-4">
