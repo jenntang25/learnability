@@ -261,13 +261,40 @@ fieldset, label { margin: 0; padding: 0; }
 body{ margin: 20px; }
 h1 { font-size: 1.5em; margin: 10px; }
 
-  // .card-container img {
+// .form-box {
+//   padding: 30px 20px;
+//   background: #f9f9f9;
+//   border-radius: 3px;
+//   box-shadow: 1px 1px 1px #ECECEC;
+//   margin: auto;
+//   width: 850px;
+//   height: 400px;
+//   padding-bottom: 80px;
 
-  //   padding-top: 200px;
-  //   width: 800px;
+// }
 
-  // }
-
-
+.row-box {
+  margin-right: 100px;
+  padding: 30px 20px;
+  background: #f9f9f9;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px #ECECEC;
+  margin: auto;
+  width: 850px;
+  height: 400px;
+  padding-bottom: 80px;
+  margin-bottom: 50px;
+}
+.form-box {
+  margin-top: 30px;
+  margin-right: 300px;
+  padding: 30px 20px;
+  background: #f9f9f9;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px #ECECEC;
+  margin: auto;
+  width: 850px;
+  height: 700px;
+}
 
 
