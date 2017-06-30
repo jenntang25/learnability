@@ -1,6 +1,8 @@
 <br>
+
 <div class = "text-center">
-  <h2><%= "Create a review for"%> <strong><%=@appointment.course.title%></h2></strong>
+  <h2>Tell us about <%=@appointment.course.title%> with <%=@appointment.course.establishment.name%>!</h2>
+
 </div>
 
 <div class = "container">
@@ -18,16 +20,21 @@
       <%= f.button :submit, class: "btn btn-primary" %>
       <%end%>
 
-<!--     </div> -->
+
+
+            <%= f.button :submit, class: "btn btn-warning" %>
+    <%end%>
+
+    </div>
+
   </div>
 </div>
 <br>
 
-
-
+</div>
 <% content_for(:after_js) do %>
 
-</div>
+
 <script>
 
   $(document).ready(function () {
@@ -35,8 +42,9 @@
    $.fn.raty.defaults.starOn = "<%= image_path 'star-on.png' %>";
    $('#rating-form').raty({
     scoreName: 'review[stars]'
+    });
   });
- });
+
 </script>
 
 
