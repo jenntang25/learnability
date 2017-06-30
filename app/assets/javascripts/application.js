@@ -25,6 +25,10 @@
 //     $('#Other-content').addClass('hide');
 //   });
 
+$('div').each(function() {
+  console.log($(this).attr('class'));
+})
+
 $(function(){
 
   $(".tab").on("click", function(e){

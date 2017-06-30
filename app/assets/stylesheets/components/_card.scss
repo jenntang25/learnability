@@ -143,89 +143,16 @@ p {
   font-size: 15px !important;
 }
 .left {
-  flex: 0 0 33%;
+  flex: 0 0 25%;
+  height:100%;
+  padding: 5px;
 }
 .right {
-  flex: 0 0 66%;
+  flex: 0 0 75%;
   padding: 10px;
 
 }
 }
-// .card-container {
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-//   align-content: flex-start;
-//   flex-direction: column;
-// }
-
-
-// .card {
-//   position: relative;
-//   width: 100%;
-//   height: 240px;
-//   text-shadow: 0 1px 1px rgba(0,0,0,0.2);
-//   // color: dark gray;
-//   // margin: 10px;
-//   font-size: 2%;
-//   border-radius: 1px;
-//   color: black;
-//   &:hover .card-description {
-//     opacity: 0.8;
-//   }
-
-//   .card-description {
-//     background-color: white;
-//     position: absolute;
-//     font-size: 2%;
-//     overflow: scroll;
-//     top: 0;
-//     bottom: 0;
-//     right: 0;
-//     left: 0;
-//     opacity: 0;
-//     transition: opacity 400ms ease;
-//   }
-// }
-
-// .card h2 {font-size: 15px;
-//   position: absolute;
-//   top: 10px;
-//   left: 10px;
-//   margin: 0px; }
-
-//   .card h4 {font-size: 10px;
-//     position: absolute;
-//     top: 30px;
-//     left: 20px;
-//     margin: 0px; }
-
-//    .price {
-//     font-size: 10px;
-//     position: absolute;
-//     bottom: 0px;
-//     right: 30px;
-//     margin: 0px;
-//     color: green;
-//   }
-
-//   .dist {
-//     font-size: 10px;
-//     position: absolute;
-//     bottom: 0px;
-//     left: 30px;
-//     margin: 0px;
-//   }
-
-
-
-
-
-
-
-// fieldset, label { margin: 0; padding: 0; }
-// body{ margin: 20px; }
-// h1 { font-size: 1.5em; margin: 10px; }
 
 .logo-size img {
   width: 10%;
@@ -240,6 +167,27 @@ p {
 }
 .description {
   font-size: 10px;
+}
+
+.titulo h2 {
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+.course-show {
+
+   text-align: justify;
+    text-decoration: none;
+    text-transform: capitalize;
+    line-height: 0.8;
+    font: karla;
+      line-height: 100px;
+}
+.centered
+{
+    margin: 1 auto;
+    text-align: left;
+    padding: 10px;
 }
 
 .container-login {
@@ -261,12 +209,7 @@ fieldset, label { margin: 0; padding: 0; }
 body{ margin: 20px; }
 h1 { font-size: 1.5em; margin: 10px; }
 
-  // .card-container img {
 
-  //   padding-top: 200px;
-  //   width: 800px;
-
-  // }
 
 
 
